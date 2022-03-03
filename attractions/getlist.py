@@ -175,8 +175,3 @@ def getList():
             }),500)
             return response
     
-# @attractions_bp.route("/api/attraction/<attractionId>",methods=["GET"])
-# def getById(attractionId):
-#     cursor=cnx.cursor()
-#     cursor.close()
-#     cnx.close()
