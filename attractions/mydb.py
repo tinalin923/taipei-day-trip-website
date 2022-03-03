@@ -17,6 +17,7 @@ print("Printing connection pool properties ")
 print("Connection Pool Name - ", cnxpool.pool_name)
 print("Connection Pool Size - ", cnxpool.pool_size)
 cnx=cnxpool.get_connection()
+
 #     if cnx.is_connected():
 #         db_Info = cnx.get_server_info()
 #         print("Connected to MySQL database using connection pool ... MySQL Server version on ", db_Info)
