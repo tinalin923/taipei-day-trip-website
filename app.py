@@ -28,4 +28,4 @@ def thankyou():
 
 if __name__=="__main__":
 	print(app.url_map)
-	app.run(host="34.195.43.91",port=3000)
+	app.run(port=3000)
