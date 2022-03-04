@@ -40,7 +40,7 @@ def getList():
                     datas = cursor.fetchall()     # datas為list
                     cursor.close()
                     cnx.close()
-                    if count <= 12:
+                    if count < 12:
                         slist = {"nextpage":None,"data":[]}
                     else:
                         slist = {"nextpage":page+1,"data":[]}
@@ -169,7 +169,7 @@ def getList():
                     response = make_response(jsonify({"nextpage":None,"data":[]}),200)
                     return response
                 else:
-                    if len(datas) <= (page+1)*12:
+                    if len(datas) < 12:
                         slist = {"nextpage":None,"data":[]}
                     else:
                         slist = {"nextpage":page+1,"data":[]}
