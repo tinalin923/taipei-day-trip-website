@@ -1,7 +1,16 @@
 from flask import *
+from attractions.getlist import attractions_bp
+from attractions.idgetlist import attraction_bp 
+
+
 app=Flask(__name__)
+app.config.from_object('config.DevConfig')
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
+app.config['JSON_SORT_KEYS'] = False
+
+app.register_blueprint(attractions_bp)
+app.register_blueprint(attraction_bp)
 
 # Pages
 @app.route("/")
@@ -17,4 +26,6 @@ def booking():
 def thankyou():
 	return render_template("thankyou.html")
 
-app.run(port=3000)
+if __name__=="__main__":
+	print(app.url_map)
+	app.run(host="0.0.0.0",port=3000)
