@@ -21,7 +21,7 @@ def getList():
                     }),400)
                     return response
             
-            cnx=cnxpool.get_connection()
+            cnx=cnxpool.get_connection()            #也可以用一次取12+1筆來確定有沒有下一頁，就不用Count(*)了
             cursor = cnx.cursor()
             query = ("SELECT COUNT(*) FROM `taipei` WHERE `name` LIKE %s")
             params = ("%"+keyword+"%",)
