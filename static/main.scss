@@ -5,6 +5,9 @@ $text-size:16px;
     padding:12px 10px;
 }
 .out{ 
+    position:sticky;      //此三者可以使固定在上頭
+    top:0;
+    background-color: #ffffff;
     .top {
         margin:0 auto;
         max-width:1200px;
