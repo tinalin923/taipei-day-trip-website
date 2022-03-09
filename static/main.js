@@ -11,6 +11,7 @@ function get(url){
     return promise;
 }
 
+
 async function loadData(page){
     let url="/api/attractions?page="+page;
     let attractions=await get(url);
@@ -18,7 +19,7 @@ async function loadData(page){
     console.log(nextPage);
     for(let i=0; i<13; i++ ){
         let attraction= attractions["data"][i];
-        let introduc= document.getElementById("wrapper");
+        let introduc= document.getElementById("list");
         let place= document.createElement("div");
         place.className= "attraction";
         let fragment= document.createDocumentFragment();
@@ -44,22 +45,25 @@ async function loadData(page){
         place.appendChild(site);
         place.appendChild(type);
         introduc.appendChild(fragment);
-    }
-    
+    }  
     return nextPage;
-    
 }
+// let nextIndex=function(number){
+//     return loadData(number)
+// };
+
+// console.log(nextIndex(0));
 
 // let nextpage=loadData(0);  //nextpage == 1
 
 // //發生滾輪動作的時候，就執行loadNext(1)
-window.addEventListener("scroll",()=>{
-    const box=document.getElementById("wrapper");
-    if (box.getBoundingClientRect().bottom < window.innerHeight){
-    loadData(1);
+// window.addEventListener("scroll",()=>{
+//     const box=document.getElementById("wrapper");
+//     if (box.getBoundingClientRect().bottom < window.innerHeight){
+//     loadData(1);
     
     
-    }}); 
+//     }}); 
 
 
 // async function loadNext(page){
@@ -73,3 +77,36 @@ window.addEventListener("scroll",()=>{
 //     }
 // }
 
+// let infScroll = new InfiniteScroll( '#wrapper', {
+//     path:function(){
+//         if (box.getBoundingClientRect().bottom < window.innerHeight){
+//             let nextIndex= this.loadCount+1;
+//             return loadData(nextIndex);
+//         }
+//     },
+//     append:".attraction",
+//     prefill: false,
+//     status: '.scroller-status'
+
+// });
+
+// 首先我們需要創造一個 observer 物件並指定 root：
+const root = document.querySelector("wrapper");
+const options = {
+    root,
+    rootMargin: "0px",
+    threshold:0.75,
+};
+
+
+// 接下來我們要用 observer.observe() 指定欲觀察的 target：
+const target = document.querySelector("observed")
+observer.oberve(target);
+
+//設定callback函式
+const callback = (entries,observer)=>{
+
+}
+
+
+const observer = new IntersectionObserver(callback,options);

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='main.css')}}"/>
     <script type='text/javascript' src="/static/main.js"></script>
+    <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
     <title>{%block title%}Document{%endblock%}</title>
 </head>
 <body style="margin:0;padding:0">
@@ -31,8 +32,11 @@
             </div>
         </div>
     </div>  
-
-    <div id="wrapper"> </div>
+    
+    <div class="wrapper">
+        <div id="list">  </div>
+        <div class="observed"></div>
+    </div>
 
     {%endblock%}
     <footer>COPYRIGHT © 2021台北一日遊</footer>
