@@ -103,52 +103,56 @@ $text-size:16px;
         }
     }   
 }
-#list{
-    box-sizing: border-box;
-    margin:55px auto;
-    max-width:1170px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    grid-gap:30px;
-    grid-auto-rows:minmax(184px,auto);
-    font-size: $text-size;
-    font-family: $font-family;
-    color:#757575;
-    text-align: center;
-    @media (max-width:1200px){
-        grid-template-columns:repeat(2,1fr);
-        margin:20px;}
-    @media (max-width:600px){
-        width:90%;grid-template-columns:1fr;
-        grid-gap:15px;
-    }
-    .attraction{
-        // box-sizing: border-box;
-        // width: 270px;   //還要修改
-        border: 1px solid #E8E8E8;
-        border-radius:5px;
-        display:block;
+.wrapper{
+    display: flex;
+    justify-content: center;
+    #list{
+        box-sizing: border-box;
+        margin:55px auto;
+        max-width:1170px;
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        grid-gap:30px;
+        grid-auto-rows:minmax(184px,auto);
+        font-size: $text-size;
+        font-family: $font-family;
+        color:#757575;
+        
+        @media (max-width:1200px){
+            grid-template-columns:repeat(2,1fr);
+            margin:0px;}
         @media (max-width:600px){
-            // width:322px;
-            grid-template-columns:1fr;
+            width:90%;grid-template-columns:1fr;
+            grid-gap:15px;
         }
-        img{
-            width:100%;
-            aspect-ratio: 4/3;
-        }
-        figcaption{
-            font-weight: bold;
-            text-align: left;
-            padding:10px;
-        }
-        .sort{
-            display:flex;
-            justify-content: space-between;
-            .left{@include caption(left);}
-            .right{@include caption(right);}
+        .attraction{
+            box-sizing: border-box;
+            // width: 270px;   //還要修改?
+            border: 1px solid #E8E8E8;
+            border-radius:5px;
+            display:block;
+            @media (max-width:600px){
+                // width:322px;
+                grid-template-columns:1fr;
+            }
+            img{
+                width:100%;
+                aspect-ratio: 4/3;
+            }
+            figcaption{
+                font-weight: bold;
+                text-align: left;
+                padding:10px;
+            }
+            .sort{
+                display:flex;
+                justify-content: space-between;
+                .left{@include caption(left);}
+                .right{@include caption(right);}
+            }
         }
     }
-}
+}    
 footer {
     margin-top: 10px;
     background:#757575;
