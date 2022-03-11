@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
 .out {
   position: -webkit-sticky;
   position: sticky;
@@ -31,9 +32,9 @@
       -ms-flex: auto;
           flex: auto;
   color: #448899;
-  font-weight: 900;
+  font-weight: bold;
   font-size: 30px;
-  font-family: Noto Sans TC;
+  font-family: "Noto Sans TC", sans-serif;
 }
 
 .out .top nav {
@@ -59,7 +60,8 @@
   color: #666666;
   text-decoration: none;
   font-size: 16px;
-  font-family: Noto Sans TC;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
 }
 
 .hero-image {
@@ -67,7 +69,7 @@
   background-image: url("welcome.png"), linear-gradient(135deg, #AADDEE 0%, #66AABB 100%);
   background-position: 85% 100%;
   background-repeat: no-repeat;
-  font-family: Noto Sans TC;
+  font-family: "Noto Sans TC", sans-serif;
 }
 
 @media (max-width: 600px) {
@@ -102,12 +104,14 @@
 .hero-image .hero-text h1 {
   margin: 0px;
   font-size: 28px;
+  font-weight: bold;
 }
 
 .hero-image .hero-text p {
   margin-top: 15px;
   margin-bottom: 25px;
   font-size: 16px;
+  font-weight: 400;
 }
 
 .hero-image .hero-text .search {
@@ -141,7 +145,7 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   border: none;
-  font-family: Noto Sans TC;
+  font-family: "Noto Sans TC", sans-serif;
   font-weight: bold;
   font-size: 16px;
   color: #757575;
@@ -161,6 +165,8 @@
 }
 
 #list {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 55px auto;
   max-width: 1170px;
   display: -ms-grid;
@@ -170,8 +176,9 @@
   grid-gap: 30px;
   grid-auto-rows: minmax(184px, auto);
   font-size: 16px;
-  font-family: Noto Sans TC;
+  font-family: "Noto Sans TC", sans-serif;
   color: #757575;
+  text-align: center;
 }
 
 @media (max-width: 1200px) {
@@ -210,6 +217,7 @@
 
 #list .attraction figcaption {
   font-weight: bold;
+  text-align: left;
   padding: 10px;
 }
 
@@ -223,16 +231,19 @@
 }
 
 #list .attraction .sort .left {
+  font-weight: 400;
   text-align: left;
   padding: 12px 10px;
 }
 
 #list .attraction .sort .right {
+  font-weight: 400;
   text-align: right;
   padding: 12px 10px;
 }
 
 footer {
+  margin-top: 10px;
   background: #757575;
   height: 104px;
   display: -webkit-box;
@@ -244,7 +255,7 @@ footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-family: Noto Sans TC;
+  font-family: "Noto Sans TC", sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: white;

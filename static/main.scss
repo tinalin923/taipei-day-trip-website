@@ -1,6 +1,8 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+$font-family:'Noto Sans TC', sans-serif;
 $text-size:16px;
 @mixin caption($side){
+    font-weight: 400;
     text-align:$side;
     padding:12px 10px;
 }
@@ -20,9 +22,9 @@ $text-size:16px;
             margin:10px;
             flex:auto;
             color:#448899;
-            font-weight:900;
+            font-weight:bold;
             font-size:30px;
-            font-family: Noto Sans TC;   
+            font-family: $font-family;   
         }
         nav {
             flex:none;
@@ -36,7 +38,8 @@ $text-size:16px;
                 color:#666666;
                 text-decoration: none;    //移除超連結<a>的底線藍字
                 font-size: $text-size;
-                font-family:Noto Sans TC;
+                font-family:$font-family;
+                font-weight: 400;
             }
         }
     }
@@ -46,7 +49,7 @@ $text-size:16px;
     background-image: url("welcome.png"),linear-gradient(135deg,#AADDEE 0%,#66AABB 100%) ;
     background-position:85% 100%;
     background-repeat:no-repeat;
-    font-family:Noto Sans TC;
+    font-family:$font-family;
     // display:flex;justify-content:center;align-items:center;
     // text-align: center;
     @media(max-width:600px){
@@ -61,8 +64,8 @@ $text-size:16px;
         color: #f8f8f8;
         @media(max-width:1200px){width:95%;}
         @media(max-width:600px){padding-top:65px;padding-left:20px;}
-        h1{margin:0px;font-size:28px;}
-        p{margin-top:15px;margin-bottom:25px;font-size: $text-size;}
+        h1{margin:0px;font-size:28px;font-weight: bold;}
+        p{margin-top:15px;margin-bottom:25px;font-size: $text-size;font-weight: 400;}
         .search{
             margin:0px;
             width:460px;
@@ -78,7 +81,7 @@ $text-size:16px;
                 border-top-left-radius:5px;
                 border-bottom-left-radius:5px;
                 border:none;
-                font-family:Noto Sans TC;
+                font-family:$font-family;
                 font-weight:bold;
                 font-size: $text-size;
                 color:#757575;
@@ -98,6 +101,7 @@ $text-size:16px;
     }   
 }
 #list{
+    box-sizing: border-box;
     margin:55px auto;
     max-width:1170px;
     display:grid;
@@ -105,8 +109,9 @@ $text-size:16px;
     grid-gap:30px;
     grid-auto-rows:minmax(184px,auto);
     font-size: $text-size;
-    font-family: Noto Sans TC;
+    font-family: $font-family;
     color:#757575;
+    text-align: center;
     @media (max-width:1200px){
         grid-template-columns:repeat(2,1fr);}
     @media (max-width:600px){
@@ -126,10 +131,10 @@ $text-size:16px;
         img{
             width:100%;
             aspect-ratio: 4/3;
-            
         }
         figcaption{
             font-weight: bold;
+            text-align: left;
             padding:10px;
         }
         .sort{
@@ -141,12 +146,13 @@ $text-size:16px;
     }
 }
 footer {
+    margin-top: 10px;
     background:#757575;
     height:104px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-family: Noto Sans TC;
+    font-family: $font-family;
     font-size:$text-size;
     font-weight: bold;
     color: white;

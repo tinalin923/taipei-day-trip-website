@@ -1,24 +1,30 @@
-document.addEventListener("load",loadData(0));
+let page = 0 ;
+let key_page = 0 ;
+let key_word = "" ;
+// let url = "/api/attractions?page=";
+window.addEventListener("DOMContentLoaded",loadData());
+window.addEventListener("scroll",()=>{
+    let options = {
+        root:null,
+        rootMargins:"0px",
+        threshold:0.75
+    };
+    const observer = new IntersectionObserver(callback,options);
+    observer.observe(document.querySelector("footer"));   
+},{once:true});   //使註冊事件在第一次滾動後發生一次
 
-function get(url){
-    let promise =new Promise((resolve, reject) => {
+let input = document.querySelector("button");
+
+function loadData(){
+    let url = "/api/attractions?page="+page;
     fetch(url).then(res => {return res.json();
-    }).then(response => {console.log(response);resolve(response);
-    }).catch(error => {
-        console.log("Error during fetch:"+ error.message);
-        reject(error);})
-    });
-    return promise;
-}
-
-
-async function loadData(page){
-    let url="/api/attractions?page="+page;
-    let attractions=await get(url);
-    let nextPage = attractions["nextpage"];
-    console.log(nextPage);
+    }).then(attractions => {
+    let nextPage = attractions.nextpage;
+    console.log(page);
+    page = nextPage;
+    console.log(page);
     for(let i=0; i<13; i++ ){
-        let attraction= attractions["data"][i];
+        let attraction= attractions.data[i];
         let introduc= document.getElementById("list");
         let place= document.createElement("div");
         place.className= "attraction";
@@ -27,55 +33,327 @@ async function loadData(page){
         let site= document.createElement("div");
         site.className="figure";
         let pic= document.createElement('img');
-        pic.src= attraction["images"][0];
+        pic.src= attraction.images[0];
         let caption= document.createElement("figcaption");
-        caption.textContent= attraction["name"];
+        caption.textContent= attraction.name;
         site.appendChild(pic);
         site.appendChild(caption);
         let type= document.createElement("div");
         type.className= "sort";
         let left= document.createElement("div");
         left.className= "left"
-        left.textContent= attraction["mrt"];
+        left.textContent= attraction.mrt;
         let right= document.createElement("div");
         right.className= "right";
-        right.textContent= attraction["category"];
+        right.textContent= attraction.category;
         type.appendChild(left);
         type.appendChild(right);
         place.appendChild(site);
         place.appendChild(type);
         introduc.appendChild(fragment);
-    }  
-    return nextPage;
+        
+        }
+    })
+    
 }
-// let nextIndex=function(number){
-//     return loadData(number)
-// };
 
-// console.log(nextIndex(0));
+//用unobserve關不掉observer (用disconnect?)
+function callback(entries){
+    console.log(entries);    
+    if (!entries[0].isIntersecting){return }
+    else{
+        console.log("hello");
+        console.log(key_page);
+        if (key_word !== "" && key_page !== null){ search(); }
+        else if (key_word !== "" && key_page == null){return;}
+        else if (key_word == ""){loadData(); console.log(page);}
+        else if (key_word == "" && key_page!== 0){return;}
+        else{observer.unobserve(entries[0].target);return ;}    
+}}
 
-// let nextpage=loadData(0);  //nextpage == 1
-
-// //發生滾輪動作的時候，就執行loadNext(1)
-// window.addEventListener("scroll",()=>{
-//     const box=document.getElementById("wrapper");
-//     if (box.getBoundingClientRect().bottom < window.innerHeight){
-//     loadData(1);
+input.addEventListener("click",search);
+function search(){
+    let keyword = document.querySelector("input").value;
+    if (keyword == "" && page == 1 & key_page == 0){console.log("click!");return ;}     //沒有輸入word
+    else if (keyword == ""){loadData();}
+    // else if (keyword == null && key_page !== 0 && key_word !==""){
+    //     let url = "/api/attractions?keyword=&page=0";
+    //     fetch(url).then(res =>{return res.json()
+    //     }).then(attractions =>{
+    //         let wrap = document.querySelector(".wrapper");
+    //         let oldIntroduc= document.getElementById("list");
+    //         oldIntroduc.textContent="";
+    //         let nextPage = attractions.nextpage;
+    //         page = nextPage; 
+    //         for (i=0; i<13; i++ ){
+    //             let attraction= attractions.data[i];
+    //             let place= document.createElement("div");
+    //             place.className= "attraction";
+    //             let fragment= document.createDocumentFragment();
+    //             fragment.appendChild(place);
+    //             let site= document.createElement("div");
+    //             site.className="figure";
+    //             let pic= document.createElement('img');
+    //             pic.src= attraction.images[0];
+    //             let caption= document.createElement("figcaption");
+    //             caption.textContent= attraction.name;
+    //             site.appendChild(pic);
+    //             site.appendChild(caption);
+    //             let type= document.createElement("div");
+    //             type.className= "sort";
+    //             let left= document.createElement("div");
+    //             left.className= "left"
+    //             left.textContent= attraction.mrt;
+    //             let right= document.createElement("div");
+    //             right.className= "right";
+    //             right.textContent= attraction.category;
+    //             type.appendChild(left);
+    //             type.appendChild(right);
+    //             place.appendChild(site);
+    //             place.appendChild(type);
+    //             oldIntroduc.appendChild(fragment);
+    //             wrap.appendChild(oldIntroduc);
+    //         }
+    //     })
+    // }
+    else if (keyword !== "" && key_page == 0){        //有輸入word 第一次搜尋 有無資料
+        key_word = keyword;
+        let url ="/api/attractions?keyword="+key_word+"&page="+ key_page;
+        console.log (url);
+        fetch(url).then(res => {return res.json();
+        }).then(attractions => {
+            if (attractions.data == ""){            // 查無資料 key_page沒變
+                let oldIntroduc= document.querySelector("#list");
+                oldIntroduc.textContent="查無相關景點";}
+            else{                                //有資料 有變key_page
+                let nextPage = attractions.nextpage;   //有可能有下一頁或等於null
+                key_page = nextPage;
+                console.log(key_page);
+                let wrap = document.querySelector(".wrapper")
+                let oldIntroduc= document.querySelector("#list");
+                wrap.removeChild(oldIntroduc);
+                let introduc= document.createElement("div");
+                introduc.setAttribute("id","list");
+                for(let i=0; i < attractions.data.length; i++ ){
+                    let attraction= attractions.data[i];
+                    let place= document.createElement("div");
+                    place.className= "attraction";
+                    let fragment= document.createDocumentFragment();
+                    fragment.appendChild(place);
+                    let site= document.createElement("div");
+                    site.className="figure";
+                    let pic= document.createElement('img');
+                    pic.src= attraction.images[0];
+                    let caption= document.createElement("figcaption");
+                    caption.textContent= attraction.name;
+                    site.appendChild(pic);
+                    site.appendChild(caption);
+                    let type= document.createElement("div");
+                    type.className= "sort";
+                    let left= document.createElement("div");
+                    left.className= "left"
+                    left.textContent= attraction.mrt;
+                    let right= document.createElement("div");
+                    right.className= "right";
+                    right.textContent= attraction.category;
+                    type.appendChild(left);
+                    type.appendChild(right);
+                    place.appendChild(site);
+                    place.appendChild(type);
+                    introduc.appendChild(fragment);
+                    wrap.appendChild(introduc);
+                }
+            }     
+        })
+    }
+    else if (keyword == key_word && key_page !==0){     //word不變 空點  //word不變 footer被觀察到 有無資料
+        if (key_page == null){return ;}
+        else{
+            let url ="/api/attractions?keyword="+key_word+"&page="+ key_page;
+            fetch(url).then(res => {return res.json();
+                }).then(attractions => {
+                    let nextPage = attractions.nextpage;
+                    key_page = nextPage;
+                    console.log(key_page);
+                    let wrap = document.querySelector(".wrapper");
+                    for(let i = 0; i < attractions.data.length; i++ ){
+                        let introduc= document.querySelector("#list");
+                        let attraction = attractions.data[i];
+                        // console.log(introduc);
+                        let place = document.createElement("div");
+                        place.className= "attraction";
+                        let fragment= document.createDocumentFragment();
+                        fragment.appendChild(place);
+                        let site= document.createElement("div");
+                        site.className="figure";
+                        let pic= document.createElement('img');
+                        pic.src= attraction.images[0];
+                        let caption= document.createElement("figcaption");
+                        caption.textContent= attraction.name;
+                        site.appendChild(pic);
+                        site.appendChild(caption);
+                        let type= document.createElement("div");
+                        type.className= "sort";
+                        let left= document.createElement("div");
+                        left.className= "left"
+                        left.textContent= attraction.mrt;
+                        let right= document.createElement("div");
+                        right.className= "right";
+                        right.textContent= attraction.category;
+                        type.appendChild(left);
+                        type.appendChild(right);
+                        place.appendChild(site);
+                        place.appendChild(type);
+                        introduc.appendChild(fragment);
+                        wrap.appendChild(introduc);}
+                })
+        }
+    }
+    else if( keyword !== key_word) {
+        let wrap = document.querySelector(".wrapper");
+        let oldIntroduc= document.getElementById("list");
+        oldIntroduc.textContent="";
+        key_word = keyword;
+        console.log(key_page);
+        let url ="/api/attractions?keyword="+key_word+"&page=0";
+        console.log(url);
+        fetch(url).then(res => {return res.json();
+        }).then(attractions => {
+            if (attractions.data == ""){            // 查無資料 key_page沒變
+                // let oldIntroduc= document.getElementById("list");
+                oldIntroduc.textContent="查無相關景點";}
+            else{                                //有資料 有變key_page
+                for(let i=0; i < attractions.data.length; i++ ){
+                    let nextPage = attractions.nextpage
+                    key_page = nextPage;
+                    let attraction= attractions.data[i];
+                    let place= document.createElement("div");
+                    place.className= "attraction";
+                    let fragment= document.createDocumentFragment();
+                    fragment.appendChild(place);
+                    let site= document.createElement("div");
+                    site.className="figure";
+                    let pic= document.createElement('img');
+                    pic.src= attraction.images[0];
+                    let caption= document.createElement("figcaption");
+                    caption.textContent= attraction.name;
+                    site.appendChild(pic);
+                    site.appendChild(caption);
+                    let type= document.createElement("div");
+                    type.className= "sort";
+                    let left= document.createElement("div");
+                    left.className= "left"
+                    left.textContent= attraction.mrt;
+                    let right= document.createElement("div");
+                    right.className= "right";
+                    right.textContent= attraction.category;
+                    type.appendChild(left);
+                    type.appendChild(right);
+                    place.appendChild(site);
+                    place.appendChild(type);
+                    oldIntroduc.appendChild(fragment);
+                    wrap.appendChild(oldIntroduc);
+                }
+            }
+        })
+    }       
+}
+      
     
+
+
+
+
+
     
-//     }}); 
-
-
-// async function loadNext(page){
-//     const box=document.getElementById("wrapper");
-//     console.log(window.innerHeight)
-//     console.log(box.getBoundingClientRect())
-//     if (box.getBoundingClientRect().bottom < window.innerHeight){
-//         let nextPage= await loadData(page);  //nextPage==2
-//         console.log(nextpage);
-//         loadNext(nextPage);
+//     if (key_page == 0){
+//         fetch(url).then(res => {return res.json();
+//         }).then(attractions => {
+//         let nextPage = attractions.nextpage;
+//         console.log(key_page);
+//         key_page = nextPage;
+//         console.log(key_page);
+//         let wrap = document.querySelector(".wrapper")
+//         let oldIntroduc= document.querySelector("#list");
+//         wrap.removeChild(oldIntroduc);
+//         let introduc= document.createElement("div");
+//         introduc.setAttribute("id","list");
+//         for(let i=0; i < attractions.data.length; i++ ){
+//             let attraction= attractions.data[i];
+//             let place= document.createElement("div");
+//             place.className= "attraction";
+//             let fragment= document.createDocumentFragment();
+//             fragment.appendChild(place);
+//             let site= document.createElement("div");
+//             site.className="figure";
+//             let pic= document.createElement('img');
+//             pic.src= attraction.images[0];
+//             let caption= document.createElement("figcaption");
+//             caption.textContent= attraction.name;
+//             site.appendChild(pic);
+//             site.appendChild(caption);
+//             let type= document.createElement("div");
+//             type.className= "sort";
+//             let left= document.createElement("div");
+//             left.className= "left"
+//             left.textContent= attraction.mrt;
+//             let right= document.createElement("div");
+//             right.className= "right";
+//             right.textContent= attraction.category;
+//             type.appendChild(left);
+//             type.appendChild(right);
+//             place.appendChild(site);
+//             place.appendChild(type);
+//             introduc.appendChild(fragment);
+//             wrap.appendChild(introduc);
+//             }
+//         })
 //     }
+//     else{
+//         fetch(url).then(res => {return res.json();
+//         }).then(attractions => {
+//             let nextPage = attractions.nextpage;
+//             key_page = nextPage;
+//             let wrap = document.querySelector(".wrapper");
+//             for(let i = 0; i < attractions.data.length; i++ ){
+//                 let introduc= document.querySelector("#list");
+//                 let attraction = attractions.data[i];
+//                 // console.log(introduc);
+//                 let place = document.createElement("div");
+//                 place.className= "attraction";
+//                 let fragment= document.createDocumentFragment();
+//                 fragment.appendChild(place);
+//                 let site= document.createElement("div");
+//                 site.className="figure";
+//                 let pic= document.createElement('img');
+//                 pic.src= attraction.images[0];
+//                 let caption= document.createElement("figcaption");
+//                 caption.textContent= attraction.name;
+//                 site.appendChild(pic);
+//                 site.appendChild(caption);
+//                 let type= document.createElement("div");
+//                 type.className= "sort";
+//                 let left= document.createElement("div");
+//                 left.className= "left"
+//                 left.textContent= attraction.mrt;
+//                 let right= document.createElement("div");
+//                 right.className= "right";
+//                 right.textContent= attraction.category;
+//                 type.appendChild(left);
+//                 type.appendChild(right);
+//                 place.appendChild(site);
+//                 place.appendChild(type);
+//                 introduc.appendChild(fragment);
+//                 wrap.appendChild(introduc);}
+//             })
+//     }       
+
 // }
+
+
+
+
+
 
 // let infScroll = new InfiniteScroll( '#wrapper', {
 //     path:function(){
@@ -87,26 +365,4 @@ async function loadData(page){
 //     append:".attraction",
 //     prefill: false,
 //     status: '.scroller-status'
-
 // });
-
-// 首先我們需要創造一個 observer 物件並指定 root：
-const root = document.querySelector("wrapper");
-const options = {
-    root,
-    rootMargin: "0px",
-    threshold:0.75,
-};
-
-
-// 接下來我們要用 observer.observe() 指定欲觀察的 target：
-const target = document.querySelector("observed")
-observer.oberve(target);
-
-//設定callback函式
-const callback = (entries,observer)=>{
-
-}
-
-
-const observer = new IntersectionObserver(callback,options);
