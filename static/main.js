@@ -62,13 +62,12 @@ function callback(entries){
     else{
         // console.log("hello");
         // console.log(key_page);
-        if (key_word !== "" && key_page !== null){ search(); }
+        if (key_word == "" && page !== null){loadData();}
+        else if ( key_word == "" && page == null){return ;}
+        else if (key_word !== "" && key_page !== null){ search(); }
         else if (key_word !== "" && key_page == null){return ;}
-        else if (key_word == ""){loadData(); 
-            // console.log(page);
-        }
         else if (key_word == "" && key_page!== 0){return ;}
-        else{observer.unobserve(entries[0].target);return ;}    
+        // else{observer.unobserve(entries[0].target);return ;}    
 }}
 
 button.addEventListener("click",search);
@@ -214,7 +213,7 @@ function search(){
         let oldIntroduc= document.getElementById("list");
         oldIntroduc.textContent="";
         key_word = keyword;
-        // console.log(key_page);
+        console.log(key_page);
         let url ="/api/attractions?keyword="+key_word+"&page=0";
         // console.log(url);
         fetch(url).then(res => {return res.json();
