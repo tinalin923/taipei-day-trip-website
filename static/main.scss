@@ -34,7 +34,7 @@ $text-size:16px;
             align-items:center;
             a{
                 box-sizing: border-box;
-                padding:10px;
+                padding:5px;
                 color:#666666;
                 text-decoration: none;    //移除超連結<a>的底線藍字
                 font-size: $text-size;
@@ -67,13 +67,14 @@ $text-size:16px;
         h1{margin:0px;font-size:28px;font-weight: bold;}
         p{margin-top:15px;margin-bottom:25px;font-size: $text-size;font-weight: 400;}
         .search{
+            box-sizing: border-box;
             margin:0px;
             width:460px;
             font-size:$text-size;
             display:flex;
             justify-content:space-between;
             align-items:center;
-            @media(max-width:600px){width:290px;}
+            @media(max-width:600px){max-width:290px;}
             input{
                 flex:auto;
                 max-width: 400px;height:46px;
