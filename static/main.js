@@ -1,28 +1,26 @@
 let page = 0 ;
 let key_page = 0 ;
 let key_word = "" ;
-// let url = "/api/attractions?page=";
+let button = document.querySelector("button");
 window.addEventListener("DOMContentLoaded",loadData());
 window.addEventListener("scroll",()=>{
     let options = {
         root:null,
         rootMargins:"0px",
-        threshold:0.75
+        threshold:0.25
     };
     const observer = new IntersectionObserver(callback,options);
     observer.observe(document.querySelector("footer"));   
-},{once:true});   //使註冊事件在第一次滾動後發生一次
-
-let input = document.querySelector("button");
+},{once:true});       //使註冊事件在第一次滾動後發生，且只發生一次
 
 function loadData(){
     let url = "/api/attractions?page="+page;
     fetch(url).then(res => {return res.json();
     }).then(attractions => {
     let nextPage = attractions.nextpage;
-    console.log(page);
+    // console.log(page);
     page = nextPage;
-    console.log(page);
+    // console.log(page);
     for(let i=0; i<13; i++ ){
         let attraction= attractions.data[i];
         let introduc= document.getElementById("list");
@@ -57,21 +55,23 @@ function loadData(){
     
 }
 
-//用unobserve關不掉observer (用disconnect?)
+//用unobserve似乎無法完整關不掉observer (用disconnect?)
 function callback(entries){
-    console.log(entries);    
-    if (!entries[0].isIntersecting){return }
+    // console.log(entries);    
+    if (!entries[0].isIntersecting){return ;}
     else{
-        console.log("hello");
-        console.log(key_page);
+        // console.log("hello");
+        // console.log(key_page);
         if (key_word !== "" && key_page !== null){ search(); }
-        else if (key_word !== "" && key_page == null){return;}
-        else if (key_word == ""){loadData(); console.log(page);}
-        else if (key_word == "" && key_page!== 0){return;}
+        else if (key_word !== "" && key_page == null){return ;}
+        else if (key_word == ""){loadData(); 
+            // console.log(page);
+        }
+        else if (key_word == "" && key_page!== 0){return ;}
         else{observer.unobserve(entries[0].target);return ;}    
 }}
 
-input.addEventListener("click",search);
+button.addEventListener("click",search);
 function search(){
     let keyword = document.querySelector("input").value;
     if (keyword == "" && page == 1 & key_page == 0){console.log("click!");return ;}     //沒有輸入word
@@ -119,7 +119,7 @@ function search(){
     else if (keyword !== "" && key_page == 0){        //有輸入word 第一次搜尋 有無資料
         key_word = keyword;
         let url ="/api/attractions?keyword="+key_word+"&page="+ key_page;
-        console.log (url);
+        // console.log (url);
         fetch(url).then(res => {return res.json();
         }).then(attractions => {
             if (attractions.data == ""){            // 查無資料 key_page沒變
@@ -128,7 +128,7 @@ function search(){
             else{                                //有資料 有變key_page
                 let nextPage = attractions.nextpage;   //有可能有下一頁或等於null
                 key_page = nextPage;
-                console.log(key_page);
+                // console.log(key_page);
                 let wrap = document.querySelector(".wrapper")
                 let oldIntroduc= document.querySelector("#list");
                 wrap.removeChild(oldIntroduc);
@@ -174,7 +174,7 @@ function search(){
                 }).then(attractions => {
                     let nextPage = attractions.nextpage;
                     key_page = nextPage;
-                    console.log(key_page);
+                    // console.log(key_page);
                     let wrap = document.querySelector(".wrapper");
                     for(let i = 0; i < attractions.data.length; i++ ){
                         let introduc= document.querySelector("#list");
@@ -214,9 +214,9 @@ function search(){
         let oldIntroduc= document.getElementById("list");
         oldIntroduc.textContent="";
         key_word = keyword;
-        console.log(key_page);
+        // console.log(key_page);
         let url ="/api/attractions?keyword="+key_word+"&page=0";
-        console.log(url);
+        // console.log(url);
         fetch(url).then(res => {return res.json();
         }).then(attractions => {
             if (attractions.data == ""){            // 查無資料 key_page沒變
