@@ -181,6 +181,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .wrapper #list {
@@ -203,13 +205,11 @@
   .wrapper #list {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
-    margin: 0px;
   }
 }
 
 @media (max-width: 600px) {
   .wrapper #list {
-    width: 90%;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
     grid-gap: 15px;
