@@ -34,7 +34,7 @@ $text-size:16px;
             align-items:center;
             a{
                 box-sizing: border-box;
-                padding:5px;
+                padding:20px 10px;
                 color:#666666;
                 text-decoration: none;    //移除超連結<a>的底線藍字
                 font-size: $text-size;
@@ -76,6 +76,7 @@ $text-size:16px;
             align-items:center;
             @media(max-width:600px){max-width:290px;}
             input{
+                box-sizing: border-box;
                 flex:auto;
                 max-width: 400px;height:46px;
                 padding:0px 15px;
@@ -86,6 +87,7 @@ $text-size:16px;
                 font-weight:bold;
                 font-size: $text-size;
                 color:#757575;
+                @media(max-width:600px){max-width:230px;}
             }
             button{
                 flex:none;width:60px;
