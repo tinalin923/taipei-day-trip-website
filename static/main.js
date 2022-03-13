@@ -43,12 +43,12 @@ function loadData(){
         console.log("2"+flag)  ;          // bool = true
         let nextPage = attractions.nextpage;
         page = nextPage;
-        for(let i=0; i<13; i++ ){
+        let introduc= document.getElementById("list");
+        let fragment= document.createDocumentFragment();
+        for(let i=0; i<attractions.data.length; i++ ){
             let attraction= attractions.data[i];
-            let introduc= document.getElementById("list");
             let place= document.createElement("div");
             place.className= "attraction";
-            let fragment= document.createDocumentFragment();
             fragment.appendChild(place);
             let site= document.createElement("div");
             site.className="figure";
@@ -92,18 +92,18 @@ function search(){
         }).then(attractions => {
             flag = true; 
             console.log("s2 "+flag) ;   //bool = true;
-            let oldIntroduc= document.querySelector("#list");
-            oldIntroduc.innerHTML="";
+            let introduc= document.getElementById("list");
+            introduc.innerHTML="";
+            let fragment= document.createDocumentFragment();
             let nextPage = attractions.nextpage;   
             key_page = nextPage;                        //有可能有下一頁或等於null
             if (attractions.data == ""){            // 查無資料 
-                oldIntroduc.textContent="查無相關景點";}
+                introduc.textContent="查無相關景點";}
             else{                                //有資料 
                 for(let i=0; i < attractions.data.length; i++ ){
                     let attraction= attractions.data[i];
                     let place= document.createElement("div");
                     place.className= "attraction";
-                    let fragment= document.createDocumentFragment();
                     fragment.appendChild(place);
                     let site= document.createElement("div");
                     site.className="figure";
@@ -125,7 +125,7 @@ function search(){
                     type.appendChild(right);
                     place.appendChild(site);
                     place.appendChild(type);
-                    oldIntroduc.appendChild(fragment);
+                    introduc.appendChild(fragment);
                     }
             }     
         })
@@ -144,12 +144,12 @@ function search(){
                     console.log("s2 "+flag) ;   //bool = true;
                     let nextPage = attractions.nextpage;
                     key_page = nextPage;
+                    let introduc= document.getElementById("list");
+                    let fragment= document.createDocumentFragment();
                     for(let i = 0; i < attractions.data.length; i++ ){
-                        let introduc= document.querySelector("#list");
                         let attraction = attractions.data[i];
                         let place = document.createElement("div");
                         place.className= "attraction";
-                        let fragment= document.createDocumentFragment();
                         fragment.appendChild(place);
                         let site= document.createElement("div");
                         site.className="figure";
@@ -181,25 +181,23 @@ function search(){
         console.log("s1 "+flag) ;   //bool = false;
         key_word = keyword;
         key_page = 0;     //做新的搜尋，頁數歸零
-        let oldIntroduc= document.getElementById("list");
-        oldIntroduc.innerHTML="";
+        let introduc= document.getElementById("list");
+        introduc.innerHTML="";
         let url ="/api/attractions?keyword="+key_word+"&page="+key_page;
         fetch(url).then(res => {return res.json();
         }).then(attractions => {
             flag = true; 
             console.log("s2 "+flag) ;   //bool = true;
+            let nextPage = attractions.nextpage
+            key_page = nextPage;
+            let fragment= document.createDocumentFragment();
             if (attractions.data == ""){            // 查無資料 key_page==null
-                let nextPage = attractions.nextpage
-                key_page = nextPage;
                 oldIntroduc.textContent="查無相關景點";}
             else{                                //有資料 有變key_page
-                let nextPage = attractions.nextpage
-                key_page = nextPage;
                 for(let i=0; i < attractions.data.length; i++ ){
                     let attraction= attractions.data[i];
                     let place= document.createElement("div");
                     place.className= "attraction";
-                    let fragment= document.createDocumentFragment();
                     fragment.appendChild(place);
                     let site= document.createElement("div");
                     site.className="figure";
@@ -221,19 +219,13 @@ function search(){
                     type.appendChild(right);
                     place.appendChild(site);
                     place.appendChild(type);
-                    oldIntroduc.appendChild(fragment);
+                    introduc.appendChild(fragment);
                 }
             }
         })
     }       
 }
       
-    
-
-
-
-
-
 // let infScroll = new InfiniteScroll( '#wrapper', {
 //     path:function(){
 //         if (box.getBoundingClientRect().bottom < window.innerHeight){
