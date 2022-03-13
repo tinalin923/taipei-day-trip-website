@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+.out {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+}
+
+.out .top {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .out .top {
+    width: 100%;
+  }
+}
+
+.out .top div {
+  margin: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  color: #448899;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.out .top nav {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 175px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.out .top nav a {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 20px 10px;
+  color: #666666;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
+}
+
+.hero-image {
+  height: 320px;
+  background-image: url("welcome.png"), linear-gradient(135deg, #AADDEE 0%, #66AABB 100%);
+  background-position: 85% 100%;
+  background-repeat: no-repeat;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+@media (max-width: 600px) {
+  .hero-image {
+    width: 100%;
+    height: 280px;
+    background-image: url("welcome 1.png"), linear-gradient(135deg, #AADDEE 0%, #66AABB 100%);
+    background-position: right bottom;
+  }
+}
+
+.hero-image .hero-text {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-top: 85px;
+  color: #f8f8f8;
+}
+
+@media (max-width: 1200px) {
+  .hero-image .hero-text {
+    width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-image .hero-text {
+    padding-top: 65px;
+    padding-left: 20px;
+    max-width: 320px;
+    margin: 0;
+  }
+}
+
+.hero-image .hero-text h1 {
+  margin: 0px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.hero-image .hero-text p {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.hero-image .hero-text .search {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0px;
+  width: 460px;
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 600px) {
+  .hero-image .hero-text .search {
+    max-width: 290px;
+  }
+}
+
+.hero-image .hero-text .search input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  max-width: 400px;
+  height: 46px;
+  padding: 0px 15px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: none;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #757575;
+}
+
+@media (max-width: 600px) {
+  .hero-image .hero-text .search input {
+    max-width: 230px;
+  }
+}
+
+.hero-image .hero-text .search button {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 60px;
+  height: 46px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: none;
+  background-color: #448899;
+  display: block;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.wrapper #list {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 55px auto;
+  max-width: 1170px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  grid-auto-rows: minmax(184px, auto);
+  font-size: 16px;
+  font-family: "Noto Sans TC", sans-serif;
+  color: #757575;
+}
+
+@media (max-width: 1200px) {
+  .wrapper #list {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    margin: 55px 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper #list {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    grid-gap: 15px;
+  }
+}
+
+.wrapper #list .attraction {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .wrapper #list .attraction {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+.wrapper #list .attraction img {
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
+.wrapper #list .attraction figcaption {
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+}
+
+.wrapper #list .attraction .sort {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.wrapper #list .attraction .sort .left {
+  font-weight: 400;
+  text-align: left;
+  padding: 12px 10px;
+}
+
+.wrapper #list .attraction .sort .right {
+  font-weight: 400;
+  text-align: right;
+  padding: 12px 10px;
+}
+
+footer {
+  margin-top: 10px;
+  background: #757575;
+  height: 104px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+/*# sourceMappingURL=main.css.map */
