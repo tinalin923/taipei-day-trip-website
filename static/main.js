@@ -192,7 +192,7 @@ function search(){
             key_page = nextPage;
             let fragment= document.createDocumentFragment();
             if (attractions.data == ""){            // 查無資料 key_page==null
-                oldIntroduc.textContent="查無相關景點";}
+                introduc.textContent="查無相關景點";}
             else{                                //有資料 有變key_page
                 for(let i=0; i < attractions.data.length; i++ ){
                     let attraction= attractions.data[i];
