@@ -7,6 +7,11 @@
   font-family: 'Noto Sans TC', sans-serif;
   font-size: 16px;
   font-weight: 400;
+  color: #666666;
+}
+
+h2 {
+  font-weight: bold;
 }
 
 .out {
@@ -106,20 +111,22 @@ main figure {
   }
 }
 
-main figure img {
+main figure .site {
   width: 540px;
   height: 400px;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  -o-object-position: right;
+     object-position: right;
 }
 
 main figure .button {
+  margin: 0px auto;
+  width: 95%;
+  height: 36px;
   position: relative;
-  top: -284px;
-  width: 100%;
+  top: -223px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -142,7 +149,7 @@ main figure .button button:hover {
 main figure .dot {
   height: 12px;
   position: relative;
-  bottom: 10px;
+  top: -66px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -150,7 +157,87 @@ main figure .dot {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  z-index: 9999;
+  z-index: 99;
+}
+
+figcaption h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+figcaption p {
+  width: 600px;
+  margin: 15px 0px 20px 0px;
+}
+
+figcaption .booking {
+  width: 600px;
+  height: 302px;
+  background-color: #e8e8e8;
+  padding: 15px 20px;
+}
+
+figcaption .booking h3 {
+  margin: 15px 0px;
+}
+
+figcaption .booking .booking__item {
+  margin: 15px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+figcaption .booking .booking__item #date {
+  margin: 0px 0px 0px 5px;
+  width: 193px;
+  height: 35px;
+}
+
+figcaption .booking .booking__item input {
+  margin: 0px 6px 0px 12px;
+}
+
+figcaption .booking .booking__item h2 {
+  width: 81px;
+}
+
+figcaption .booking .booking__item p {
+  width: 107px;
+  margin: 0px 0px 0px 5px;
+}
+
+figcaption button {
+  margin-top: 10px;
+  background-color: #448899;
+  font-size: 19px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+hr {
+  size: 1px;
+  color: #e8e8e8;
+  max-width: 1200px;
+  margin: 37px auto 40px auto;
+}
+
+article {
+  margin: 40px auto;
+  width: 1200px;
+  padding: 10px;
+}
+
+article h2 {
+  margin-top: 20px;
 }
 
 footer {

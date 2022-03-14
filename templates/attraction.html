@@ -10,7 +10,7 @@
 {%block content%}
 <main>
     <figure>
-        <img src="https://images.pexels.com/photos/735423/pexels-photo-735423.jpeg?cs=srgb&dl=pexels-eftodii-aurelia-735423.jpg&fm=jpg">
+        <img class="site" src="https://images.pexels.com/photos/735423/pexels-photo-735423.jpeg?cs=srgb&dl=pexels-eftodii-aurelia-735423.jpg&fm=jpg">
         <div class="button">
             <button class="figure__Lbutton" type="button"><img src="../static/png/btn_leftArrow.png"></button>
             <button class="figure__Rbutton" type="button"><img src="../static/png/btn_rightArrow.png"></button>
@@ -21,17 +21,17 @@
         <h1>  </h1>
         <p> <div id="type"></div> at <div id="mrt"></div> </p>
         <form class="booking">
-            <caption>訂購導覽行程</caption>
-            <p>以此景點為中心的一日行程，帶您探索城市角落故事</p>
+            <h2>訂購導覽行程</h2>
+            <h3>以此景點為中心的一日行程，帶您探索城市角落故事</h3>
             <div class="booking__item">
-                <h2>選擇日期:</h2>
-                <input type="date" ></div>
+                <h2>選擇日期：</h2>
+                <input id="date" type="date" ></div>
             <div class="booking__item">
-                <h2>選擇時間:</h2>
+                <h2>選擇時間：</h2>
                 <input type="checkbox" id="morning"><label for="morning" class="booking__time">上半天</label>
                 <input type="checkbox" id="evening"><label for="evening" class="booking__time">下半天</label></div>
             <div class="booking__item">
-                <h2>導覽費用:</h2>  
+                <h2>導覽費用：</h2>  
                 <p>新台幣</p>  </div>
             
             <button type="submit">開始預訂行程</button>
@@ -39,6 +39,7 @@
     </figcaption>
 
 </main>
+<hr>
 <article>
 
     <div id="description"></div>

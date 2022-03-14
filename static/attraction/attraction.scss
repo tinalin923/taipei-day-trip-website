@@ -6,9 +6,10 @@
   font-family: 'Noto Sans TC', sans-serif;
   font-size: 16px;
   font-weight: 400;
+  color: #666666;
   }
 
-
+h2{font-weight: bold;}
 .out{ 
     position:sticky;      //此三者可以使固定在上頭
     top:0;
@@ -62,13 +63,17 @@ main{
         height: 400px;
         margin-right:30px;
         @media(max-width:600px){margin-right:0px;margin-bottom:20px;}
-        img{width:540px;height:400px;width:100%;
+        .site{
+            width:540px;height:400px;
+            width:100%;
             object-fit: cover;object-position: right;
         }
         .button{
+            margin:0px auto;
+            width: 95%;
+            height: 36px;
             position: relative;
-            top:-284px;
-            width:100%;
+            top:-223px;
             display: flex;
             justify-content: space-between;
             z-index: 99;
@@ -84,7 +89,8 @@ main{
         .dot{
             height:12px;
             position:relative;
-            bottom: 10px;
+            top: -66px;
+            
             width: 100%;
             display: flex;
             justify-content: center;
@@ -92,10 +98,65 @@ main{
             
         }
     }
+
 }
 
+figcaption{
+    h1{
+        font-size:24px;
+        font-weight: bold;}
+    p{
+        width: 600px;
+        margin: 15px 0px 20px 0px;
+    }
+    .booking{
+        width: 600px;
+        height: 302px;
+        background-color: #e8e8e8;
+        padding: 15px 20px;
+        // h2{
+        //     font-weight: bold;
+        //     margin: 15px 20px;
+        // }
+        h3{
+            margin: 15px 0px;
+        }
+        .booking__item{
+            margin: 15px 0px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            #date{margin:0px 0px 0px 5px;width: 193px;height: 35px;}
+            input{margin:0px 6px 0px 12px}
+            h2{width: 81px;}
+            p{width: 107px;margin:0px 0px 0px 5px}
+        }
+    }
+    button{
+        margin-top: 10px;
+        background-color: #448899;
+        font-size: 19px;
+        color: #ffffff;
+        border:none;
+        border-radius: 5px;
+        padding:10px 20px;
 
+        
+    }
+}
+hr{
+    size: 1px;
+    color: #e8e8e8;
+    max-width: 1200px;
+    margin: 37px auto 40px auto;
 
+}
+article{
+    margin:40px auto;
+    width: 1200px;
+    padding: 10px;
+    h2{margin-top: 20px;}
+}
 
 
 
