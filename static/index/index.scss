@@ -46,7 +46,7 @@ $text-size:16px;
 } 
 .hero-image{
     height:320px; 
-    background-image: url("welcome.png"),linear-gradient(135deg,#AADDEE 0%,#66AABB 100%) ;
+    background-image: url("../png/welcome.png"),linear-gradient(135deg,#AADDEE 0%,#66AABB 100%) ;
     background-position:85% 100%;
     background-repeat:no-repeat;
     font-family:$font-family;
@@ -55,7 +55,7 @@ $text-size:16px;
     @media(max-width:600px){
         width:100%;
         height:280px; 
-        background-image:url("welcome 1.png"),linear-gradient(135deg,#AADDEE 0%,#66AABB 100%);
+        background-image:url("../png/welcome 1.png"),linear-gradient(135deg,#AADDEE 0%,#66AABB 100%);
         background-position:right bottom ;}
     .hero-text {
         max-width:1180px;

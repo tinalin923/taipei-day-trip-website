@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.out {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+}
+
+.out .top {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .out .top {
+    width: 100%;
+  }
+}
+
+.out .top div {
+  margin: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  color: #448899;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.out .top nav {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 175px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.out .top nav a {
+  padding: 20px 10px;
+  color: #666666;
+  text-decoration: none;
+}
+
+main {
+  margin: 40px auto;
+  padding: 0px 15px;
+  max-width: 1200px;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 600px) {
+  main {
+    margin: 40px 0px;
+    padding: 0px;
+    height: 760px;
+    display: block;
+  }
+}
+
+main figure {
+  width: 540px;
+  height: 400px;
+  margin-right: 30px;
+}
+
+@media (max-width: 600px) {
+  main figure {
+    margin-right: 0px;
+    margin-bottom: 20px;
+  }
+}
+
+main figure img {
+  width: 540px;
+  height: 400px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+main figure .button {
+  position: relative;
+  top: -284px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 99;
+}
+
+main figure .button button {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+}
+
+main figure .button button:hover {
+  background-color: #ffffff;
+}
+
+main figure .dot {
+  height: 12px;
+  position: relative;
+  bottom: 10px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 9999;
+}
+
+footer {
+  margin-top: 10px;
+  background: #757575;
+  height: 104px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+/*# sourceMappingURL=attraction.css.map */

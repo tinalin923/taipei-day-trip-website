@@ -19,6 +19,7 @@ window.addEventListener("scroll",()=>{
 
 //用unobserve似乎無法完整關不掉observer (用disconnect?)
 function callback(entries){
+    console.log("看到底部");
     if (flag == false){return ; }    
     else if (!entries[0].isIntersecting){return ;}
     else{
@@ -226,6 +227,8 @@ function search(){
     }       
 }
       
+
+
 // let infScroll = new InfiniteScroll( '#wrapper', {
 //     path:function(){
 //         if (box.getBoundingClientRect().bottom < window.innerHeight){

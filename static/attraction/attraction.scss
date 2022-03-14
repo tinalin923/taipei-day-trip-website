@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin:0px; padding:0px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  }
+
+
+.out{ 
+    position:sticky;      //此三者可以使固定在上頭
+    top:0;
+    background-color: #ffffff;
+    .top {
+        margin:0 auto;
+        max-width:1200px;
+        display:flex;
+        justify-content: space-between;   //左右貼齊
+        align-items: center;
+        @media(max-width:1200px){width:100%}
+        
+        div{
+            margin:10px;
+            flex:auto;
+            color:#448899;
+            font-weight:bold;
+            font-size:30px;
+        }
+        nav {
+            flex:none;
+            width:175px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            a{
+                padding:20px 10px;
+                color:#666666;
+                text-decoration: none;    //移除超連結<a>的底線藍字
+            }
+        }
+    }
+} 
+
+
+
+main{
+    margin:40px auto;
+    padding: 0px 15px;
+    max-width: 1200px;
+    height: 400px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    @media(max-width:600px){
+        margin:40px 0px;padding:0px;height:760px;
+        display:block;
+    }
+    figure{
+        width:540px;
+        height: 400px;
+        margin-right:30px;
+        @media(max-width:600px){margin-right:0px;margin-bottom:20px;}
+        img{width:540px;height:400px;width:100%;
+            object-fit: cover;object-position: right;
+        }
+        .button{
+            position: relative;
+            top:-284px;
+            width:100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 99;
+            button{
+                background-color: rgba($color: #ffffff, $alpha: 0.5);
+                border:none;
+                border-radius: 50%;
+            }
+            button:hover{
+                background-color: #ffffff;
+            }
+        }
+        .dot{
+            height:12px;
+            position:relative;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 99;
+            
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    margin-top: 10px;
+    background:#757575;
+    height:104px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight: bold;
+    color: white;
+}
+

@@ -1,12 +1,53 @@
 {% extends "index.html" %}
 
 
-{%block title%}
-
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/attraction/attraction.css')}}"/>
+<script type='text/javascript' src="/static/attraction/attraction.js" defer></script>
+<title>景點資訊</title>
 {%endblock%}
 
 {%block content%}
+<main>
+    <figure>
+        <img src="https://images.pexels.com/photos/735423/pexels-photo-735423.jpeg?cs=srgb&dl=pexels-eftodii-aurelia-735423.jpg&fm=jpg">
+        <div class="button">
+            <button class="figure__Lbutton" type="button"><img src="../static/png/btn_leftArrow.png"></button>
+            <button class="figure__Rbutton" type="button"><img src="../static/png/btn_rightArrow.png"></button>
+        </div>
+        <div class="dot"></div>
+    </figure>
+    <figcaption>
+        <h1>  </h1>
+        <p> <div id="type"></div> at <div id="mrt"></div> </p>
+        <form class="booking">
+            <caption>訂購導覽行程</caption>
+            <p>以此景點為中心的一日行程，帶您探索城市角落故事</p>
+            <div class="booking__item">
+                <h2>選擇日期:</h2>
+                <input type="date" ></div>
+            <div class="booking__item">
+                <h2>選擇時間:</h2>
+                <input type="checkbox" id="morning"><label for="morning" class="booking__time">上半天</label>
+                <input type="checkbox" id="evening"><label for="evening" class="booking__time">下半天</label></div>
+            <div class="booking__item">
+                <h2>導覽費用:</h2>  
+                <p>新台幣</p>  </div>
+            
+            <button type="submit">開始預訂行程</button>
+        </form>
+    </figcaption>
 
+</main>
+<article>
+
+    <div id="description"></div>
+    <h2>景點地址:</h2>
+    <div id="address"></div>
+    <h2>交通方式:</h2>
+    <div id="traffic"></div>
+
+</article>
 
     
 {%endblock%}
