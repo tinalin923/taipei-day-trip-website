@@ -225,6 +225,7 @@
   border: 1px solid #E8E8E8;
   border-radius: 5px;
   display: block;
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {

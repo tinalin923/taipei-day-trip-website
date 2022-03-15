@@ -132,6 +132,7 @@ $text-size:16px;
             border: 1px solid #E8E8E8;
             border-radius:5px;
             display:block;
+            cursor: pointer;
             @media (max-width:600px){
                 // width:322px;
                 grid-template-columns:1fr;

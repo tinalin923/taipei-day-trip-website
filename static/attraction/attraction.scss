@@ -77,7 +77,9 @@ main{
             display: flex;
             justify-content: space-between;
             z-index: 99;
+            
             button{
+                cursor: pointer;
                 background-color: rgba($color: #ffffff, $alpha: 0.5);
                 border:none;
                 border-radius: 50%;
@@ -90,11 +92,11 @@ main{
             height:12px;
             position:relative;
             top: -66px;
-            
             width: 100%;
             display: flex;
             justify-content: center;
             z-index: 99;
+            cursor: pointer;
             
         }
     }
@@ -105,7 +107,8 @@ figcaption{
     h1{
         font-size:24px;
         font-weight: bold;}
-    p{
+    > div{
+        // display:inline-block;
         width: 600px;
         margin: 15px 0px 20px 0px;
     }
@@ -114,10 +117,6 @@ figcaption{
         height: 302px;
         background-color: #e8e8e8;
         padding: 15px 20px;
-        // h2{
-        //     font-weight: bold;
-        //     margin: 15px 20px;
-        // }
         h3{
             margin: 15px 0px;
         }
@@ -126,22 +125,52 @@ figcaption{
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            #date{margin:0px 0px 0px 5px;width: 193px;height: 35px;}
-            input{margin:0px 6px 0px 12px}
+            .booking__item_time{
+                display:flex;
+                justify-content: flex-start;
+                align-items: center;
+                
+                input[type="checkbox"]{
+                    // display: none;
+                    opacity: 0;
+                    position: absolute;
+                    }
+                input[type="checkbox"]+label {
+                    display:flex;             //pseudo-elements 才可以變圓型
+                    margin:0px 18px 0px 6px;  
+                    cursor: pointer;
+                    &::before{
+                        // display:inline-block;  //或是在此加入
+                        content:"";
+                        border:2px solid #ffffff;
+                        border-radius: 50%;
+                        background-color: #ffffff;
+                        width:18px;
+                        height:18px;
+                        vertical-align: bottom;
+                        margin-right: 4px;
+                        cursor: pointer;
+                    }         
+                }
+                input[type="checkbox"]:checked + label::before{
+                    background-color:#448899;
+                }
+            }
             h2{width: 81px;}
             p{width: 107px;margin:0px 0px 0px 5px}
         }
-    }
-    button{
-        margin-top: 10px;
-        background-color: #448899;
-        font-size: 19px;
-        color: #ffffff;
-        border:none;
-        border-radius: 5px;
-        padding:10px 20px;
+    
+        button{
+            margin-top: 10px;
+            background-color: #448899;
+            font-size: 19px;
+            color: #ffffff;
+            border:none;
+            border-radius: 5px;
+            padding:10px 20px;
 
-        
+            
+        }
     }
 }
 hr{

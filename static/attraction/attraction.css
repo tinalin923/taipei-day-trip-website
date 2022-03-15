@@ -137,6 +137,7 @@ main figure .button {
 }
 
 main figure .button button {
+  cursor: pointer;
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
   border-radius: 50%;
@@ -158,6 +159,7 @@ main figure .dot {
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 99;
+  cursor: pointer;
 }
 
 figcaption h1 {
@@ -165,7 +167,7 @@ figcaption h1 {
   font-weight: bold;
 }
 
-figcaption p {
+figcaption > div {
   width: 600px;
   margin: 15px 0px 20px 0px;
 }
@@ -194,14 +196,45 @@ figcaption .booking .booking__item {
           align-items: center;
 }
 
-figcaption .booking .booking__item #date {
-  margin: 0px 0px 0px 5px;
-  width: 193px;
-  height: 35px;
+figcaption .booking .booking__item .booking__item_time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-figcaption .booking .booking__item input {
-  margin: 0px 6px 0px 12px;
+figcaption .booking .booking__item .booking__item_time input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+
+figcaption .booking .booking__item .booking__item_time input[type="checkbox"] + label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0px 18px 0px 6px;
+  cursor: pointer;
+}
+
+figcaption .booking .booking__item .booking__item_time input[type="checkbox"] + label::before {
+  content: "";
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background-color: #ffffff;
+  width: 18px;
+  height: 18px;
+  vertical-align: bottom;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+figcaption .booking .booking__item .booking__item_time input[type="checkbox"]:checked + label::before {
+  background-color: #448899;
 }
 
 figcaption .booking .booking__item h2 {
@@ -213,7 +246,7 @@ figcaption .booking .booking__item p {
   margin: 0px 0px 0px 5px;
 }
 
-figcaption button {
+figcaption .booking button {
   margin-top: 10px;
   background-color: #448899;
   font-size: 19px;
