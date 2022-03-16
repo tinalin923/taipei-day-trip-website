@@ -10,6 +10,7 @@ $text-size:16px;
     position:sticky;      //此三者可以使固定在上頭
     top:0;
     background-color: #ffffff;
+    z-index: 99;
     .top {
         margin:0 auto;
         max-width:1200px;
@@ -134,7 +135,7 @@ $text-size:16px;
             display:block;
             cursor: pointer;
             &:hover{
-                img{opacity: 0.9;}
+                img{opacity: 0.8;}
             }
             @media (max-width:600px){
                 // width:322px;
