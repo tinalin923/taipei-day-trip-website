@@ -1,12 +1,12 @@
-let Attractions;
-let page = 0 ;       
-let key_page = 0 ;
-let keyword = "" ;          //先前使用者輸入的關鍵字
-let key_word = "" ;         //後來使用者輸入的關鍵字
+let Attractions = {};
+let page = 0;       
+let key_page = 0;
+let keyword = "";          //先前使用者輸入的關鍵字
+let key_word = "";         //後來使用者輸入的關鍵字
 let isLoading = false;            //管控是否可以連線
 let footer = document.getElementsByTagName("footer")[0];
 let button = document.querySelector("button");
-let introduc= document.getElementById("list");
+let introduc = document.getElementById("list");
 button.addEventListener("click",search); 
 window.addEventListener("DOMContentLoaded",loadDatas());
 window.addEventListener("scroll",()=>{
@@ -22,15 +22,14 @@ window.addEventListener("scroll",()=>{
 //用unobserve似乎無法完整關不掉observer (用disconnect?)
 function callback(entries){
     console.log("看到底部");
-    if (isLoading == true){return ; }    
+    if (isLoading === true){return ; }    
     else if (!entries[0].isIntersecting){return ;}
     else{
-        if (key_word == "" && page !== null){loadDatas();}    //還有下一頁
-        else if (key_word == "" && page == null){console.log("沒有下一頁了");return ;}   //首頁已滑到底
-        else if (key_word == "" && key_page!== 0){return ;} 
-        // else if (key_word !== "" && key_page == 0){console.log("被看到了但沒用");return ;}   //防止找不到資料時看到footer重新呼叫
-        else if (key_word !== "" && key_page !== null){console.log("載入下一頁");search();}
-        else if (key_word !== "" && key_page == null){console.log("沒有下一頁了");return ;}
+        if ( !key_word && page !== null){loadDatas();}    //還有下一頁
+        else if ( !key_word && page === null){console.log("沒有下一頁了");return ;}   //首頁已滑到底
+        else if ( !key_word && key_page !== 0){return ;} 
+        else if ( key_word && key_page !== null){console.log("載入下一頁");search();}
+        else if ( key_word && key_page === null){console.log("沒有下一頁了");return ;}
         // else{observer.unobserve(entries[0].target);return ;}    
 }}
 
@@ -39,9 +38,13 @@ function render(){
     let fragment = document.createDocumentFragment();
     for(let i = 0; i < Attractions.data.length; i++ ){
         let attraction = Attractions.data[i];
+        let ID = attraction.id
         let place= document.createElement("div");
         place.className= "attraction";
-        place.setAttribute("name",attraction.id[i])
+        // place.setAttribute("href","/attraction/"+ID);
+        // place.setAttribute("onclick",)
+        place.onclick = function(){location.href = "/attraction/"+ID}
+        // place.href = "/attraction/"+ID;
         fragment.appendChild(place);
         let site= document.createElement("div");
         site.className="figure";
@@ -67,7 +70,7 @@ function render(){
 }
 
 function loadDatas(){
-    if(isLoading == true){return;}
+    if(isLoading === true){return;}
     isLoading = true; 
     console.log("1"+isLoading) ;                       
     let url = "/api/attractions?page="+page;
@@ -87,11 +90,11 @@ function loadDatas(){
 }
 
 function search(){
-    if (isLoading == true){return;}
+    if (isLoading === true){return;}
     console.log("search!");
     keyword = document.querySelector("input").value;   //用let 會重新設一個變數，傳不到外面的全域變數
-    if (keyword == ""){return ;}               //key_word一定不會等於" "
-    else if (keyword !== "" && key_page == 0){        //有輸入word 第一次搜尋 有無資料//搜尋無資料 空點
+    if ( !keyword ){return ;}               //key_word一定不會等於" "
+    else if ( keyword  && key_page === 0){        //有輸入word 第一次搜尋 有無資料//搜尋無資料 空點
         isLoading = true;     
         console.log("s1 "+ isLoading) ;  
         key_word = keyword;
@@ -105,15 +108,15 @@ function search(){
             key_page = nextPage;
             introduc.innerHTML="";
                                     //有可能有下一頁或等於null
-            if (attractions.data == ""){            // 查無資料 
+            if (attractions.data === ""){            // 查無資料 
                 introduc.textContent="查無相關景點";}
             else{                                //有資料 
                 render();
             }     
         })
     }
-    else if (keyword == key_word && key_page !==0){     //word不變 空點  //word不變.footer被觀察到.key_page !==null: 有無資料
-        if (key_page == null ){console.log("無資料 請不要一直點");return ;}
+    else if (keyword === key_word && key_page !==0){     //word不變 空點  //word不變.footer被觀察到.key_page !==null: 有無資料
+        if (key_page === null ){console.log("無資料 請不要一直點");return ;}
         else if (key_page !== null && 
             footer.getBoundingClientRect().top > window.innerHeight ){console.log("請不要一直點");return ;} //防止連續點擊會自動載入
         else{ console.log("載入下一頁");
@@ -145,7 +148,7 @@ function search(){
                 let nextPage = attractions.nextpage
                 key_page = nextPage;
                 introduc.innerHTML="";
-                if (attractions.data == ""){            // 查無資料 key_page==null
+                if (attractions.data === ""){            // 查無資料 key_page==null
                     introduc.textContent="查無相關景點";}
                 else{                                //有資料 有變key_page
                     render();}

@@ -12,6 +12,7 @@
 
 h2 {
   font-weight: bold;
+  margin-right: 5px;
 }
 
 .out {
@@ -138,13 +139,13 @@ main figure .button {
 
 main figure .button button {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 0.6;
   border: none;
   border-radius: 50%;
 }
 
 main figure .button button:hover {
-  background-color: #ffffff;
+  opacity: 0.8;
 }
 
 main figure .dot {
@@ -159,6 +160,18 @@ main figure .dot {
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 99;
+  margin-bottom: 10px;
+}
+
+main figure .dot span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid white;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.6;
+  margin: 0px 12px 0px 0px;
   cursor: pointer;
 }
 
@@ -196,6 +209,14 @@ figcaption .booking .booking__item {
           align-items: center;
 }
 
+figcaption .booking .booking__item input[type="date"] {
+  border: none;
+  height: 35px;
+  width: 193px;
+  padding: 5px 10px;
+  color: black;
+}
+
 figcaption .booking .booking__item .booking__item_time {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -208,20 +229,24 @@ figcaption .booking .booking__item .booking__item_time {
           align-items: center;
 }
 
-figcaption .booking .booking__item .booking__item_time input[type="checkbox"] {
+figcaption .booking .booking__item .booking__item_time input[type="radio"] {
   opacity: 0;
   position: absolute;
 }
 
-figcaption .booking .booking__item .booking__item_time input[type="checkbox"] + label {
+figcaption .booking .booking__item .booking__item_time input[type="radio"] + label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0px 18px 0px 6px;
+  margin: 0px 13px 0px 5px;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-figcaption .booking .booking__item .booking__item_time input[type="checkbox"] + label::before {
+figcaption .booking .booking__item .booking__item_time input[type="radio"] + label::before {
   content: "";
   border: 2px solid #ffffff;
   border-radius: 50%;
@@ -233,7 +258,7 @@ figcaption .booking .booking__item .booking__item_time input[type="checkbox"] + 
   cursor: pointer;
 }
 
-figcaption .booking .booking__item .booking__item_time input[type="checkbox"]:checked + label::before {
+figcaption .booking .booking__item .booking__item_time input[type="radio"]:checked + label::before {
   background-color: #448899;
 }
 
@@ -243,7 +268,6 @@ figcaption .booking .booking__item h2 {
 
 figcaption .booking .booking__item p {
   width: 107px;
-  margin: 0px 0px 0px 5px;
 }
 
 figcaption .booking button {
@@ -254,6 +278,7 @@ figcaption .booking button {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 hr {

@@ -1,11 +1,12 @@
-let ID = {{id}};
-let url = "/api/attraction/"+ID;
-let datas;
-
-
+let Url = new URL(location.href);
+let url = Url.pathname;
+let furl = "/api"+url
+window.addEventListener("DOMContentLoaded",loadData());
+let datas = {};
+let imageCount = 0;
 //model
 function getData(){
-    return fetch(url).then(res => {return res.json()}).then(attraction =>{
+    return fetch(furl).then(res => {return res.json()}).then(attraction =>{
         console.log(attraction);
         datas = attraction; 
     })
@@ -32,7 +33,57 @@ function render(){
     let Traffic = document.getElementById("traffic");
     let traffic = data.transport;
     Traffic.textContent = traffic;
+    let Pic = document.getElementById("img");
+    let pic = data.images[0];
+    Pic.src = pic;
+    //取得總照片數
+    imageCount = data.images.length;
+    // console.log(imageCount);
+    //carousel
+    let images = data.images
+    let dotsContainer = document.getElementsByClassName("dot")[0];
+    //建立圓點
+    images.forEach(image => {
+        // console.log(image);
+        dotsContainer.innerHTML += `<span onclick="lun('${image}');"></span>`;
+    });
+    let dot = dotsContainer.children;
+    dot[0].style.backgroundColor = "black";   
 }
+let Pic = document.getElementById("img");
+let dotsContainer = document.getElementsByClassName("dot")[0];
+let dot = dotsContainer.children;  //array
+
+function lun(img_src){
+    Pic.src = img_src;
+     
+    imageCount   
+
+}
+
+let i = 0;
+function lundot(index){
+    console.log(index);
+    for(;i < imageCount;){
+        if ( index === "previous"){
+            
+        }
+        if ( index === "next"){
+            if(dot[imageCount-1].style.backgroundColor === "black"){
+                Pic.src = datas.data.images[0];
+            }
+            else if(dot[i].style.backgroundColor === "black"){
+                Pic.src = datas.data.images[i+1];
+            }
+        }
+    }
+    
+}
+
+
+
+
+
 
 //controller
 async function loadData(){
@@ -46,9 +97,16 @@ async function loadData(){
 //checkbox changing
 let mornBox = document.getElementById("morning");
 let evenBox = document.getElementById("evening")
-// evenBox.addEventListener("click",function(){
+let money = document.getElementById("money")
 
+evenBox.addEventListener("click",function(){
+    mornBox.checked = false;
+    money.textContent = "新台幣 2500 元";
+});
+mornBox.addEventListener("click",function(){
+    evenBox.checked = false;
+    money.textContent = "新台幣 2000 元";
+});
 
-// })
 
 

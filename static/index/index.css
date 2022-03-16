@@ -228,6 +228,10 @@
   cursor: pointer;
 }
 
+.wrapper #list .attraction:hover img {
+  opacity: 0.9;
+}
+
 @media (max-width: 600px) {
   .wrapper #list .attraction {
     -ms-grid-columns: 1fr;
