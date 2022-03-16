@@ -6,9 +6,11 @@ let datas = {};
 let imageCount = 0;
 //model
 function getData(){
-    return fetch(furl).then(res => {return res.json()}).then(attraction =>{
-        console.log(attraction);
+    return fetch(furl).then(res => {return res.json()
+    }).then(attraction =>{
+        // console.log(attraction);
         datas = attraction; 
+        // console.log(datas);
     })
 }
 
@@ -38,48 +40,87 @@ function render(){
     Pic.src = pic;
     //取得總照片數
     imageCount = data.images.length;
-    // console.log(imageCount);
     //carousel
     let images = data.images
-    let dotsContainer = document.getElementsByClassName("dot")[0];
+    let dotsContainer = document.getElementsByClassName("dotsContainer")[0];
     //建立圓點
     images.forEach(image => {
-        // console.log(image);
-        dotsContainer.innerHTML += `<span onclick="lun('${image}');"></span>`;
+        dotsContainer.innerHTML += `<span class="off" onclick="lun('${image}');"></span>`;
+        // dotsContainer.innerHTML += `<input type="checkbox" onclick="lun('${image}');"><label></label>`;
     });
-    let dot = dotsContainer.children;
-    dot[0].style.backgroundColor = "black";   
+    let dots = dotsContainer.children;
+    // console.log(dots);
+    dots[0].style.backgroundColor = "black"; 
+    // console.log(dots);
+    let dotsArray = Array.from(dots);   //使類陣列的htmlcollection變成陣列
+    // console.log(dotsArray);
+    dotsArray.forEach(dot => {
+        console.log(dot);
+        dot.addEventListener("click",()=>{
+            dot.style.backgroundColor = "black";
+            // if (dot.style.backgroundColor = "black"){
+            //     dot.classList.add("off");
+            //     dot.classList.remove("on");
+            // }
+            // dot.classList.add("on");
+            // dot.classList.remove("off");
+            
+        }); 
+    })
 }
+
+
 let Pic = document.getElementById("img");
-let dotsContainer = document.getElementsByClassName("dot")[0];
-let dot = dotsContainer.children;  //array
+let dotsContainer = document.getElementsByClassName("dotsContainer")[0];
+let dots = dotsContainer.children;  
+
+
 
 function lun(img_src){
     Pic.src = img_src;
      
-    imageCount   
+    // imageCount   
 
 }
 
 let i = 0;
 function lundot(index){
     console.log(index);
-    for(;i < imageCount;){
-        if ( index === "previous"){
-            
+    if ( index == "previous"){
+        if(dots[0].style.backgroundColor == "black"){
+            Pic.src = datas.data.images[imageCount-1];
+            dots[imageCount-1].style.backgroundColor = "black";
+            dots[0].style.backgroundColor = "white";
+            console.log("倒退");
+            i = imageCount-1;
         }
-        if ( index === "next"){
-            if(dot[imageCount-1].style.backgroundColor === "black"){
-                Pic.src = datas.data.images[0];
-            }
-            else if(dot[i].style.backgroundColor === "black"){
-                Pic.src = datas.data.images[i+1];
-            }
+        else if (dots[i].style.backgroundColor == "black"){
+            Pic.src = datas.data.images[i-1];
+            dots[i-1].style.backgroundColor = "black";
+            dots[i].style.backgroundColor = "white";
+            console.log(i);
+            console.log("前進");
+            i = i-1 ;
+        }
+        
+    }
+    if ( index == "next"){
+        if(dots[imageCount-1].style.backgroundColor == "black"){
+            Pic.src = datas.data.images[0];
+            dots[imageCount-1].style.backgroundColor = "white";
+            dots[0].style.backgroundColor = "black";
+            console.log("重來");
+            i = 0;
+        }
+        else if(dots[i].style.backgroundColor == "black"){
+            Pic.src = datas.data.images[i+1];
+            dots[i].style.backgroundColor = "white";
+            dots[i+1].style.backgroundColor = "black";
+            console.log(i);
+            i++ ;
         }
     }
-    
 }
-
 
 
 

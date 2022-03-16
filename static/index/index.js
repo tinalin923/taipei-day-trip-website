@@ -71,15 +71,13 @@ function render(){
 
 function loadDatas(){
     if(isLoading === true){return;}
-    isLoading = true; 
-    console.log("1"+isLoading) ;                       
+    isLoading = true;                        
     let url = "/api/attractions?page="+page;
     fetch(url).then(res => {
         return res.json();      
     }).then(attractions => {
         Attractions = attractions;
         isLoading = false;                 
-        console.log("2"+isLoading)  ;          // bool = true
         let nextPage = attractions.nextpage;
         page = nextPage;
         render();
@@ -96,13 +94,11 @@ function search(){
     if ( !keyword ){return ;}               //key_word一定不會等於" "
     else if ( keyword  && key_page === 0){        //有輸入word 第一次搜尋 有無資料//搜尋無資料 空點
         isLoading = true;     
-        console.log("s1 "+ isLoading) ;  
         key_word = keyword;
         let url ="/api/attractions?keyword="+key_word+"&page="+ key_page;
         fetch(url).then(res => {return res.json();
         }).then(attractions => {
-            isLoading = false; 
-            console.log("s2 "+isLoading) ;   
+            isLoading = false;   
             Attractions = attractions;
             let nextPage = attractions.nextpage;   
             key_page = nextPage;
@@ -121,12 +117,10 @@ function search(){
             footer.getBoundingClientRect().top > window.innerHeight ){console.log("請不要一直點");return ;} //防止連續點擊會自動載入
         else{ console.log("載入下一頁");
             isLoading = true;     
-            console.log("s1 "+ isLoading) ;   //bool = false;
             let url ="/api/attractions?keyword="+key_word+"&page="+ key_page;
             fetch(url).then(res => {return res.json();
                 }).then(attractions => {
                     isLoading = false; 
-                    console.log("s2 "+ isLoading) ;   //bool = true;
                     Attractions = attractions;
                     let nextPage = attractions.nextpage;
                     key_page = nextPage;
@@ -136,14 +130,12 @@ function search(){
     }
     else if( keyword !== key_word) {
         isLoading = true;     
-        console.log("s1 "+isLoading) ;   //bool = false;
         key_word = keyword;
         key_page = 0;     //做新的搜尋，頁數歸零
         let url ="/api/attractions?keyword="+key_word+"&page="+key_page;
         fetch(url).then(res => {return res.json();
             }).then(attractions => {
                 isLoading = false; 
-                console.log("s2 "+ isLoading) ;   //bool = true;
                 Attractions = attractions;
                 let nextPage = attractions.nextpage
                 key_page = nextPage;
@@ -182,37 +174,43 @@ function search(){
 // let body = document.body;
 // body.addEventListener('input',function(e){console.log(e);},false);
 
-let at = document.getElementsByClassName("attraction");
-
-// attraction.addEventListener("click",) 
-// let ID = Attractions.data.id
-let arr = Array.from(at);
-// var arr = Array.prototype.slice.call(attractions);
-console.log(arr);
-console.log(at);
-console.log(at[11]);
-Array.from(at).forEach((e)=>{console.log(e);})
-Array.prototype.filter.call(arr,function(e){console.log(e);})
-// arr.forEach(function call(attraction){
-//     console.log(attraction);
-//     attraction.addEventListener("click",function(e){
-//         console.log("click")
-//         console.log(e);
 
 
-//     })
 
 
-// })
 
-let x = document.getElementsByTagName("p");
-console.log(x);
-console.log(x.length);  // 1
-Array.from(x).forEach((e)=>{console.log(e);})
 
-let y = document.getElementById("list")
-console.log(typeof(y.childNodes));
-let z = y.childNodes;
-console.log(z);
-console.log(z.length);   // 1
-Array.from(z).forEach((e)=>{console.log(e);});  // " "
+// let at = document.getElementsByClassName("attraction");
+
+// // attraction.addEventListener("click",) 
+// // let ID = Attractions.data.id
+// let arr = Array.from(at);
+// // var arr = Array.prototype.slice.call(attractions);
+// console.log(arr);
+// console.log(at);
+// console.log(at[11]);
+// Array.from(at).forEach((e)=>{console.log(e);})
+// Array.prototype.filter.call(arr,function(e){console.log(e);})
+// // arr.forEach(function call(attraction){
+// //     console.log(attraction);
+// //     attraction.addEventListener("click",function(e){
+// //         console.log("click")
+// //         console.log(e);
+
+
+// //     })
+
+
+// // })
+
+// let x = document.getElementsByTagName("p");
+// console.log(x);
+// console.log(x.length);  // 1
+// Array.from(x).forEach((e)=>{console.log(e);})
+
+// let y = document.getElementById("list")
+// console.log(typeof(y.childNodes));
+// let z = y.childNodes;
+// console.log(z);
+// console.log(z.length);   // 1
+// Array.from(z).forEach((e)=>{console.log(e);});  // " "
