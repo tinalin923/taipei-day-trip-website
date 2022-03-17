@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='main.css')}}"/>
-    <script type='text/javascript' src="/static/main.js" defer></script>
-    <title>{%block title%}Document{%endblock%}</title>
+    {%block head%}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index/index.css')}}"/>
+    <script type='text/javascript' src="/static/index/index.js" defer></script>
+    <!-- <script type='text/javascript' src="/static/attraction/attraction.js" defer></script> -->
+    <title>首頁</title>
+    {%endblock%}
 </head>
 <body style="margin:0;padding:0">
     <div class="out">
@@ -26,14 +29,14 @@
                 <input type="text" placeholder="輸入景點名稱查詢">
                 <!-- <button type="submit" >   先用button 之後再改submit -->
                 <button type="button" >
-                    <img src="static/icon_search.png">
+                    <img src="static/png/icon_search.png">
                 </button>
             </div>
         </div>
     </div>  
     
     <div class="wrapper">
-        <div id="list">  </div>
+        <div id="list"></div>
       
     </div>
 

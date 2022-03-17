@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin:0px; padding:0px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+  }
+h2{font-weight: bold;margin-right: 5px;}
+.out{ 
+    position:sticky;      //此三者可以使固定在上頭
+    top:0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    z-index: 99;
+    .top {
+        margin: 0 auto;
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;   //左右貼齊
+        align-items: center;
+        @media(max-width:1200px){width:100%}
+        
+        div{
+            margin:10px;
+            flex:auto;
+            color:#448899;
+            font-weight:bold;
+            font-size:30px;
+        }
+        nav {
+            flex:none;
+            width:175px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            a{
+                padding:20px 10px;
+                text-decoration: none;    //移除超連結<a>的底線藍字
+            }
+        }
+    }
+} 
+
+
+
+main{
+    margin:40px auto;
+    padding: 0px 15px;
+    max-width: 1200px;
+    height: 400px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    @media(max-width:1200px){ width:100%;}
+    @media(max-width:600px){
+        flex-direction:column;
+        padding:0px;
+        height:800px;
+        
+    }
+    .figure{
+        max-width:540px;
+        max-height: 400px;
+        margin-right:30px;
+        @media(max-width:1200px){width:100%;}
+        @media(max-width:600px){
+            // margin-top:40px;
+            width: 100%;
+            height: 350px;
+            margin-right:0px;
+            margin-bottom:10px;
+            
+        }
+        .site{
+            width:540px;height:400px;
+            width:100%;
+            object-fit: cover; object-position: center;
+            @media(max-width:600px){
+                height: 350px;
+            }
+        }
+        .button{
+            margin:0px 10px;
+            // width: 100%;
+            height: 36px;
+            position: relative;
+            top:-198px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 2;
+            
+            button{
+                cursor: pointer;
+                opacity: 0.6;
+                border:none;
+                border-radius: 50%;
+            }
+            button:hover{
+                opacity: 0.8;
+            }
+        }
+        .dotsContainer{
+            height:12px;
+            position:relative;
+            top: -66px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+            margin-bottom: 10px;
+            .off{
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                border: 1px solid white;
+                border-radius: 50%;
+                background-color: white;
+                opacity: 0.6;
+                margin: 0px 12px 0px 0px;
+                cursor: pointer;
+                // &:focus{ background-color: black;}
+            }
+            // .on{
+            //     display: inline-block;
+            //     width: 12px;
+            //     height: 12px;
+            //     border: 1px solid white;
+            //     border-radius: 50%;
+            //     background-color: black;
+            //     opacity: 0.6;
+            //     margin: 0px 12px 0px 0px;
+            //     cursor: pointer;
+            //     // &:focus{ background-color: black;}
+            // }
+            // input[type="checkbox"]{
+            //     opacity: 1;
+            //     // position: absolute;
+            //     input[type="checkbox"]+label{
+            //         display:flex;             //pseudo-elements 才可以變圓型
+            //         margin:0px 10px 0px px;  
+            //         width:12px;
+            //         cursor: pointer;
+            //         z-index: 99;
+            //         user-select: none;  //防止重複點擊後文字會highlight
+            //         &::before{   //在span前面自己畫一個圓
+            //             // display:inline-block;  //或是在此加入
+            //             content:"";
+            //             border:1px solid #ffffff;
+            //             border-radius: 50%;
+            //             background-color: #ffffff;
+            //             width:12px;
+            //             height:12px;
+            //             vertical-align: bottom;
+            //             margin-right: 4px;
+            //             cursor: pointer;
+            //             &:focus{background-color: black;}
+            //         } 
+            //     }
+                
+                // }
+                
+        }    
+    }
+    figcaption{
+        width: 600px;
+        @media (max-width:1200px){
+            width:100%;
+        }
+        @media (max-width:1200px){
+            padding:10px;
+        }
+        h1{
+            max-width: 600px;
+            font-size:24px;
+            font-weight: bold;
+            @media(max-width:1200px){width:100%;}
+        }
+        > div{
+            // display:inline-block;
+            max-width: 600px;
+            margin: 15px 0px 20px 0px;
+            @media(max-width:1200px){width:100%;}
+        }
+        .booking{
+            max-width: 600px;
+            // height: 302px;
+            background-color: #e8e8e8;
+            padding: 15px 20px;
+            border-radius: 5px;
+            @media(max-width:1200px){width:100%;}
+            // @media(max-width:600px){margin:auto;}
+            h3{
+                margin: 15px 0px;
+            }
+            .booking__item{
+                margin: 15px 0px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                input[type="date"]{
+                    border:none;
+                    height:35px;
+                    width:193px;
+                    padding: 5px 10px;
+                    color: black;
+                }
+                .booking__item_time{
+                    display:flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    
+                    input[type="radio"]{
+                        // display: none;
+                        opacity: 0;
+                        position: absolute;
+                    }
+                    input[type="radio"]+label {
+                        display:flex;             //pseudo-elements 才可以變圓型
+                        margin:0px 13px 0px 5px;  
+                        cursor: pointer;
+                        user-select: none;  //防止重複點擊後文字會highlight
+                        &::before{   //在label前面自己畫一個圓
+                            // display:inline-block;  //或是在此加入
+                            content:"";
+                            border:2px solid #ffffff;
+                            border-radius: 50%;
+                            background-color: #ffffff;
+                            width:18px;
+                            height:18px;
+                            vertical-align: bottom;
+                            margin-right: 4px;
+                            cursor: pointer;
+                        }         
+                    }
+                    input[type="radio"]:checked + label::before{
+                        background-color:#448899;
+                    }
+                }
+                h2{width: 81px;}
+                p{width: 107px;}
+            }
+        
+            button{
+                margin-top: 10px;
+                // margin-bottom: 15px;
+                background-color: #448899;
+                font-size: 19px;
+                color: #ffffff;
+                border:none;
+                border-radius: 5px;
+                padding:9px 20px;
+                cursor: pointer;
+                
+            }
+        }
+    }
+}
+
+
+
+
+hr{
+    border: 1px solid #e8e8e8;
+    max-width: 1200px;
+    margin: 37px auto 40px auto;
+    @media (max-width:1200px) { 
+        width: 94%;
+        
+    }
+
+}
+article{
+    margin:50px auto 110px auto;
+    max-width: 1200px;
+
+    padding: 10px;
+    @media(max-width:600px){
+        width: 360px;
+        padding: 0px 10px 0px 20px
+
+    }
+    h2{margin-top: 20px;}
+}
+
+
+
+
+footer {
+    margin-top: 10px;
+    background:#757575;
+    height:104px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight: bold;
+    color: white;
+}
+

@@ -1,0 +1,386 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+}
+
+h2 {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.out {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  z-index: 99;
+}
+
+.out .top {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .out .top {
+    width: 100%;
+  }
+}
+
+.out .top div {
+  margin: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  color: #448899;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.out .top nav {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 175px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.out .top nav a {
+  padding: 20px 10px;
+  text-decoration: none;
+}
+
+main {
+  margin: 40px auto;
+  padding: 0px 15px;
+  max-width: 1200px;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 1200px) {
+  main {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0px;
+    height: 800px;
+  }
+}
+
+main .figure {
+  max-width: 540px;
+  max-height: 400px;
+  margin-right: 30px;
+}
+
+@media (max-width: 1200px) {
+  main .figure {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  main .figure {
+    width: 100%;
+    height: 350px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+}
+
+main .figure .site {
+  width: 540px;
+  height: 400px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+@media (max-width: 600px) {
+  main .figure .site {
+    height: 350px;
+  }
+}
+
+main .figure .button {
+  margin: 0px 10px;
+  height: 36px;
+  position: relative;
+  top: -198px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 2;
+}
+
+main .figure .button button {
+  cursor: pointer;
+  opacity: 0.6;
+  border: none;
+  border-radius: 50%;
+}
+
+main .figure .button button:hover {
+  opacity: 0.8;
+}
+
+main .figure .dotsContainer {
+  height: 12px;
+  position: relative;
+  top: -66px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 2;
+  margin-bottom: 10px;
+}
+
+main .figure .dotsContainer .off {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid white;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.6;
+  margin: 0px 12px 0px 0px;
+  cursor: pointer;
+}
+
+main figcaption {
+  width: 600px;
+}
+
+@media (max-width: 1200px) {
+  main figcaption {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  main figcaption {
+    padding: 10px;
+  }
+}
+
+main figcaption h1 {
+  max-width: 600px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+  main figcaption h1 {
+    width: 100%;
+  }
+}
+
+main figcaption > div {
+  max-width: 600px;
+  margin: 15px 0px 20px 0px;
+}
+
+@media (max-width: 1200px) {
+  main figcaption > div {
+    width: 100%;
+  }
+}
+
+main figcaption .booking {
+  max-width: 600px;
+  background-color: #e8e8e8;
+  padding: 15px 20px;
+  border-radius: 5px;
+}
+
+@media (max-width: 1200px) {
+  main figcaption .booking {
+    width: 100%;
+  }
+}
+
+main figcaption .booking h3 {
+  margin: 15px 0px;
+}
+
+main figcaption .booking .booking__item {
+  margin: 15px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main figcaption .booking .booking__item input[type="date"] {
+  border: none;
+  height: 35px;
+  width: 193px;
+  padding: 5px 10px;
+  color: black;
+}
+
+main figcaption .booking .booking__item .booking__item_time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main figcaption .booking .booking__item .booking__item_time input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
+
+main figcaption .booking .booking__item .booking__item_time input[type="radio"] + label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0px 13px 0px 5px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+main figcaption .booking .booking__item .booking__item_time input[type="radio"] + label::before {
+  content: "";
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background-color: #ffffff;
+  width: 18px;
+  height: 18px;
+  vertical-align: bottom;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+main figcaption .booking .booking__item .booking__item_time input[type="radio"]:checked + label::before {
+  background-color: #448899;
+}
+
+main figcaption .booking .booking__item h2 {
+  width: 81px;
+}
+
+main figcaption .booking .booking__item p {
+  width: 107px;
+}
+
+main figcaption .booking button {
+  margin-top: 10px;
+  background-color: #448899;
+  font-size: 19px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 9px 20px;
+  cursor: pointer;
+}
+
+hr {
+  border: 1px solid #e8e8e8;
+  max-width: 1200px;
+  margin: 37px auto 40px auto;
+}
+
+@media (max-width: 1200px) {
+  hr {
+    width: 94%;
+  }
+}
+
+article {
+  margin: 50px auto 110px auto;
+  max-width: 1200px;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  article {
+    width: 360px;
+    padding: 0px 10px 0px 20px;
+  }
+}
+
+article h2 {
+  margin-top: 20px;
+}
+
+footer {
+  margin-top: 10px;
+  background: #757575;
+  height: 104px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+/*# sourceMappingURL=attraction.css.map */
