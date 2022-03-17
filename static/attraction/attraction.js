@@ -54,19 +54,20 @@ function render(){
     // console.log(dots);
     let dotsArray = Array.from(dots);   //使類陣列的htmlcollection變成陣列
     // console.log(dotsArray);
-    dotsArray.forEach(dot => {
-        console.log(dot);
-        dot.addEventListener("click",()=>{
-            dot.style.backgroundColor = "black";
-            // if (dot.style.backgroundColor = "black"){
-            //     dot.classList.add("off");
-            //     dot.classList.remove("on");
-            // }
-            // dot.classList.add("on");
-            // dot.classList.remove("off");
+    
+    // dotsArray.forEach(dot => {
+    //     console.log(dot);
+    //     dot.addEventListener("click",()=>{
+    //         dot.style.backgroundColor = "black";
+    //         // if (dot.style.backgroundColor = "black"){
+    //         //     dot.classList.add("off");
+    //         //     dot.classList.remove("on");
+    //         // }
+    //         // dot.classList.add("on");
+    //         // dot.classList.remove("off");
             
-        }); 
-    })
+    //     }); 
+    // })
 }
 
 
