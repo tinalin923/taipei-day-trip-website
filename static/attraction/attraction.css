@@ -24,7 +24,7 @@ h2 {
   z-index: 99;
 }
 
-.out .top {
+.out .header {
   margin: 0 auto;
   max-width: 1200px;
   display: -webkit-box;
@@ -39,22 +39,23 @@ h2 {
 }
 
 @media (max-width: 1200px) {
-  .out .top {
+  .out .header {
     width: 100%;
   }
 }
 
-.out .top div {
-  margin: 10px;
+.out .header > a {
+  padding: 10px 0px 10px 10px;
   -webkit-box-flex: 1;
       -ms-flex: auto;
           flex: auto;
   color: #448899;
   font-weight: bold;
   font-size: 30px;
+  text-decoration: none;
 }
 
-.out .top nav {
+.out .header nav {
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
@@ -70,7 +71,7 @@ h2 {
           align-items: center;
 }
 
-.out .top nav a {
+.out .header nav a {
   padding: 20px 10px;
   text-decoration: none;
 }

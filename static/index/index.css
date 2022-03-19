@@ -1,13 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+  color: #666666;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
 .out {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   background-color: #ffffff;
-  z-index: 99;
+  z-index: 5;
 }
 
-.out .top {
+.out .header {
   margin: 0 auto;
   max-width: 1200px;
   display: -webkit-box;
@@ -22,13 +30,13 @@
 }
 
 @media (max-width: 1200px) {
-  .out .top {
+  .out .header {
     width: 100%;
   }
 }
 
-.out .top div {
-  margin: 10px;
+.out .header > a {
+  padding: 10px 0px 10px 10px;
   -webkit-box-flex: 1;
       -ms-flex: auto;
           flex: auto;
@@ -36,9 +44,10 @@
   font-weight: bold;
   font-size: 30px;
   font-family: "Noto Sans TC", sans-serif;
+  text-decoration: none;
 }
 
-.out .top nav {
+.out .header nav {
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
@@ -54,7 +63,7 @@
           align-items: center;
 }
 
-.out .top nav a {
+.out .header nav a {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 20px 10px;
@@ -63,6 +72,112 @@
   font-size: 16px;
   font-family: "Noto Sans TC", sans-serif;
   font-weight: 400;
+}
+
+.filter {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 6;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.filter div[class^='filter__block--sign'] {
+  position: fixed;
+  z-index: 7;
+  top: 80px;
+  width: 340px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  vertical-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.filter div[class^='filter__block--sign'] .filter__block--top {
+  height: 10px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-image: -webkit-gradient(linear, right top, left top, from(#337788), to(#66AABB));
+  background-image: linear-gradient(to left, #337788, #66AABB);
+}
+
+.filter div[class^='filter__block--sign'] .filter__block--title {
+  width: 310px;
+  color: #666666;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 15px 15px 5px 15px;
+}
+
+.filter div[class^='filter__block--sign'] button {
+  position: absolute;
+  z-index: 99;
+  top: 27px;
+  right: 17px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.filter div[class^='filter__block--sign'] .filter__block--info {
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  width: 310px;
+  height: 47px;
+  padding: 15px;
+  margin: 10px 15px 0 15px;
+  color: #666666;
+}
+
+.filter div[class^='filter__block--sign'] .filter__block--btn {
+  margin: 10px 15px;
+  width: 310px;
+  height: 47px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 19px;
+  color: #ffffff;
+  background-color: #448899;
+  cursor: pointer;
+}
+
+.filter div[class^='filter__block--sign'] .filter__block--other {
+  margin: 0px 15px 15px 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.filter .filter__block--signin {
+  display: none;
+}
+
+.filter .filter__block--signup {
+  display: none;
 }
 
 .hero-image {

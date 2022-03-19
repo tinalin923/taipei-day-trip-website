@@ -15,7 +15,7 @@ h2{font-weight: bold;margin-right: 5px;}
     background-color: #ffffff;
     border-bottom: 1px solid #e8e8e8;
     z-index: 99;
-    .top {
+    .header {
         margin: 0 auto;
         max-width: 1200px;
         display: flex;
@@ -23,12 +23,13 @@ h2{font-weight: bold;margin-right: 5px;}
         align-items: center;
         @media(max-width:1200px){width:100%}
         
-        div{
-            margin:10px;
+        > a {
+            padding:10px 0px 10px 10px;
             flex:auto;
             color:#448899;
             font-weight:bold;
-            font-size:30px;
+            font-size:30px; 
+            text-decoration: none;  
         }
         nav {
             flex:none;
@@ -78,7 +79,9 @@ main{
             // width:540px;
             height:400px;
             width:100%;
+            // transition: 200ms opacity ease-in-out;
             object-fit: cover; object-position: center;
+            // &:change{filter: brightness(0.5);}
             @media(max-width:600px){
                 height: 350px;
             }

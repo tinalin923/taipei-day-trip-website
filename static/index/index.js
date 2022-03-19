@@ -1,8 +1,10 @@
-let Attractions = {};
 let page = 0;       
 let key_page = 0;
-let keyword = "";          //先前使用者輸入的關鍵字
-let key_word = "";         //後來使用者輸入的關鍵字
+let keyword = "";          //後來使用者新輸入的關鍵字
+let key_word = "";         //先前使用者輸入的關鍵字
+// let url =  "/api/attractions?page="+page;
+// let surl ="/api/attractions?keyword="+key_word+"&page="+key_page;
+let Attractions = {};
 let isLoading = false;            //管控是否可以連線
 let footer = document.getElementsByTagName("footer")[0];
 let button = document.querySelector("button");
@@ -43,8 +45,8 @@ function render(){
         place.className = "attraction";
         // place.setAttribute("href","/attraction/"+ID);
         // place.setAttribute("onclick",)
-        place.onclick = function(){location.href = "/attraction/"+ID}
         // place.href = "/attraction/"+ID;
+        place.onclick = function(){window.location.href = "/attraction/"+ID}
         fragment.appendChild(place);
         let site= document.createElement("div");
         site.className ="figure";
@@ -80,9 +82,7 @@ function loadDatas(){
         isLoading = false;                 
         let nextPage = attractions.nextpage;
         page = nextPage;
-        render();
-        // isLoading = false;   // 為何放在這裡會沒有反應              
-        // console.log(isLoading);  
+        render();  
     })
     // console.log("完成了");   //會和1false一起出來
 }
@@ -127,10 +127,10 @@ function search(){
                 })
         }
     }
-    else if( keyword !== key_word) {
+    else if( keyword !== key_word) {            //做新的搜尋，頁數歸零
         isLoading = true;     
         key_word = keyword;
-        key_page = 0;     //做新的搜尋，頁數歸零
+        key_page = 0;     
         let url ="/api/attractions?keyword="+key_word+"&page="+key_page;
         fetch(url).then(res => {return res.json();
             }).then(attractions => {
