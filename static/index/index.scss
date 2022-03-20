@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 $font-family:'Noto Sans TC', sans-serif;
 $text-size:16px;
-*{box-sizing: border-box;
+*{
+    box-sizing: border-box;
     font-size: 16px;
     color: #666666;
+    font-weight: 400;
     font-family:'Noto Sans TC', sans-serif;
 }
 @mixin caption($side){
@@ -12,131 +14,8 @@ $text-size:16px;
     padding:12px 10px;
 }
 .out{ 
-    position:sticky;      //此四者可以使固定在上頭
-    top:0;
-    background-color: #ffffff;
-    z-index: 5;
-    .header {
-        margin:0 auto;
-        max-width:1200px;
-        display:flex;
-        justify-content: space-between;   //左右貼齊
-        align-items: center;
-        @media(max-width:1200px){width:100%}
-        
-        > a{
-            padding:10px 0px 10px 10px;
-            flex:auto;
-            color:#448899;
-            font-weight:bold;
-            font-size:30px;
-            font-family: $font-family; 
-            text-decoration: none;  
-        }
-        nav {
-            flex:none;
-            width:175px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            a{
-                box-sizing: border-box;
-                padding:20px 10px;
-                color:#666666;
-                text-decoration: none;    //移除超連結<a>的底線藍字
-                font-size: $text-size;
-                font-family:$font-family;
-                font-weight: 400;
-            }
-        }
-    }
+    border-bottom: none;
 } 
-
-.filter{
-    display:none;
-    // display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;     //沒有這個就不會覆蓋到header,會接在header的下方
-    z-index: 6;
-    width: 100%;
-    height: 100%;
-    background-color: rgba($color: #000000, $alpha: 0.25);
-    
-    div[class^='filter__block--sign']{
-        position:fixed;
-        z-index: 7;
-        top:80px;
-        width:340px;
-        background-color: #ffffff;
-        border-radius: 6px;
-        border: none;
-        display: flex;
-        justify-content: space-between;
-        vertical-align: center;
-        flex-direction: column;
-        .filter__block--top{
-            height:10px;
-            border-top-left-radius: 6px;
-            border-top-right-radius: 6px;
-            background-image: linear-gradient(to left,#337788,#66AABB);
-        }
-        .filter__block--title{
-            width:310px;
-            color:#666666;
-            font-size: 24px;
-            font-weight:bold;
-            text-align: center;
-            margin:15px 15px 5px 15px;
-        }
-        button{
-            position: absolute;
-            // position:fixed;
-            z-index: 99;
-            top:27px;
-            right:17px;
-            background-color: #ffffff;
-            border: none;
-            cursor: pointer;
-            text-align: center; 
-        }
-        .filter__block--info{
-            border: 1px solid #cccccc ;
-            border-radius: 5px;
-            width: 310px;
-            height: 47px;
-            padding: 15px;
-            margin:10px 15px 0 15px;
-            color: #666666;
-        }
-        .filter__block--btn{
-            margin: 10px 15px;
-            width: 310px;
-            height: 47px;
-            border-radius: 5px;
-            // text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 19px;
-            color:#ffffff;
-            background-color:#448899;
-            cursor: pointer;
-        }
-        .filter__block--other{
-            margin: 0px 15px 15px 15px;
-            text-align: center;
-            cursor: pointer;
-        }
-    }
-    .filter__block--signin{
-        display: none;
-    }
-    .filter__block--signup{ 
-        display: none;
-    }
-    
-}
 
 
 
@@ -171,7 +50,7 @@ $text-size:16px;
             justify-content:space-between;
             align-items:center;
             @media(max-width:600px){max-width:290px;}
-            input{
+            .search__input{
                 box-sizing: border-box;
                 flex:auto;
                 max-width: 400px;height:46px;
@@ -179,13 +58,11 @@ $text-size:16px;
                 border-top-left-radius:5px;
                 border-bottom-left-radius:5px;
                 border:none;
-                font-family:$font-family;
                 font-weight:bold;
-                font-size: $text-size;
                 color:#757575;
                 @media(max-width:600px){max-width:230px;}
             }
-            button{
+            .search__button{
                 flex:none;width:60px;
                 height:46px;
                 border-top-right-radius: 5px;

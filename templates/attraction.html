@@ -2,8 +2,10 @@
 
 
 {%block head%}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='commonFunction/common.css')}}"/>
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/attraction/attraction.css')}}"/>
 <script type='text/javascript' src="/static/attraction/attraction.js" defer></script>
+<script type="text/javascript" src="/static/commonFunction/common.js" defer></script>
 <title>景點資訊</title>
 {%endblock%}
 
@@ -25,7 +27,7 @@
             <h3>以此景點為中心的一日行程，帶您探索城市角落故事</h3>
             <div class="booking__item">
                 <h2>選擇日期：</h2>
-                <input id="date" type="date" ></div>
+                <input type="date" id="date"></div>
             <div class="booking__item">
                 <h2>選擇時間：</h2>
                 <div class="booking__item_time">

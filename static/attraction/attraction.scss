@@ -8,45 +8,8 @@
   font-weight: 400;
   color: #666666;
   }
+
 h2{font-weight: bold;margin-right: 5px;}
-.out{ 
-    position:sticky;      //此三者可以使固定在上頭
-    top:0;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e8e8e8;
-    z-index: 99;
-    .header {
-        margin: 0 auto;
-        max-width: 1200px;
-        display: flex;
-        justify-content: space-between;   //左右貼齊
-        align-items: center;
-        @media(max-width:1200px){width:100%}
-        
-        > a {
-            padding:10px 0px 10px 10px;
-            flex:auto;
-            color:#448899;
-            font-weight:bold;
-            font-size:30px; 
-            text-decoration: none;  
-        }
-        nav {
-            flex:none;
-            width:175px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            a{
-                padding:20px 10px;
-                text-decoration: none;    //移除超連結<a>的底線藍字
-            }
-        }
-    }
-} 
-
-
-
 main{
     margin:40px auto;
     padding: 0px 15px;
@@ -68,7 +31,6 @@ main{
         margin-right:30px;
         @media(max-width:1200px){width:100%;}
         @media(max-width:600px){
-            // margin-top:40px;
             width: 100%;
             height: 350px;
             margin-right:0px;
@@ -76,19 +38,15 @@ main{
             
         }
         .site{
-            // width:540px;
             height:400px;
             width:100%;
-            // transition: 200ms opacity ease-in-out;
             object-fit: cover; object-position: center;
-            // &:change{filter: brightness(0.5);}
             @media(max-width:600px){
                 height: 350px;
             }
         }
         .button{
             margin:0px 10px;
-            // width: 100%;
             height: 36px;
             position: relative;
             top:-198px;
@@ -110,7 +68,6 @@ main{
             height:12px;
             position:relative;
             top: -66px;
-            // width: 100%;
             display: flex;
             justify-content: center;
             z-index: 2;
@@ -129,46 +86,7 @@ main{
                 cursor: pointer;
                 
                 // &:focus{ background-color: black;}
-            }
-            // .on{
-            //     display: inline-block;
-            //     width: 12px;
-            //     height: 12px;
-            //     border: 1px solid white;
-            //     border-radius: 50%;
-            //     background-color: black;
-            //     opacity: 0.6;
-            //     margin: 0px 12px 0px 0px;
-            //     cursor: pointer;
-            //     // &:focus{ background-color: black;}
-            // }
-            // input[type="radio"]{
-            //     opacity: 1;
-            //     // position: absolute;
-            //     input[type="radio"]+label{
-            //         display:flex;             //pseudo-elements 才可以變圓型
-            //         margin:0px 10px 0px px;  
-            //         width:12px;
-            //         cursor: pointer;
-            //         z-index: 99;
-            //         user-select: none;  //防止重複點擊後文字會highlight
-            //         &::before{   //在span前面自己畫一個圓
-            //             // display:inline-block;  //或是在此加入
-            //             content:"";
-            //             border:1px solid #ffffff;
-            //             border-radius: 50%;
-            //             background-color: #ffffff;
-            //             width:12px;
-            //             height:12px;
-            //             vertical-align: bottom;
-            //             margin-right: 4px;
-            //             cursor: pointer;
-            //             &:focus{background-color: black;}
-            //         } 
-            //     }
-                
-            // }
-                
+            } 
         }    
     }
     figcaption{
@@ -197,7 +115,6 @@ main{
             padding: 15px 20px;
             border-radius: 5px;
             @media(max-width:1200px){width:100%;}
-            // @media(max-width:600px){margin:auto;}
             h3{
                 margin: 15px 0px;
             }

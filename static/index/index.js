@@ -2,15 +2,19 @@ let page = 0;
 let key_page = 0;
 let keyword = "";          //後來使用者新輸入的關鍵字
 let key_word = "";         //先前使用者輸入的關鍵字
-// let url =  "/api/attractions?page="+page;
+// let url =  "/api/attractions?page=${page}";
 // let surl ="/api/attractions?keyword="+key_word+"&page="+key_page;
 let Attractions = {};
 let isLoading = false;            //管控是否可以連線
 let footer = document.getElementsByTagName("footer")[0];
-let button = document.querySelector("button");
+let searchButton = document.querySelector(".search__button");
+
 let introduc = document.getElementById("list");
-button.addEventListener("click",search); 
+
+searchButton.addEventListener("click",search); 
+
 window.addEventListener("DOMContentLoaded",loadDatas());
+
 window.addEventListener("scroll",()=>{
     let options = {
         root:null,
@@ -34,6 +38,7 @@ function callback(entries){
         else if ( key_word && key_page == null){console.log("沒有下一頁了");return ;}
         // else{observer.unobserve(entries[0].target);return ;}    
 }}
+
 
 
 function render(){
@@ -71,6 +76,12 @@ function render(){
         introduc.appendChild(fragment);}
 }
 
+// function fetch(){
+
+
+// }
+
+
 function loadDatas(){
     if(isLoading == true){return;}
     isLoading = true;                        
@@ -90,7 +101,7 @@ function loadDatas(){
 function search(){
     if (isLoading == true){return;}
     console.log("search!");
-    keyword = document.querySelector("input").value;   //用let 會重新設一個變數，傳不到外面的全域變數
+    keyword = document.querySelector(".search__input").value;   //用let 會重新設一個變數，傳不到外面的全域變數
     if ( !keyword ){return ;}               //key_word一定不會等於" "
     else if ( keyword  && key_page == 0){        //有輸入word 第一次搜尋 有無資料//搜尋無資料 空點
         isLoading = true;     

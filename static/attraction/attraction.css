@@ -15,67 +15,6 @@ h2 {
   margin-right: 5px;
 }
 
-.out {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e8e8e8;
-  z-index: 99;
-}
-
-.out .header {
-  margin: 0 auto;
-  max-width: 1200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-@media (max-width: 1200px) {
-  .out .header {
-    width: 100%;
-  }
-}
-
-.out .header > a {
-  padding: 10px 0px 10px 10px;
-  -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
-  color: #448899;
-  font-weight: bold;
-  font-size: 30px;
-  text-decoration: none;
-}
-
-.out .header nav {
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
-  width: 175px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.out .header nav a {
-  padding: 20px 10px;
-  text-decoration: none;
-}
-
 main {
   margin: 40px auto;
   padding: 0px 15px;
