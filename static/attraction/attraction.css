@@ -95,7 +95,7 @@ main .figure .button {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  z-index: 88;
+  z-index: 3;
 }
 
 main .figure .button button {

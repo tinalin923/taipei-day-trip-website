@@ -167,6 +167,11 @@
   cursor: pointer;
 }
 
+.filter div[class^='filter__block--sign'] div[class^='filter__block--errorMessage'] {
+  margin: 0px 15px 10px 15px;
+  color: red;
+}
+
 .filter div[class^='filter__block--sign'] div[class^='filter__block--other'] {
   margin: 0px 15px 15px 15px;
   text-align: center;

@@ -123,11 +123,17 @@
             background-color:#448899;
             cursor: pointer;
         }
+        div[class^='filter__block--errorMessage']{
+            margin:0px 15px 10px 15px;
+            color: red;
+
+        }
         div[class^='filter__block--other']{
             margin: 0px 15px 15px 15px;
             text-align: center;
             cursor: pointer;
         }
+        
     }
     .filter__block--signup{     //why useless?
         display: none;

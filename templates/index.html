@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index/index.css')}}"/>
     <script type="text/javascript" src="/static/index/index.js" defer></script>
     <script type="text/javascript" src="/static/commonFunction/common.js" defer></script>
-    <!-- <script type='text/javascript' src="/static/attraction/attraction.js" defer></script> -->
     <title>首頁</title>
     {%endblock%}
 </head>
@@ -26,21 +25,26 @@
         <div class= "filter__block--signin" id="signin" >
             <div class="filter__block--top"></div>
             <div class="filter__block--title">登入會員帳號</div>
-            <button class="filter__block--closebtn" type="button"><img src="static/png/icon_close.png"></button>
-            <input class="filter__block--info" type="text" placeholder="輸入電子信箱">
-            <input class="filter__block--info" type="password" placeholder="輸入密碼">
-            <button type="submit" class="filter__block--btn" >登入帳戶</button>
+            <button class="filter__block--closebtn" type="button"><img src="../static/png/icon_close.png"></button>
+            <form>
+                <input class="filter__block--info" type="text" placeholder="輸入電子信箱" name="email">
+                <input class="filter__block--info" type="password" placeholder="輸入密碼" name="password">
+                <button type="submit" class="filter__block--btn" >登入帳戶</button>
+            </form>
+            <div class="filter__block--errorMessage--in"></div>
             <div class="filter__block--other--in">還沒有帳戶？點此註冊</div>
         </div>
         <div class= "filter__block--signup" id="singup">
             <div class="filter__block--top"></div>
             <div class="filter__block--title">註冊會員帳號</div>
-            <button class="filter__block--closebtn" type="button"><img src="static/png/icon_close.png"></button>
-
-            <input class="filter__block--info" type="text" placeholder="輸入姓名"> 
-            <input class="filter__block--info" type="text" placeholder="輸入電子信箱">
-            <input class="filter__block--info" type="password" placeholder="輸入密碼">             
-            <button type="submit" class="filter__block--btn">註冊新帳戶</button>
+            <button class="filter__block--closebtn" type="button"><img src="../static/png/icon_close.png"></button>
+            <form>
+                <input class="filter__block--info" type="text" placeholder="輸入姓名" name="name"> 
+                <input class="filter__block--info" type="text" placeholder="輸入電子信箱" name="email">
+                <input class="filter__block--info" type="password" placeholder="輸入密碼" name="paswaord">             
+                <button type="submit" class="filter__block--btn">註冊新帳戶</button>
+            </form>
+            <div class="filter__block--errorMessage--up"></div>
             <div class="filter__block--other--up">已經有帳戶了？點此登入</div>
         </div>
     </div>

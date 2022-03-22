@@ -40,7 +40,6 @@ function callback(entries){
 }}
 
 
-
 function render(){
     let fragment = document.createDocumentFragment();
     for(let i = 0; i < Attractions.data.length; i++ ){
