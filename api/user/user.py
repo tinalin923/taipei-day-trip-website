@@ -22,8 +22,8 @@ class User(Resource):
         print(token)
         if not token:
             response = make_response(jsonify({
-                "message":"尚未登入"
-            }),400)
+                "data": None
+            }),200)
             return response
         else:
             user = jwt.decode(token,secret,algorithms = ['HS512'])
@@ -96,6 +96,7 @@ class User(Resource):
         try:
             req = request.get_json()
             reqEmail = req["email"]
+            print(reqEmail)
             reqPassword = req["password"]
 
             if not reqEmail or not reqPassword:
@@ -143,7 +144,7 @@ class User(Resource):
             response = make_response(jsonify({
                 "error": True,
                 "message": e
-            }),500)
+            }),500,{'Content-type':'application/json'})
 
             return response
 

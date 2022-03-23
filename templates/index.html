@@ -16,8 +16,8 @@
         <div class="header">
             <a href="/">台北一日遊</a>
             <nav>
-                <div class="nav__item">預定行程</div>
-                <div class="nav__item">登入/註冊</div>
+                <div class="nav__item" id="booking">預定行程</div>
+                <div class="nav__item" id="signinup">登入/註冊</div>
             </nav>
         </div>
     </div>
@@ -27,9 +27,9 @@
             <div class="filter__block--title">登入會員帳號</div>
             <button class="filter__block--closebtn" type="button"><img src="../static/png/icon_close.png"></button>
             <form>
-                <input class="filter__block--info" type="text" placeholder="輸入電子信箱" name="email">
-                <input class="filter__block--info" type="password" placeholder="輸入密碼" name="password">
-                <button type="submit" class="filter__block--btn" >登入帳戶</button>
+                <input class="filter__block--info" type="text" placeholder="輸入電子信箱" id="inEmail">
+                <input class="filter__block--info" type="password" placeholder="輸入密碼" id="inPassword">
+                <button type="button" class="filter__block--btn" id="signinbtn">登入帳戶</button>
             </form>
             <div class="filter__block--errorMessage--in"></div>
             <div class="filter__block--other--in">還沒有帳戶？點此註冊</div>
@@ -39,10 +39,10 @@
             <div class="filter__block--title">註冊會員帳號</div>
             <button class="filter__block--closebtn" type="button"><img src="../static/png/icon_close.png"></button>
             <form>
-                <input class="filter__block--info" type="text" placeholder="輸入姓名" name="name"> 
-                <input class="filter__block--info" type="text" placeholder="輸入電子信箱" name="email">
-                <input class="filter__block--info" type="password" placeholder="輸入密碼" name="paswaord">             
-                <button type="submit" class="filter__block--btn">註冊新帳戶</button>
+                <input class="filter__block--info" type="text" placeholder="輸入姓名" id="upName"> 
+                <input class="filter__block--info" type="text" placeholder="輸入電子信箱" id="upEmail">
+                <input class="filter__block--info" type="password" placeholder="輸入密碼" name="upPaswaord">             
+                <button type="button" class="filter__block--btn" id="signupbtn">註冊新帳戶</button>
             </form>
             <div class="filter__block--errorMessage--up"></div>
             <div class="filter__block--other--up">已經有帳戶了？點此登入</div>
