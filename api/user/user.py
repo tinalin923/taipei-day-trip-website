@@ -8,16 +8,12 @@ from dotenv import load_dotenv
 load_dotenv()  
 secret = os.getenv('SECRET')
 
-
 user_bp = Blueprint("user_name",__name__)
 
 api = Api(user_bp)
 
-
-cnx = cnxpool.get_connection()
-
 class User(Resource):
-    def get(self):
+    def get(self):                  #檢查登入狀態
         token = request.cookies.get('user')
         print(token)
         if not token:
@@ -39,14 +35,12 @@ class User(Resource):
             }),200)
             return response
 
-
-    def post(self):       #註冊
+    def post(self):                 #註冊
         try:    
             req = request.get_json()
             reqName = req["name"]
             reqEmail = req["email"]
             reqPassword = req["password"]
-
             if not reqName or not reqEmail or not reqPassword:
                 response = make_response(jsonify({
                     "error": True,
@@ -64,19 +58,20 @@ class User(Resource):
                     )
                 params = (reqName, reqEmail, reqPassword)
                 cursor.execute(query,params)
-                cnx.commit()
+                
                 newId = cursor.lastrowid
-                cursor.close()
+                
                 if not newId:  
+                    cursor.close()
                     cnx.close()
                     response = make_response(jsonify({
                         "error": True,
                         "message": "Email已被註冊"
                     }),400)
-                    return response
-                    
-                else:       #可以註冊
-                    
+                    return response    
+                else:               #可以註冊
+                    cnx.commit()
+                    cursor.close()
                     cnx.close()
                     response = make_response(jsonify({
                         "ok": True
@@ -91,18 +86,16 @@ class User(Resource):
 
             return response
 
-
-    def patch(self):
+    def patch(self):                #登入
         try:
             req = request.get_json()
             reqEmail = req["email"]
-            print(reqEmail)
             reqPassword = req["password"]
 
             if not reqEmail or not reqPassword:
                 response = make_response(jsonify({
                     "error": True,
-                    "message": "請輸入帳號密碼"
+                    "message": "請輸入信箱密碼"
                 }),400)
                 return response
             else:    
@@ -111,7 +104,7 @@ class User(Resource):
                 query = ('SELECT `id`,`name`,`password` FROM `members` WHERE `email` = %s ')
                 params = (reqEmail,)
                 cursor.execute(query,params)
-                user = cursor.fetchone()   # password = ('123',)
+                user = cursor.fetchone()   
                 cursor.close()
                 cnx.close()
                 if not user: 
@@ -124,7 +117,7 @@ class User(Resource):
                     
                     response = make_response(jsonify({
                     "error": True,
-                    "message": "登入失敗，帳號密碼錯誤"
+                    "message": "登入失敗，信箱密碼錯誤"
                     }),400)
                     return response
                 else:
@@ -136,31 +129,21 @@ class User(Resource):
                         "ok": True
                     }),200)
                     #把token存到cookie
-                    response.set_cookie(key = 'user', value = token, expires = datetime.datetime.utcnow() + datetime.timedelta(seconds=15))
-                    return response
-                
-            
+                    response.set_cookie(key = 'user', value = token, expires = datetime.datetime.utcnow() + datetime.timedelta(minutes=30))
+                    return response     
         except Exception as e:    
             response = make_response(jsonify({
                 "error": True,
                 "message": e
-            }),500,{'Content-type':'application/json'})
-
+            }),500)
             return response
 
-
-        
-    def delete(self):
-        
+    def delete(self):               #登出
         response = make_response(jsonify({
             "ok": True
         }),200)
         response.set_cookie(key='user', value='', expires=0)
         return response
-
-
-
-
 
 
 api.add_resource(User,"/api/user")
