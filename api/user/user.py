@@ -114,15 +114,12 @@ class User(Resource):
                     }),400)
                     return response
                 elif reqPassword != user[2]:
-                    
                     response = make_response(jsonify({
                     "error": True,
                     "message": "登入失敗，信箱密碼錯誤"
                     }),400)
                     return response
                 else:
-                    print(user[2])
-                    print(reqPassword)
                     message = {"id":user[0], "name":user[1], "email":reqEmail}
                     token = jwt.encode(message, secret, algorithm = 'HS512')
                     response = make_response(jsonify({

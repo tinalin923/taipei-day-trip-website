@@ -99,7 +99,6 @@ signinbtn.addEventListener('click',function(){
         inerror.textContent = "請輸入信箱密碼";
     }
     else if (!regex.test(inemail.value)){
-        console.log(regex.test(inemail.value))
         inerror.textContent = "請輸入正確信箱格式";
     }
     else{
@@ -114,7 +113,6 @@ signinbtn.addEventListener('click',function(){
             }
         }).then(response =>{ return response.json();
         }).then( res =>{ 
-            console.log(res);
             if (res.error == true){
                 inerror.textContent = res.message;
             }
@@ -123,7 +121,6 @@ signinbtn.addEventListener('click',function(){
             }
         }).catch(error =>{
             console.log("Error during fetch:"+ error.message);
-        
         });
     }
 });
@@ -133,7 +130,6 @@ signupbtn.addEventListener("click", function(){
         uperror.textContent = "請輸入資料";
     }
     else if (!regex.test(upemail.value)){
-        console.log(regex.test(upemail.value))
         uperror.textContent = "請輸入正確信箱格式";
     }
     else{
@@ -147,7 +143,6 @@ signupbtn.addEventListener("click", function(){
             headers:{'Content-type':'application/json'}
         }).then(response =>{ return response.json();
         }).then(res =>{
-            console.log(res);
             if (res.error == true){
                 uperror.textContent = res.message;
             }else{
