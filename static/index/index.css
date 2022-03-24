@@ -1,68 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
-.out {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background-color: #ffffff;
-  z-index: 99;
-}
-
-.out .top {
-  margin: 0 auto;
-  max-width: 1200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-@media (max-width: 1200px) {
-  .out .top {
-    width: 100%;
-  }
-}
-
-.out .top div {
-  margin: 10px;
-  -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
-  color: #448899;
-  font-weight: bold;
-  font-size: 30px;
-  font-family: "Noto Sans TC", sans-serif;
-}
-
-.out .top nav {
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
-  width: 175px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.out .top nav a {
+* {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 20px 10px;
-  color: #666666;
-  text-decoration: none;
   font-size: 16px;
-  font-family: "Noto Sans TC", sans-serif;
+  color: #666666;
   font-weight: 400;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.out {
+  border-bottom: none;
 }
 
 .hero-image {
@@ -140,7 +87,7 @@
   }
 }
 
-.hero-image .hero-text .search input {
+.hero-image .hero-text .search .search__input {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-box-flex: 1;
@@ -152,19 +99,17 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   border: none;
-  font-family: "Noto Sans TC", sans-serif;
   font-weight: bold;
-  font-size: 16px;
   color: #757575;
 }
 
 @media (max-width: 600px) {
-  .hero-image .hero-text .search input {
+  .hero-image .hero-text .search .search__input {
     max-width: 230px;
   }
 }
 
-.hero-image .hero-text .search button {
+.hero-image .hero-text .search .search__button {
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;

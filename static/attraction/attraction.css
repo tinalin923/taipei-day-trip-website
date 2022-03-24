@@ -15,70 +15,10 @@ h2 {
   margin-right: 5px;
 }
 
-.out {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e8e8e8;
-  z-index: 99;
-}
-
-.out .top {
-  margin: 0 auto;
-  max-width: 1200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-@media (max-width: 1200px) {
-  .out .top {
-    width: 100%;
-  }
-}
-
-.out .top div {
-  margin: 10px;
-  -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
-  color: #448899;
-  font-weight: bold;
-  font-size: 30px;
-}
-
-.out .top nav {
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
-  width: 175px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.out .top nav a {
-  padding: 20px 10px;
-  text-decoration: none;
-}
-
 main {
   margin: 40px auto;
   padding: 0px 15px;
-  max-width: 1200px;
+  width: 1200px;
   height: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -109,8 +49,8 @@ main {
 }
 
 main .figure {
-  max-width: 540px;
-  max-height: 400px;
+  width: 540px;
+  height: 400px;
   margin-right: 30px;
 }
 
@@ -130,7 +70,6 @@ main .figure {
 }
 
 main .figure .site {
-  width: 540px;
   height: 400px;
   width: 100%;
   -o-object-fit: cover;
@@ -156,7 +95,7 @@ main .figure .button {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  z-index: 2;
+  z-index: 3;
 }
 
 main .figure .button button {
@@ -174,7 +113,6 @@ main .figure .dotsContainer {
   height: 12px;
   position: relative;
   top: -66px;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -183,6 +121,14 @@ main .figure .dotsContainer {
           justify-content: center;
   z-index: 2;
   margin-bottom: 10px;
+}
+
+main .figure .dotsContainer::-moz-selection {
+  background-color: black;
+}
+
+main .figure .dotsContainer::selection {
+  background-color: black;
 }
 
 main .figure .dotsContainer .off {
@@ -197,6 +143,14 @@ main .figure .dotsContainer .off {
   cursor: pointer;
 }
 
+main .figure .dotsContainer .off::-moz-selection {
+  background-color: black;
+}
+
+main .figure .dotsContainer .off::selection {
+  background-color: black;
+}
+
 main figcaption {
   width: 600px;
 }
@@ -204,11 +158,6 @@ main figcaption {
 @media (max-width: 1200px) {
   main figcaption {
     width: 100%;
-  }
-}
-
-@media (max-width: 1200px) {
-  main figcaption {
     padding: 10px;
   }
 }
@@ -237,7 +186,7 @@ main figcaption > div {
 }
 
 main figcaption .booking {
-  max-width: 600px;
+  width: 600px;
   background-color: #e8e8e8;
   padding: 15px 20px;
   border-radius: 5px;
@@ -340,7 +289,7 @@ main figcaption .booking button {
 
 hr {
   border: 1px solid #e8e8e8;
-  max-width: 1200px;
+  width: 1200px;
   margin: 37px auto 40px auto;
 }
 
@@ -352,13 +301,13 @@ hr {
 
 article {
   margin: 50px auto 110px auto;
-  max-width: 1200px;
+  width: 1200px;
   padding: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
   article {
-    width: 360px;
+    width: 100%;
     padding: 0px 10px 0px 20px;
   }
 }

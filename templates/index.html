@@ -4,31 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%block head%}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='commonFunction/common.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index/index.css')}}"/>
-    <script type='text/javascript' src="/static/index/index.js" defer></script>
-    <!-- <script type='text/javascript' src="/static/attraction/attraction.js" defer></script> -->
+    
+    <script type="text/javascript" src="/static/commonFunction/common.js" defer></script>
+    <script type="text/javascript" src="/static/index/index.js" defer></script>
     <title>首頁</title>
     {%endblock%}
 </head>
 <body style="margin:0;padding:0">
     <div class="out">
-        <div class="top">
-            <div>台北一日遊</div>
+        <div class="header">
+            <a href="/">台北一日遊</a>
             <nav>
-                <a href="#">預定行程</a>
-                <a href="#">登入/註冊</a>
+                <div class="nav__item" id="booking">預定行程</div>
+                <div class="nav__item" id="signinup">登入/註冊</div>
             </nav>
         </div>
     </div>
+    <div class="filter" id="filter">
+        <div class= "filter__block--signin" id="signin" >
+            <div class="filter__block--top"></div>
+            <div class="filter__block--title">登入會員帳號</div>
+            <button class="filter__block--closebtn" type="button"><img src="../static/png/icon_close.png"></button>
+            
+            <input class="filter__block--info" type="text" placeholder="輸入電子信箱" id="inEmail">
+            <input class="filter__block--info" type="password" placeholder="輸入密碼" id="inPassword">
+            <div id="errorClean" >
+                <button type="button" class="filter__block--btn" id="signinbtn">登入帳戶</button>
+                <div class="filter__block--errorMessage--in"></div>
+                <div class="filter__block--other--in">還沒有帳戶？點此註冊</div>
+            </div>
+        </div>
+        <div class= "filter__block--signup" id="singup">
+            <div class="filter__block--top"></div>
+            <div class="filter__block--title">註冊會員帳號</div>
+            <button class="filter__block--closebtn" type="button"><img src="../static/png/icon_close.png"></button>
+            <form>
+                <input class="filter__block--info" type="text" placeholder="輸入姓名" id="upName"> 
+                <input class="filter__block--info" type="text" placeholder="輸入電子信箱" id="upEmail">
+                <input class="filter__block--info" type="password" placeholder="輸入密碼" id="upPassword">             
+                <button type="button" class="filter__block--btn" id="signupbtn">註冊新帳戶</button>
+            </form>
+            <div class="filter__block--errorMessage--up"></div>
+            <div class="filter__block--other--up">已經有帳戶了？點此登入</div>
+        </div>
+    </div>
+    
     {%block content%}
     <div class="hero-image">
         <div class="hero-text">
             <h1>輕鬆享受台北一日悠閒</h1>
             <p>探索每個角落，體驗城市的深度旅遊行程</p>
             <div class="search">
-                <input type="text" placeholder="輸入景點名稱查詢">
-                <!-- <button type="submit" >   先用button 之後再改submit -->
-                <button type="button" >
+                <input class="search__input" type="text" placeholder="輸入景點名稱查詢">
+                <button class="search__button" type="button" >
                     <img src="static/png/icon_search.png">
                 </button>
             </div>

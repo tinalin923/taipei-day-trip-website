@@ -1,16 +1,22 @@
-let Url = new URL(location.href);
+let Url = new URL(window.location.href);
 let url = Url.pathname;
 let furl = "/api"+url
 window.addEventListener("DOMContentLoaded",loadData());
 let datas = {};
 let imageCount = 0;
+let dotIndex = 0;
+
+//controller
+async function loadData(){
+    await getData();
+    render();
+}
+
 //model
 function getData(){
-    return fetch(furl).then(res => {return res.json()
+    return fetch(furl).then(res => {return res.json();
     }).then(attraction =>{
-        // console.log(attraction);
         datas = attraction; 
-        // console.log(datas);
     })
 }
 
@@ -49,41 +55,36 @@ function render(){
         // dotsContainer.innerHTML += `<input type="checkbox" onclick="lun('${image}');"><label></label>`;
     });
     let dots = dotsContainer.children;
-    // console.log(dots);
     dots[0].style.backgroundColor = "black"; 
-    // console.log(dots);
     let dotsArray = Array.from(dots);   //使類陣列的htmlcollection變成陣列
-    // console.log(dotsArray);
     dotsArray.forEach(dot => {
-        console.log(dot);
         dot.addEventListener("click",()=>{
-            dot.style.backgroundColor = "black";
-            // if (dot.style.backgroundColor = "black"){
-            //     dot.classList.add("off");
-            //     dot.classList.remove("on");
+            for (let i=0; i<imageCount; i++){                 //先讓所有都先變白
+                dots[i].style.backgroundColor = "white";}
+            dot.style.backgroundColor = "black";            //被點選的變黑
+            let number = dotsArray.indexOf(dot);     //取得被點選的點的index值
+            dotIndex = number;
+            // for (let n=0; n<imageCount; n++){            // 另一個取得被點選的點的index值的方法
+            //     if (dots[n].style.backgroundColor == "black"){
+            //         dotIndex = n;
+            //     }
             // }
-            // dot.classList.add("on");
-            // dot.classList.remove("off");
-            
         }); 
     })
 }
+
 
 
 let Pic = document.getElementById("img");
 let dotsContainer = document.getElementsByClassName("dotsContainer")[0];
 let dots = dotsContainer.children;  
 
-
-
+//use dots to change picture
 function lun(img_src){
     Pic.src = img_src;
-     
-    // imageCount   
-
 }
 
-let i = 0;
+//use arrows to change picture
 function lundot(index){
     console.log(index);
     if ( index == "previous"){
@@ -92,17 +93,16 @@ function lundot(index){
             dots[imageCount-1].style.backgroundColor = "black";
             dots[0].style.backgroundColor = "white";
             console.log("倒退");
-            i = imageCount-1;
+            dotIndex = imageCount-1;
         }
-        else if (dots[i].style.backgroundColor == "black"){
-            Pic.src = datas.data.images[i-1];
-            dots[i-1].style.backgroundColor = "black";
-            dots[i].style.backgroundColor = "white";
-            console.log(i);
+        else {
+            Pic.src = datas.data.images[dotIndex-1];
+            dots[dotIndex-1].style.backgroundColor = "black";
+            dots[dotIndex].style.backgroundColor = "white";
+            console.log(dotIndex);
             console.log("前進");
-            i = i-1 ;
-        }
-        
+            dotIndex = dotIndex-1 ;
+        }        
     }
     if ( index == "next"){
         if(dots[imageCount-1].style.backgroundColor == "black"){
@@ -110,26 +110,16 @@ function lundot(index){
             dots[imageCount-1].style.backgroundColor = "white";
             dots[0].style.backgroundColor = "black";
             console.log("重來");
-            i = 0;
+            dotIndex = 0;
         }
-        else if(dots[i].style.backgroundColor == "black"){
-            Pic.src = datas.data.images[i+1];
-            dots[i].style.backgroundColor = "white";
-            dots[i+1].style.backgroundColor = "black";
-            console.log(i);
-            i++ ;
+        else {
+            Pic.src = datas.data.images[dotIndex+1];
+            dots[dotIndex].style.backgroundColor = "white";
+            dots[dotIndex+1].style.backgroundColor = "black";
+            console.log(dotIndex);
+            dotIndex++ ;
         }
     }
-}
-
-
-
-
-
-//controller
-async function loadData(){
-    await getData();
-    render();
 }
 
 
@@ -148,6 +138,5 @@ mornBox.addEventListener("click",function(){
     evenBox.checked = false;
     money.textContent = "新台幣 2000 元";
 });
-
 
 

@@ -1,5 +1,5 @@
 from flask import Blueprint,make_response,jsonify
-from .mydb import cnxpool
+from ..mydb import cnxpool
 
 attraction_bp = Blueprint("attraction_name",__name__)
 
