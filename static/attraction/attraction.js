@@ -1,10 +1,12 @@
 let Url = new URL(window.location.href);
 let url = Url.pathname;
-let furl = "/api"+url
+let furl = "/api"+url ;
 window.addEventListener("DOMContentLoaded",loadData());
 let datas = {};
 let imageCount = 0;
 let dotIndex = 0;
+let date = document.getElementById("date");
+date.min = new Date().toLocaleDateString('en-ca');   //用en-US沒用
 
 //controller
 async function loadData(){

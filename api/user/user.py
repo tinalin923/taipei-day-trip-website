@@ -15,25 +15,34 @@ api = Api(user_bp)
 class User(Resource):
     def get(self):                  #檢查登入狀態
         token = request.cookies.get('user')
-        print(token)
         if not token:
             response = make_response(jsonify({
                 "data": None
             }),200)
+            response.headers['Access-Control-Allow-Orign'] = '*'
             return response
         else:
-            user = jwt.decode(token,secret,algorithms = ['HS512'])
-            id = user['id']
-            name = user['name']
-            email = user['email']
-            response = make_response(jsonify({
-                "data":{
-                    "id": id,
-                    "name": name,
-                    "email": email
-                }
-            }),200)
-            return response
+            try:
+                user = jwt.decode(token, secret, algorithms = ['HS512'])
+                id = user['id']
+                name = user['name']
+                email = user['email']
+                response = make_response(jsonify({
+                    "data":{
+                        "id": id,
+                        "name": name,
+                        "email": email
+                    }
+                }),200)
+                response.headers['Access-Control-Allow-Orign'] = '*'
+                return response
+            except jwt.exceptions.DecodeError as e:
+                response = make_response(jsonify({
+                    "error": True,
+                    "message": e
+                }),500)
+                response.headers['Access-Control-Allow-Orign'] = '*'
+                return response
 
     def post(self):                 #註冊
         try:    
@@ -46,6 +55,7 @@ class User(Resource):
                     "error": True,
                     "message" : "請輸入資料"
                 }),400)
+                response.headers['Access-Control-Allow-Orign'] = '*'
                 return  response
 
             else:
@@ -68,6 +78,7 @@ class User(Resource):
                         "error": True,
                         "message": "Email已被註冊"
                     }),400)
+                    response.headers['Access-Control-Allow-Orign'] = '*'
                     return response    
                 else:               #可以註冊
                     cnx.commit()
@@ -76,6 +87,7 @@ class User(Resource):
                     response = make_response(jsonify({
                         "ok": True
                     }),200)
+                    response.headers['Access-Control-Allow-Orign'] = '*'
                     return response
 
         except Exception as e:
@@ -83,7 +95,7 @@ class User(Resource):
                 "error": True,
                 "message": e
             }),500)
-
+            response.headers['Access-Control-Allow-Orign'] = '*'
             return response
 
     def patch(self):                #登入
@@ -97,6 +109,7 @@ class User(Resource):
                     "error": True,
                     "message": "請輸入信箱密碼"
                 }),400)
+                response.headers['Access-Control-Allow-Orign'] = '*'
                 return response
             else:    
                 cnx = cnxpool.get_connection()
@@ -112,12 +125,14 @@ class User(Resource):
                     "error": True,
                     "message": "登入失敗，查無此帳號"
                     }),400)
+                    response.headers['Access-Control-Allow-Orign'] = '*'
                     return response
                 elif reqPassword != user[2]:
                     response = make_response(jsonify({
                     "error": True,
                     "message": "登入失敗，信箱密碼錯誤"
                     }),400)
+                    response.headers['Access-Control-Allow-Orign'] = '*'
                     return response
                 else:
                     message = {"id":user[0], "name":user[1], "email":reqEmail}
@@ -125,6 +140,7 @@ class User(Resource):
                     response = make_response(jsonify({
                         "ok": True
                     }),200)
+                    response.headers['Access-Control-Allow-Orign'] = '*'
                     #把token存到cookie
                     response.set_cookie(key = 'user', value = token, expires = datetime.datetime.utcnow() + datetime.timedelta(minutes=30))
                     return response     
@@ -133,12 +149,14 @@ class User(Resource):
                 "error": True,
                 "message": e
             }),500)
+            response.headers['Access-Control-Allow-Orign'] = '*'
             return response
 
     def delete(self):               #登出
         response = make_response(jsonify({
             "ok": True
         }),200)
+        response.headers['Access-Control-Allow-Orign'] = '*'
         response.set_cookie(key='user', value='', expires=0)
         return response
 

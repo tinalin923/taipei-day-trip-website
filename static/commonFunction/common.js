@@ -19,7 +19,7 @@ let uppassword = document.getElementById("upPassword");
 let inerror = document.querySelector(".filter__block--errorMessage--in");
 let uperror = document.querySelector(".filter__block--errorMessage--up");
 
-window.addEventListener("load",checkStatus);
+window.addEventListener("DOMContentLoaded",checkStatus);
 signinbtn.addEventListener("blur", (clean)=>{ inerror.textContent = "";});
 signupbtn.addEventListener("blur", (clean)=>{ uperror.textContent = "";});
 
