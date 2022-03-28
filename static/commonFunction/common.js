@@ -1,3 +1,8 @@
+let booking = document.getElementById("booking")
+booking.addEventListener("click",function(){
+    window.location.href = "/booking";
+})
+
 let userurl = '/api/user';
 let filter = document.getElementById("filter");
 let memberStatus = document.getElementById("signinup");

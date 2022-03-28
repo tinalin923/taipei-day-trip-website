@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {%block head%}
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='commonFunction/common.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index/index.css')}}"/>
-    
     <script type="text/javascript" src="/static/commonFunction/common.js" defer></script>
+    {%block head%}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index/index.css')}}"/>
     <script type="text/javascript" src="/static/index/index.js" defer></script>
     <title>首頁</title>
     {%endblock%}
 </head>
-<body style="margin:0;padding:0">
+<body>
     <div class="out">
         <div class="header">
             <a href="/">台北一日遊</a>
