@@ -120,6 +120,7 @@
   border: none;
   background-color: #448899;
   display: block;
+  cursor: pointer;
 }
 
 .wrapper {
