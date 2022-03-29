@@ -3,7 +3,8 @@
 
 {%block head%}
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/attraction/attraction.css')}}"/>
-<script type='text/javascript' src="/static/attraction/attraction.js" defer></script>
+<script type="text/javascript" src="/static/attraction/attraction.js" defer></script>
+<script type="text/javascript" src="/static/booking/booking.js" defer></script>
 
 <title>景點資訊</title>
 {%endblock%}
@@ -38,9 +39,9 @@
             </div>
             <div class="booking__item">
                 <h2 class="fee">導覽費用：</h2>  
-                <p id="money">新台幣 2000 元</p>  </div>
+                <h3>新台幣 <span id="money">2000</span> 元</h3>  </div>
             
-            <button type="submit">開始預訂行程</button>
+            <button type="button" id="startBooking">開始預訂行程</button>
         </form>
     </figcaption>
 

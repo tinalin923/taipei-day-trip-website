@@ -10,17 +10,17 @@
 {%block content%}
 
 <div class="booking">
-    <div class="hello">您好，{}，待預定的行程如下：</div>
+    <div class="hello">您好，<span id="hello_name"></span>，待預定的行程如下：</div>
     <div class="schedule">
         <div class="schedule_figure">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ_GOAKpPUssPKm2AM32kU_ZNooPFZeT6V7w&usqp=CAU"> 
+            <img id="schedule_figure"> 
         </div>
         <div class="schedule_result">
-            <div class="schedule_result-title" id="schedule_result-title">台北一日遊：{}</div>
+            <div class="schedule_result-title">台北一日遊：<span id="schedule_result-title"></span></div>
             <div class="schedule_result_form">
                 <div>日期：</div><div id="schedule_result-date"></div>
                 <div>時間：</div><div id="schedule_result-time"></div>
-                <div>費用：</div><div id="schedule_result-fee"></div>
+                <div>費用：</div><div>新台幣 <span id="schedule_result-fee"></span> 元</div>
                 <div>地點：</div><div id="schedule_result-place"></div>
             </div>
         </div>
@@ -50,7 +50,7 @@
     <hr>
     <div class="check">
     
-        <h3>總價：新台幣2000元</h3>
+        <h3>總價：新台幣<span id="check_fee"></span>元</h3>
         <button class="check_button" type="submit" id="confirm" >確認訂購並付款</button>
 
     </div>

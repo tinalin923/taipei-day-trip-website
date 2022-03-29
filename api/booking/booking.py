@@ -88,7 +88,7 @@ class Booking(Resource):
 
 
             user = jwt.decode(token, secret, algorithms = ['HS512'])
-            email = user.email
+            email = user['email']
             booking_data = request.get_json()
             print(booking_data)
             attractionId = booking_data['attractionId']

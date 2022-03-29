@@ -134,11 +134,11 @@ let money = document.getElementById("money")
 
 evenBox.addEventListener("click",function(){
     mornBox.checked = false;
-    money.textContent = "新台幣 2500 元";
+    money.textContent = 2500;
 });
 mornBox.addEventListener("click",function(){
     evenBox.checked = false;
-    money.textContent = "新台幣 2000 元";
+    money.textContent = 2000;
 });
 
 
