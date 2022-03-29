@@ -1,6 +1,13 @@
 let booking = document.getElementById("booking")
 booking.addEventListener("click",function(){
-    window.location.href = "/booking";
+    if(memberStatus.textContent === "登入/註冊"){
+        filter.style.display = "flex" ;
+        signIn.style.display = "flex" ;
+        signUp.style.display = "none" ;
+    }
+    else{ 
+        window.location.href = "/booking"; 
+    }
 })
 
 let userurl = '/api/user';
@@ -42,7 +49,7 @@ function checkStatus(){
     });
 }
 memberStatus.addEventListener("click", function(){
-    if(memberStatus.textContent == "登入/註冊"){
+    if(memberStatus.textContent === "登入/註冊"){
         filter.style.display = "flex" ;
         signIn.style.display = "flex" ;
         signUp.style.display = "none" ;
