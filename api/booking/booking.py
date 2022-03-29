@@ -1,5 +1,3 @@
-from datetime import date
-from time import time
 from flask import Blueprint,make_response,request,jsonify
 from flask_restful import Api, Resource
 from ..mydb import cnxpool
@@ -16,18 +14,17 @@ api = Api(booking_bp)
 
 class Booking(Resource):
     def get(self):
-        # token = request.cookies.get("user")
-        # if not token:
-        #     res = {
-        #         "error":True,
-        #         "message":"未登入系統，拒絕存取"
-        #     }
-        #     status = 403
-        # else:
+        token = request.cookies.get("user")
+        print(token)
+        if not token:
+            res = {
+                "error":True,
+                "message":"未登入系統，拒絕存取"
+            }
+            status = 403
+        else:
             status = 200
-            # user = jwt.decode(token, secret, algorithms = ['HS512'])
-            # email = user.email
-            user = request.get_json()
+            user = jwt.decode(token, secret, algorithms = ['HS512'])
             email = user['email']
             cnx = cnxpool.get_connection()
             cursor = cnx.cursor(buffered=True)
@@ -39,16 +36,20 @@ class Booking(Resource):
             try:
                 cursor.execute(query,params)
                 data = cursor.fetchone()
-                print(data)
                 cursor.close()
                 cnx.close()
+                # data = list(data)   #不用讓tuple變成list,也可進行split操作
+                print(data)
                 id = data[0]
-                print(id)
                 name = data[1]
                 address = data[2]
-                image = data[3]
-                print(address)
+                image = data[3]             # 此時的image為字串，不好取出完整的一個image url
+                image = image.split("\n")   # 所以需要 " .split() " 將字串分割成list
+                image = image[0]
                 date = data[4]
+                date = date.isoformat()    #讓date的type(class?)從 datetime.date變成string
+                print(date)
+                print(type(date))
                 time = data[5]
                 price = data[6]
                 res = {
@@ -70,9 +71,11 @@ class Booking(Resource):
                     "data":None
                 }
             
-            response = make_response(jsonify(res),status)
-            response.headers['Access-Control-Allow-Origin'] = '*'
-            return response
+        response = make_response(jsonify(res),status)
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+
+
     def post(self):
         try:
             token = request.cookies.get("user")
@@ -127,6 +130,7 @@ class Booking(Resource):
         response = make_response(jsonify(res),status)
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
+
 
     def delete(self):
         token = request.cookies.get("user")
