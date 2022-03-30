@@ -7,10 +7,12 @@
 //   font-weight: 400;
 //   color: #666666;
 //   }
-
+body{
+    height:100%;
+}
 hr{
     border: 1px solid #e8e8e8;
-    &:nth-child(7){margin-top:40px;}    //要把其他div等子元素也算進去
+    &:nth-child(6){margin-top:40px;}    //要把其他div等子元素也算進去
     @media(min-width: 1200px){
         width:1200px;
         margin:0 auto;
@@ -22,144 +24,177 @@ hr{
     margin: 46px 10px 62px 10px;
     @media(min-width:600px){
         width:100%;
-        margin: 46px auto 62px auto
+        margin: 46px auto 62px auto;
+        padding:0 10px 0 10px;
 
     }
     @media(min-width:1200px){
         width:1200px;
+        padding: 0px;
     }
     .hello{
         font-size: 19px;
         font-weight: bold;
+        span{
+            font-size: 19px;
+            font-weight: bold;
+        }
         @media(min-width:980px){
             width:980px;
             margin: 0px auto;
         }
     }
-
-    .schedule{
-        @media(min-width:600px) {
-            display:flex;
-            justify-content:space-between;
-            margin: 35px auto 40px auto;
-        }
+    #booking_data-0{
+        margin: 35px auto 40px auto;
         @media(min-width:980px){
             width:980px;
             
         }
-        .schedule_figure{
-            img{
-                width:100%;
-                height:256px;
-                margin:35px 0px;
-                object-fit:cover; object-position:center;
-                @media(min-width:600px) {
-                    width:266px;
-                    height:200px;
-                    margin:0px;
+    }
+    #booking_data-1{
+        margin: 35px auto 40px auto;
+        
+        .schedule{
+            @media(min-width:600px) {
+                display:flex;
+                justify-content:space-between;
+                margin: 35px auto 40px auto;
+            }
+            @media(min-width:980px){
+                width:980px;
+
                 
+            }
+            .schedule_figure{
+                img{
+                    width:100%;
+                    height:256px;
+                    margin:35px 0px;
+                    object-fit:cover; object-position:center;
+                    @media(min-width:600px) {
+                        width:266px;
+                        height:200px;
+                        margin:0px;
+                    
+                    }
                 }
             }
-        }
-        .schedule_result{
-            @media(min-width:600px){
-                margin-left:22px;
-                flex:auto;
+            .schedule_result{
+                @media(min-width:600px){
+                    margin-left:22px;
+                    flex:auto;
+                    
+                }
                 
+                .schedule_result-title{
+                    font-weight:bold;
+                    color:#448899;
+                    margin-bottom:30px;
+                    span{
+                        font-weight:bold;
+                        color:#448899;
+                    }
+                }
+                .schedule_result_form{
+                    display:grid;
+                    grid-template-columns:48px auto;
+                    grid-column-gap:5px;
+                    grid-row-gap: 15px;
+                    align-items:center;
+                    div:nth-child(odd){
+                        font-weight:bold;
+                    }
+                }
+            }
+            .schedule_delete{
+                height:30px;
+                text-align:right;
+                margin-top:5px;
+                margin-bottom:30px;
+                border-radius: 50%;
+                cursor: pointer;
+                
+                img{
+                    opacity:50%;
+                    &:hover{
+                        opacity:100%;
+                    }
+                }
             }
             
-            .schedule_result-title{
-                font-weight:bold;
-                color:#448899;
-                margin-bottom:30px;
+            
+        }
+        .input{
+            @media(min-width:980px){
+                width: 980px;
+                margin: 0px auto;
             }
-            .schedule_result_form{
+            h2{
+                margin-top:44px;
+                margin-bottom:24px;
+                font-weight:bold;
+            }
+            .input_form{
                 display:grid;
-                grid-template-columns:48px auto;
-                grid-column-gap:5px;
-                grid-row-gap: 20px;
+                grid-template-columns:81px 200px;
+                grid-row-gap:15px;
+                // justify-content:center;
                 align-items:center;
-                div:nth-child(odd){
+                input{
+                    border-style:solid;
+                    border-width:1px;
+                    border-color:#e8e8e8;
+                    // border: 1px solid color #e8e8e8;
+                    border-radius: 5px;
+                    width:200px;
+                    height:38px;
+                    padding: 10px;
+                    
+                }
+                
+            }
+            h3{
+                margin-top:20px;
+                margin-bottom:40px;
+                font-weight:bold;
+            }
+        }
+        
+        .check{
+            text-align:right;
+            @media(min-width:980px){
+                width: 980px;
+                margin: 0px auto;
+            }
+            
+            
+            h3{
+                margin-top:43px;
+                margin-bottom:25px;
+                font-weight:bold;
+                span{
                     font-weight:bold;
                 }
             }
-        }
-        .schedule_delete{
-            text-align:right;
-            margin-top:5px;
-            margin-bottom:30px;
-        }
-        
-        
-    }
-    .input{
-        @media(min-width:980px){
-            width:980px;
-            margin: 0px auto;
-        }
-        h2{
-            margin-top:44px;
-            margin-bottom:24px;
-            font-weight:bold;
-        }
-        .input_form{
-            display:grid;
-            grid-template-columns:81px 200px;
-            grid-row-gap:15px;
-            // justify-content:center;
-            align-items:center;
-            input{
-                border-style:solid;
-                border-width:1px;
-                border-color:#e8e8e8;
-                // border: 1px solid color #e8e8e8;
-                border-radius: 5px;
-                width:200px;
-                height:38px;
-                padding: 10px;
-                
+            .check_button{
+                background-color:#448899;
+                color:white;
+                font-size:19px;
+                font-weight:100;
+                border-radius:5px;
+                border:none;
+                padding:10px 20px;
             }
-            
-        }
-        h3{
-            margin-top:20px;
-            margin-bottom:40px;
-            font-weight:bold;
         }
     }
-    
-    .check{
-        text-align:right;
-        @media(min-width:980px){
-            width:980px;
-            margin: 0px auto;
-        }
-        
-        
-        h3{
-            margin-top:43px;
-            margin-bottom:25px;
-            font-weight:bold;
-        }
-        .check_button{
-            background-color:#448899;
-            color:white;
-            font-size:19px;
-            font-weight:100;
-            border-radius:5px;
-            border:none;
-            padding:10px 20px;
-        }
-    }
-    
 }
 
 footer {
     background:#757575;
-    height:104px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    text-align: center;
     font-weight: bold;
     color: white;
+    box-shadow: 0 50vh 0 50vh #757575;    //要搭配body{height:100%;}
 }

@@ -1,72 +1,81 @@
-let bookingButton = document.getElementById("startBooking");
-bookingButton.addEventListener("click",startBooking);
+//我在common.js特別設定在/booking點登出系統/以及未登入時 會發生的事情(導回首頁)
+//招呼名稱也放到common.js去了
+let bookingData = {};
+let bookingUrl = '/api/booking';
 
 //controller
-function startBooking(){
-    let result = checkSignin();
-    if (result === false){
-        pleaseSignin();
+async function renderBooking(){
+    await getBookingData();
+    renderBookingData();
+}
+
+//model
+function getBookingData(){
+    return fetch(bookingUrl, {
+        method:'GET',
+        headers:{'Content-type':'application/json'}
+    }).then(response =>{ return response.json();
+    }).then(res =>{
+        bookingData = res;
+    }).catch(error =>{
+        console.log("Error during fetch:"+ error.message);
+    })
+}
+
+//view
+let booking_data_0 = document.getElementById("booking_data-0")
+let booking_data_1 = document.getElementById("booking_data-1");
+
+let image = document.getElementById("schedule_figure");
+let title = document.getElementById("schedule_result-title");
+let date = document.getElementById("schedule_result-date");
+let time = document.getElementById("schedule_result-time");
+let price = document.getElementById("schedule_result-fee");
+let place = document.getElementById("schedule_result-place");
+let fee = document.getElementById("check_fee");
+
+function renderBookingData(){
+    let booking = bookingData.data;
+    if (booking === null){
+        booking_data_1.style.display = "none";
+        booking_data_0.textContent = "目前沒有任何待預定的行程";
     }
-    if (result === true){
-        makeReservation();
+    else{
+        let attraction = booking.attraction;
+        image.src = attraction.image;
+        title.textContent = attraction.name;
+        date.textContent = booking.date;
+        time.textContent = booking.time;
+        price.textContent = booking.price;
+        place.textContent = attraction.address;
+        fee.textContent = booking.price;
     }
 }
 
 
-function checkSignin(){
-    if (memberStatus.textContent === "登入/註冊"){
-        return false;
-    }
-    if(memberStatus.textContent === "登出系統"){
-        return true;
-    }
+
+//delete function
+let deletion = document.getElementById("delete");
+
+deletion.addEventListener("click",deleteBooking);
+//controller
+async function deleteBooking(){
+    await deleteBookingData();
+    renderBookingData();
 }
-
-function pleaseSignin(){
-    filter.style.display = "flex" ;
-    signIn.style.display = "flex" ;
-    signUp.style.display = "none" ;
-}
-
-async function makeReservation(){
-    await insertData();
-    renderBooking();
-}
-
-let ID =  window.location.pathname
-ID = ID.split('/')[2]
-
-
-
-
-
-function insertData(){
-    let chosenDate = document.getElementById("date").value;
-    let price = document.getElementById("money").textContent;
-    let time;
-    if (price === "2000"){time = "上午8點到下午2點";}
-    if (price === "2500"){time = "下午2點到晚上9點";}
-    data = {
-        "attractionId": ID,
-        "date":chosenDate,
-        "time":time,
-        "price":price
-    };
-    console.log(data);
-    fetch("/api/booking", {
-        method:'POST',
-        body:JSON.stringify(data),
-        headers:{
-            'Content-type': 'application/json'
-        }
-    }).then(response => { return response.json();
+//model
+function deleteBookingData(){
+    return fetch(bookingUrl,{
+        method:'DELETE',
+        headers:{'Content-type':'application/json'}
+    }).then(response =>{
+        return response.json();
     }).then(res =>{
         console.log(res);
-    }).catch(error=>{
-        console.log("Error during fetch:"+error.message)
-    });
-}
-
-function renderBooking(){
-    console.log('render!');
+        if(res.ok === true){
+            bookingData = {"data" : null};
+        }
+    }).catch(error =>{
+        console.log("Error during fetch:"+ error.message);
+    })
 }

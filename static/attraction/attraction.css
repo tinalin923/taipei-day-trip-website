@@ -72,6 +72,7 @@ main .figure {
 main .figure .site {
   height: 400px;
   width: 100%;
+  border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;

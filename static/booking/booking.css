@@ -1,9 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;700&display=swap");
+body {
+  height: 100%;
+}
+
 hr {
   border: 1px solid #e8e8e8;
 }
 
-hr:nth-child(7) {
+hr:nth-child(6) {
   margin-top: 40px;
 }
 
@@ -22,16 +26,23 @@ hr:nth-child(7) {
   .booking {
     width: 100%;
     margin: 46px auto 62px auto;
+    padding: 0 10px 0 10px;
   }
 }
 
 @media (min-width: 1200px) {
   .booking {
     width: 1200px;
+    padding: 0px;
   }
 }
 
 .booking .hello {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.booking .hello span {
   font-size: 19px;
   font-weight: bold;
 }
@@ -43,8 +54,22 @@ hr:nth-child(7) {
   }
 }
 
+.booking #booking_data-0 {
+  margin: 35px auto 40px auto;
+}
+
+@media (min-width: 980px) {
+  .booking #booking_data-0 {
+    width: 980px;
+  }
+}
+
+.booking #booking_data-1 {
+  margin: 35px auto 40px auto;
+}
+
 @media (min-width: 600px) {
-  .booking .schedule {
+  .booking #booking_data-1 .schedule {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -56,12 +81,12 @@ hr:nth-child(7) {
 }
 
 @media (min-width: 980px) {
-  .booking .schedule {
+  .booking #booking_data-1 .schedule {
     width: 980px;
   }
 }
 
-.booking .schedule .schedule_figure img {
+.booking #booking_data-1 .schedule .schedule_figure img {
   width: 100%;
   height: 256px;
   margin: 35px 0px;
@@ -72,7 +97,7 @@ hr:nth-child(7) {
 }
 
 @media (min-width: 600px) {
-  .booking .schedule .schedule_figure img {
+  .booking #booking_data-1 .schedule .schedule_figure img {
     width: 266px;
     height: 200px;
     margin: 0px;
@@ -80,7 +105,7 @@ hr:nth-child(7) {
 }
 
 @media (min-width: 600px) {
-  .booking .schedule .schedule_result {
+  .booking #booking_data-1 .schedule .schedule_result {
     margin-left: 22px;
     -webkit-box-flex: 1;
         -ms-flex: auto;
@@ -88,48 +113,64 @@ hr:nth-child(7) {
   }
 }
 
-.booking .schedule .schedule_result .schedule_result-title {
+.booking #booking_data-1 .schedule .schedule_result .schedule_result-title {
   font-weight: bold;
   color: #448899;
   margin-bottom: 30px;
 }
 
-.booking .schedule .schedule_result .schedule_result_form {
+.booking #booking_data-1 .schedule .schedule_result .schedule_result-title span {
+  font-weight: bold;
+  color: #448899;
+}
+
+.booking #booking_data-1 .schedule .schedule_result .schedule_result_form {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 48px auto;
       grid-template-columns: 48px auto;
   grid-column-gap: 5px;
-  grid-row-gap: 20px;
+  grid-row-gap: 15px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.booking .schedule .schedule_result .schedule_result_form div:nth-child(odd) {
+.booking #booking_data-1 .schedule .schedule_result .schedule_result_form div:nth-child(odd) {
   font-weight: bold;
 }
 
-.booking .schedule .schedule_delete {
+.booking #booking_data-1 .schedule .schedule_delete {
+  height: 30px;
   text-align: right;
   margin-top: 5px;
   margin-bottom: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.booking #booking_data-1 .schedule .schedule_delete img {
+  opacity: 50%;
+}
+
+.booking #booking_data-1 .schedule .schedule_delete img:hover {
+  opacity: 100%;
 }
 
 @media (min-width: 980px) {
-  .booking .input {
+  .booking #booking_data-1 .input {
     width: 980px;
     margin: 0px auto;
   }
 }
 
-.booking .input h2 {
+.booking #booking_data-1 .input h2 {
   margin-top: 44px;
   margin-bottom: 24px;
   font-weight: bold;
 }
 
-.booking .input .input_form {
+.booking #booking_data-1 .input .input_form {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 81px 200px;
@@ -140,7 +181,7 @@ hr:nth-child(7) {
           align-items: center;
 }
 
-.booking .input .input_form input {
+.booking #booking_data-1 .input .input_form input {
   border-style: solid;
   border-width: 1px;
   border-color: #e8e8e8;
@@ -150,30 +191,34 @@ hr:nth-child(7) {
   padding: 10px;
 }
 
-.booking .input h3 {
+.booking #booking_data-1 .input h3 {
   margin-top: 20px;
   margin-bottom: 40px;
   font-weight: bold;
 }
 
-.booking .check {
+.booking #booking_data-1 .check {
   text-align: right;
 }
 
 @media (min-width: 980px) {
-  .booking .check {
+  .booking #booking_data-1 .check {
     width: 980px;
     margin: 0px auto;
   }
 }
 
-.booking .check h3 {
+.booking #booking_data-1 .check h3 {
   margin-top: 43px;
   margin-bottom: 25px;
   font-weight: bold;
 }
 
-.booking .check .check_button {
+.booking #booking_data-1 .check h3 span {
+  font-weight: bold;
+}
+
+.booking #booking_data-1 .check .check_button {
   background-color: #448899;
   color: white;
   font-size: 19px;
@@ -185,17 +230,12 @@ hr:nth-child(7) {
 
 footer {
   background: #757575;
-  height: 104px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  text-align: center;
   font-weight: bold;
   color: white;
+  -webkit-box-shadow: 0 50vh 0 50vh #757575;
+          box-shadow: 0 50vh 0 50vh #757575;
 }
 /*# sourceMappingURL=booking.css.map */
