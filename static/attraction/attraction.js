@@ -7,7 +7,8 @@ let imageCount = 0;
 let dotIndex = 0;
 let date = document.getElementById("date");    //設定input = date的範圍
 date.min = new Date().toLocaleDateString('en-ca');   //用en-US沒用
-
+let dateAlert = document.getElementById("date_alert");   //日期的前端驗證
+date.addEventListener("click",()=>{dateAlert.textContent = "";});
 //controller
 async function loadData(){
     await getData();
@@ -75,8 +76,6 @@ function render(){
     })
 }
 
-
-
 let Pic = document.getElementById("img");
 let dotsContainer = document.getElementsByClassName("dotsContainer")[0];
 let dots = dotsContainer.children;  
@@ -124,8 +123,8 @@ function lundot(index){
 
 //checkbox changing
 let mornBox = document.getElementById("morning");
-let evenBox = document.getElementById("evening")
-let money = document.getElementById("money")
+let evenBox = document.getElementById("evening");
+let money = document.getElementById("money");
 
 evenBox.addEventListener("click",function(){
     mornBox.checked = false;
@@ -138,7 +137,7 @@ mornBox.addEventListener("click",function(){
 
 
 // start to make a reservation
-let bookingButton = document.getElementById("startBooking");
+let bookingButton = document.getElementById("start_booking");
 bookingButton.addEventListener("click",startBooking);
 
 //controller
@@ -168,13 +167,17 @@ function pleaseSignin(){
     signUp.style.display = "none" ;
 }
 
-let ID =  window.location.pathname
-ID = ID.split('/')[2]
-
+// let ID =  window.location.pathname
+// ID = ID.split('/')[2]               //取得景點編號
+let ID = url.split('/')[2];
 function makeReservation(){
-    let chosenDate = document.getElementById("date").value;
-    let price = document.getElementById("money").textContent;
-    price = Number(price);
+    let chosenDate = date.value;
+    if(!chosenDate){
+        dateAlert.textContent = "請選擇預定日期";
+        return ;
+    }       
+    let price = money.textContent;
+    price = Number(price);         //讓字串變數字
     let time;
     if (price === 2000){time = "上午8點到下午2點";}
     if (price === 2500){time = "下午2點到晚上9點";}
@@ -193,15 +196,16 @@ function makeReservation(){
         }
     }).then(response => { return response.json();
     }).then(res =>{
-        console.log(res);
         if(res.error === true){
-            console.log("請選擇預定日期");
+            console.log("Some data is wrong!")
         }
         if (res.ok === true ){
-            alert("預約成功");
             window.location.href = '/booking';
         }
     }).catch(error=>{
         console.log("Error during fetch:"+error.message)
     });
 }
+
+
+

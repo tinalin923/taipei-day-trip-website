@@ -124,14 +124,6 @@ main .figure .dotsContainer {
   margin-bottom: 10px;
 }
 
-main .figure .dotsContainer::-moz-selection {
-  background-color: black;
-}
-
-main .figure .dotsContainer::selection {
-  background-color: black;
-}
-
 main .figure .dotsContainer .off {
   display: inline-block;
   width: 12px;
@@ -142,14 +134,6 @@ main .figure .dotsContainer .off {
   opacity: 0.6;
   margin: 0px 12px 0px 0px;
   cursor: pointer;
-}
-
-main .figure .dotsContainer .off::-moz-selection {
-  background-color: black;
-}
-
-main .figure .dotsContainer .off::selection {
-  background-color: black;
 }
 
 main figcaption {
@@ -222,6 +206,26 @@ main figcaption .booking .booking__item input[type="date"] {
   width: 193px;
   padding: 5px 10px;
   color: black;
+}
+
+main figcaption .booking .booking__item input[type="date"]:focus {
+  outline: none;
+}
+
+main figcaption .booking .booking__item input[type="date"]::-webkit-calendar-picker-indicator {
+  margin: 0;
+  cursor: pointer;
+  background-image: url("../png/icon_calendar.png");
+}
+
+main figcaption .booking .booking__item input[type="date"]:invalid {
+  -webkit-box-shadow: 0px 0px 2px 1px #e71837;
+          box-shadow: 0px 0px 2px 1px #e71837;
+}
+
+main figcaption .booking .booking__item input[type="date"] + span {
+  margin-left: 5px;
+  color: #e71837;
 }
 
 main figcaption .booking .booking__item .booking__item_time {

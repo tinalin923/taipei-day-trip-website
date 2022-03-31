@@ -25,15 +25,15 @@ class Booking(Resource):
             status = 200
             user = jwt.decode(token, secret, algorithms = ['HS512'])
             email = user['email']
-            print("28",email)
-            cnx = cnxpool.get_connection()
-            cursor = cnx.cursor(buffered=True)
-            query = ("SELECT `taipei`.`id`, `name`, `address`, `images`, `date`, `time`, `price`"
-                    "FROM `taipei` JOIN `booking` "
-                    "ON `booking`.`attractionId` = `taipei`.`id` AND `booking`.`email`= %s"
-            )
-            params = (email,)
             try:
+                cnx = cnxpool.get_connection()
+                cursor = cnx.cursor(buffered = True)
+                query = ("SELECT `taipei`.`id`, `name`, `address`, `images`, `date`, `time`, `price`"
+                        "FROM `taipei` JOIN `booking` "
+                        "ON `booking`.`attractionId` = `taipei`.`id` AND `booking`.`email`= %s"
+                )
+                params = (email,)
+            
                 cursor.execute(query,params)
                 data = cursor.fetchone()
                 cursor.close()
@@ -95,16 +95,15 @@ class Booking(Resource):
             date = booking_data['date']
             time = booking_data['time']
             price = booking_data['price']
-
-            cnx = cnxpool.get_connection()
-            cursor = cnx.cursor()
-            query = ("INSERT INTO `booking` (`email`,`attractionId`,`date`,`time`,`price`)"
-                    "VALUES (%s, %s, %s, %s, %s)"
-                    "ON DUPLICATE KEY UPDATE `attractionId`= VALUES(`attractionId`),"
-                    "`date`= VALUES(`date`),`time`= VALUES(`time`),`price`= VALUES(`price`)"
-            )
-            params = (email,attractionId,date,time,price)
             try:
+                cnx = cnxpool.get_connection()
+                cursor = cnx.cursor()
+                query = ("INSERT INTO `booking` (`email`,`attractionId`,`date`,`time`,`price`)"
+                        "VALUES (%s, %s, %s, %s, %s)"
+                        "ON DUPLICATE KEY UPDATE `attractionId`= VALUES(`attractionId`),"
+                        "`date`= VALUES(`date`),`time`= VALUES(`time`),`price`= VALUES(`price`)"
+                )
+                params = (email,attractionId,date,time,price)
                 cursor.execute(query,params)
                 cursor.close()
                 cnx.commit()
@@ -145,11 +144,11 @@ class Booking(Resource):
         else:
             user = jwt.decode(token, secret, algorithms = ['HS512'])
             email = user['email']
-            cnx = cnxpool.get_connection()
-            cursor = cnx.cursor()
-            query = ("DELETE FROM `booking` WHERE `email` = %s")
-            params = (email,)
             try:
+                cnx = cnxpool.get_connection()
+                cursor = cnx.cursor()
+                query = ("DELETE FROM `booking` WHERE `email` = %s")
+                params = (email,)
                 cursor.execute(query,params)
                 cursor.close()
                 cnx.commit()

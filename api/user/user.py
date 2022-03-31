@@ -59,7 +59,11 @@ class User(Resource):
                 return  response
 
             else:
+                
                 cnx = cnxpool.get_connection()
+                connected = cnx.is_connected()
+                if connected == False:
+                    cnxpool.reconnect(attempts = 3, delay = 4)
                 cursor = cnx.cursor()
                 query = (
                     'INSERT INTO `members` (`name`, `email`, `password`) '
@@ -113,6 +117,9 @@ class User(Resource):
                 return response
             else:    
                 cnx = cnxpool.get_connection()
+                connected = cnx.is_connected()
+                if connected == False:
+                    cnxpool.reconnect(attempts = 3, delay = 4)
                 cursor = cnx.cursor()
                 query = ('SELECT `id`,`name`,`password` FROM `members` WHERE `email` = %s ')
                 params = (reqEmail,)
