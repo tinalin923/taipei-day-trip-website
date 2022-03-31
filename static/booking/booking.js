@@ -1,5 +1,6 @@
-//我在common.js特別設定在/booking點登出系統/以及未登入時 會發生的事情(導回首頁)
-//招呼名稱也放到common.js去了
+//我在common.js特別設定在 "/booking頁面點登出系統" 以及"未登入"時會發生的事情(導回首頁)
+//招呼名稱在common.js的checkStatus
+//進入此頁面後會先執行common.js的checkStatus 然後才renderBooking
 let bookingData = {};
 let bookingUrl = '/api/booking';
 
@@ -54,10 +55,10 @@ function renderBookingData(){
 
 
 
-//delete function
+//delete booking data function
 let deletion = document.getElementById("delete");
-
 deletion.addEventListener("click",deleteBooking);
+
 //controller
 async function deleteBooking(){
     await deleteBookingData();
@@ -71,7 +72,6 @@ function deleteBookingData(){
     }).then(response =>{
         return response.json();
     }).then(res =>{
-        console.log(res);
         if(res.ok === true){
             bookingData = {"data" : null};
         }

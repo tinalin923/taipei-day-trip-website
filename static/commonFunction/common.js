@@ -37,9 +37,13 @@ signinbtn.addEventListener("blur", (clean)=>{ inerror.textContent = "";});
 signupbtn.addEventListener("blur", (clean)=>{ uperror.textContent = "";});
 
 let hello_name = document.getElementById("hello_name");
+
 function checkStatus(){
     fetch(userUrl, {
-        method:'GET'
+        method:'GET',
+        headers: {
+            'Content-type': 'application/json'
+        }
     }).then(response =>{ return response.json();
     }).then(res =>{
         if (res.data == null){
@@ -53,7 +57,7 @@ function checkStatus(){
         else{
             memberStatus.textContent = "登出系統";
             if(window.location.pathname === '/booking'){
-                hello_name.textContent = res.data.name;
+                hello_name.textContent = res.data.name;   //設定 /booking頁面的招呼名稱
                 renderBooking();
             }
             
@@ -76,7 +80,6 @@ memberStatus.addEventListener("click", function(){
             }
         }).then( response =>{ return response.json();
         }).then( res =>{ 
-            console.log(res);
             if(window.location.pathname === "/booking"){window.location.href = "/"}
             else{window.location.reload();}
         });
