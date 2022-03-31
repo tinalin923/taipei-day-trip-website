@@ -134,9 +134,9 @@ main{
                         cursor: pointer;
                         background-image:url("../png/icon_calendar.png")
                     }
-                    &:invalid{
-                        box-shadow: 0px 0px 2px 1px #e71837;
-                    }
+                    // &:invalid{
+                    //     box-shadow: 0px 0px 2px 1px #e71837;
+                    // }
 
                 }
                 input[type="date"] + span{

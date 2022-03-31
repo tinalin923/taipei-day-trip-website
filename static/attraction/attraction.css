@@ -218,11 +218,6 @@ main figcaption .booking .booking__item input[type="date"]::-webkit-calendar-pic
   background-image: url("../png/icon_calendar.png");
 }
 
-main figcaption .booking .booking__item input[type="date"]:invalid {
-  -webkit-box-shadow: 0px 0px 2px 1px #e71837;
-          box-shadow: 0px 0px 2px 1px #e71837;
-}
-
 main figcaption .booking .booking__item input[type="date"] + span {
   margin-left: 5px;
   color: #e71837;
