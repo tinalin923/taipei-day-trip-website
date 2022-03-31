@@ -1,4 +1,17 @@
-let userurl = '/api/user';
+window.addEventListener("DOMContentLoaded",checkStatus);
+let booking = document.getElementById("booking")
+booking.addEventListener("click",function(){
+    if(memberStatus.textContent === "登入/註冊"){
+        filter.style.display = "flex" ;
+        signIn.style.display = "flex" ;
+        signUp.style.display = "none" ;
+    }
+    else{ 
+        window.location.href = "/booking"; 
+    }
+})
+
+let userUrl = '/api/user';
 let filter = document.getElementById("filter");
 let memberStatus = document.getElementById("signinup");
 let signIn = document.querySelector(".filter__block--signin");
@@ -19,43 +32,58 @@ let uppassword = document.getElementById("upPassword");
 let inerror = document.querySelector(".filter__block--errorMessage--in");
 let uperror = document.querySelector(".filter__block--errorMessage--up");
 
-window.addEventListener("load",checkStatus);
+
 signinbtn.addEventListener("blur", (clean)=>{ inerror.textContent = "";});
 signupbtn.addEventListener("blur", (clean)=>{ uperror.textContent = "";});
 
+let hello_name = document.getElementById("hello_name");
+
 function checkStatus(){
-    fetch(userurl, {
-        method:'GET'
+    fetch(userUrl, {
+        method:'GET',
+        headers: {
+            'Content-type': 'application/json'
+        }
     }).then(response =>{ return response.json();
     }).then(res =>{
         if (res.data == null){
-            memberStatus.textContent = "登入/註冊";
+            if(window.location.pathname === '/booking'){
+                window.location.replace('/');
+            }
+            else{
+                memberStatus.textContent = "登入/註冊";
+            }
         }
         else{
             memberStatus.textContent = "登出系統";
+            if(window.location.pathname === '/booking'){
+                hello_name.textContent = res.data.name;   //設定 /booking頁面的招呼名稱
+                renderBooking();
+            }
+            
+            
         }
     });
 }
 memberStatus.addEventListener("click", function(){
-    if(memberStatus.textContent == "登入/註冊"){
+    if(memberStatus.textContent === "登入/註冊"){
         filter.style.display = "flex" ;
         signIn.style.display = "flex" ;
         signUp.style.display = "none" ;
     }
-    else if(memberStatus.textContent == "登出系統"){
+    if(memberStatus.textContent === "登出系統"){
         console.log("登出系統!");
-        fetch(userurl, {
+        fetch(userUrl, {
             method:'DELETE',
             headers: {
                 'Content-type': 'application/json'
             }
         }).then( response =>{ return response.json();
         }).then( res =>{ 
-            console.log(res);
-            location.reload();
+            if(window.location.pathname === "/booking"){window.location.href = "/"}
+            else{window.location.reload();}
         });
     }
-    
 });
 
 
@@ -102,7 +130,7 @@ signinbtn.addEventListener('click',function(){
         inerror.textContent = "請輸入正確信箱格式";
     }
     else{
-        fetch(userurl, {
+        fetch(userUrl, {
             method:'PATCH',
             body:JSON.stringify({
                 "email": inemail.value,
@@ -133,7 +161,7 @@ signupbtn.addEventListener("click", function(){
         uperror.textContent = "請輸入正確信箱格式";
     }
     else{
-        fetch(userurl, {
+        fetch(userUrl, {
             method:'POST',
             body:JSON.stringify({
                 "name": upname.value,

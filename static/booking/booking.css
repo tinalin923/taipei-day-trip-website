@@ -1,1 +1,241 @@
-/* No CSS *//*# sourceMappingURL=booking.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;700&display=swap");
+body {
+  height: 100%;
+}
+
+hr {
+  border: 1px solid #e8e8e8;
+}
+
+hr:nth-child(6) {
+  margin-top: 40px;
+}
+
+@media (min-width: 1200px) {
+  hr {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.booking {
+  margin: 46px 10px 62px 10px;
+}
+
+@media (min-width: 600px) {
+  .booking {
+    width: 100%;
+    margin: 46px auto 62px auto;
+    padding: 0 10px 0 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .booking {
+    width: 1200px;
+    padding: 0px;
+  }
+}
+
+.booking .hello {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.booking .hello span {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+@media (min-width: 980px) {
+  .booking .hello {
+    width: 980px;
+    margin: 0px auto;
+  }
+}
+
+.booking #booking_data-0 {
+  margin: 35px auto 40px auto;
+}
+
+@media (min-width: 980px) {
+  .booking #booking_data-0 {
+    width: 980px;
+  }
+}
+
+.booking #booking_data-1 {
+  margin: 35px auto 40px auto;
+}
+
+@media (min-width: 600px) {
+  .booking #booking_data-1 .schedule {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 35px auto 40px auto;
+  }
+}
+
+@media (min-width: 980px) {
+  .booking #booking_data-1 .schedule {
+    width: 980px;
+  }
+}
+
+.booking #booking_data-1 .schedule .schedule_figure img {
+  width: 100%;
+  height: 256px;
+  margin: 35px 0px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+@media (min-width: 600px) {
+  .booking #booking_data-1 .schedule .schedule_figure img {
+    width: 266px;
+    height: 200px;
+    margin: 0px;
+  }
+}
+
+@media (min-width: 600px) {
+  .booking #booking_data-1 .schedule .schedule_result {
+    margin-left: 22px;
+    -webkit-box-flex: 1;
+        -ms-flex: auto;
+            flex: auto;
+  }
+}
+
+.booking #booking_data-1 .schedule .schedule_result .schedule_result-title {
+  font-weight: bold;
+  color: #448899;
+  margin-bottom: 30px;
+}
+
+.booking #booking_data-1 .schedule .schedule_result .schedule_result-title span {
+  font-weight: bold;
+  color: #448899;
+}
+
+.booking #booking_data-1 .schedule .schedule_result .schedule_result_form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 48px auto;
+      grid-template-columns: 48px auto;
+  grid-column-gap: 5px;
+  grid-row-gap: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.booking #booking_data-1 .schedule .schedule_result .schedule_result_form div:nth-child(odd) {
+  font-weight: bold;
+}
+
+.booking #booking_data-1 .schedule .schedule_delete {
+  height: 30px;
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.booking #booking_data-1 .schedule .schedule_delete img {
+  opacity: 50%;
+}
+
+.booking #booking_data-1 .schedule .schedule_delete img:hover {
+  opacity: 100%;
+}
+
+@media (min-width: 980px) {
+  .booking #booking_data-1 .input {
+    width: 980px;
+    margin: 0px auto;
+  }
+}
+
+.booking #booking_data-1 .input h2 {
+  margin-top: 44px;
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+
+.booking #booking_data-1 .input .input_form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 81px 200px;
+      grid-template-columns: 81px 200px;
+  grid-row-gap: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.booking #booking_data-1 .input .input_form input {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e8e8e8;
+  border-radius: 5px;
+  width: 200px;
+  height: 38px;
+  padding: 10px;
+}
+
+.booking #booking_data-1 .input h3 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.booking #booking_data-1 .check {
+  text-align: right;
+}
+
+@media (min-width: 980px) {
+  .booking #booking_data-1 .check {
+    width: 980px;
+    margin: 0px auto;
+  }
+}
+
+.booking #booking_data-1 .check h3 {
+  margin-top: 43px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.booking #booking_data-1 .check h3 span {
+  font-weight: bold;
+}
+
+.booking #booking_data-1 .check .check_button {
+  background-color: #448899;
+  color: white;
+  font-size: 19px;
+  font-weight: 100;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 20px;
+}
+
+footer {
+  background: #757575;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  -webkit-box-shadow: 0 50vh 0 50vh #757575;
+          box-shadow: 0 50vh 0 50vh #757575;
+}
+/*# sourceMappingURL=booking.css.map */

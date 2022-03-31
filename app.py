@@ -3,6 +3,7 @@ from flask_restful import Api, Resource
 from api.attraction.getlist import attractions_bp
 from api.attraction.idgetlist import attraction_bp 
 from api.user.user import user_bp
+from api.booking.booking import booking_bp
 
 app=Flask(__name__,template_folder='templates',static_folder='static')
 app.config.from_object('config.DevConfig')
@@ -13,6 +14,7 @@ app.config['JSON_SORT_KEYS'] = False
 app.register_blueprint(attractions_bp)
 app.register_blueprint(attraction_bp)
 app.register_blueprint(user_bp)
+app.register_blueprint(booking_bp)
 
 # Pages
 @app.route("/")

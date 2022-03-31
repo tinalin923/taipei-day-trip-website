@@ -40,6 +40,7 @@ main{
         .site{
             height:400px;
             width:100%;
+            border-radius: 5px;
             object-fit: cover; object-position: center;
             @media(max-width:600px){
                 height: 350px;
@@ -72,9 +73,7 @@ main{
             justify-content: center;
             z-index: 2;
             margin-bottom: 10px;
-            &::selection{background-color: black;}
             .off{
-                &::selection{background-color: black;}
                 display: inline-block;
                 width: 12px;
                 height: 12px;
@@ -84,8 +83,6 @@ main{
                 opacity: 0.6;
                 margin: 0px 12px 0px 0px;
                 cursor: pointer;
-                
-                // &:focus{ background-color: black;}
             } 
         }    
     }
@@ -129,6 +126,23 @@ main{
                     width:193px;
                     padding: 5px 10px;
                     color: black;
+                    &:focus{
+                        outline:none;
+                    }
+                    &::-webkit-calendar-picker-indicator{
+                        margin:0;
+                        cursor: pointer;
+                        background-image:url("../png/icon_calendar.png")
+                    }
+                    // &:invalid{
+                    //     box-shadow: 0px 0px 2px 1px #e71837;
+                    // }
+
+                }
+                input[type="date"] + span{
+                    margin-left: 5px;
+                    color: #e71837;
+
                 }
                 .booking__item_time{
                     display:flex;

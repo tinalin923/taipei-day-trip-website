@@ -1,7 +1,7 @@
 import os 
 from dotenv import load_dotenv   
 load_dotenv()  
-from mysql.connector import Error
+# from mysql.connector import Error
 from mysql.connector import pooling
 
 cnxpool = pooling.MySQLConnectionPool(

@@ -1,11 +1,14 @@
 let Url = new URL(window.location.href);
 let url = Url.pathname;
-let furl = "/api"+url
+let furl = "/api"+url ;
 window.addEventListener("DOMContentLoaded",loadData());
 let datas = {};
 let imageCount = 0;
 let dotIndex = 0;
-
+let date = document.getElementById("date");    //設定input = date的範圍
+date.min = new Date().toLocaleDateString('en-ca');   //用en-US沒用
+let dateAlert = document.getElementById("date_alert");   //日期的前端驗證
+date.addEventListener("click",()=>{dateAlert.textContent = "";});
 //controller
 async function loadData(){
     await getData();
@@ -73,8 +76,6 @@ function render(){
     })
 }
 
-
-
 let Pic = document.getElementById("img");
 let dotsContainer = document.getElementsByClassName("dotsContainer")[0];
 let dots = dotsContainer.children;  
@@ -92,15 +93,12 @@ function lundot(index){
             Pic.src = datas.data.images[imageCount-1];
             dots[imageCount-1].style.backgroundColor = "black";
             dots[0].style.backgroundColor = "white";
-            console.log("倒退");
             dotIndex = imageCount-1;
         }
         else {
             Pic.src = datas.data.images[dotIndex-1];
             dots[dotIndex-1].style.backgroundColor = "black";
             dots[dotIndex].style.backgroundColor = "white";
-            console.log(dotIndex);
-            console.log("前進");
             dotIndex = dotIndex-1 ;
         }        
     }
@@ -109,14 +107,12 @@ function lundot(index){
             Pic.src = datas.data.images[0];
             dots[imageCount-1].style.backgroundColor = "white";
             dots[0].style.backgroundColor = "black";
-            console.log("重來");
             dotIndex = 0;
         }
         else {
             Pic.src = datas.data.images[dotIndex+1];
             dots[dotIndex].style.backgroundColor = "white";
             dots[dotIndex+1].style.backgroundColor = "black";
-            console.log(dotIndex);
             dotIndex++ ;
         }
     }
@@ -127,16 +123,89 @@ function lundot(index){
 
 //checkbox changing
 let mornBox = document.getElementById("morning");
-let evenBox = document.getElementById("evening")
-let money = document.getElementById("money")
+let evenBox = document.getElementById("evening");
+let money = document.getElementById("money");
 
 evenBox.addEventListener("click",function(){
     mornBox.checked = false;
-    money.textContent = "新台幣 2500 元";
+    money.textContent = 2500;
 });
 mornBox.addEventListener("click",function(){
     evenBox.checked = false;
-    money.textContent = "新台幣 2000 元";
+    money.textContent = 2000;
 });
+
+
+// start to make a reservation
+let bookingButton = document.getElementById("start_booking");
+bookingButton.addEventListener("click",startBooking);
+
+//controller
+function startBooking(){
+    let result = checkSignin();
+    if (result === false){
+        pleaseSignin();
+    }
+    if (result === true){
+        makeReservation();
+    }
+}
+
+
+function checkSignin(){
+    if (memberStatus.textContent === "登入/註冊"){
+        return false;
+    }
+    if(memberStatus.textContent === "登出系統"){
+        return true;
+    }
+}
+
+function pleaseSignin(){
+    filter.style.display = "flex" ;
+    signIn.style.display = "flex" ;
+    signUp.style.display = "none" ;
+}
+
+// let ID =  window.location.pathname
+// ID = ID.split('/')[2]               //取得景點編號
+let ID = url.split('/')[2];
+function makeReservation(){
+    let chosenDate = date.value;
+    if(!chosenDate){
+        dateAlert.textContent = "請選擇預定日期";
+        return ;
+    }       
+    let price = money.textContent;
+    price = Number(price);         //讓字串變數字
+    let time;
+    if (price === 2000){time = "上午8點到下午2點";}
+    if (price === 2500){time = "下午2點到晚上9點";}
+    let data = {
+        "attractionId": ID,
+        "date":chosenDate,
+        "time":time,
+        "price":price
+    };
+    console.log(data);
+    fetch("/api/booking", {
+        method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+            'Content-type': 'application/json'
+        }
+    }).then(response => { return response.json();
+    }).then(res =>{
+        if(res.error === true){
+            console.log("Some data is wrong!")
+        }
+        if (res.ok === true ){
+            window.location.href = '/booking';
+        }
+    }).catch(error=>{
+        console.log("Error during fetch:"+error.message)
+    });
+}
+
 
 

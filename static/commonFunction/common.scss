@@ -62,10 +62,7 @@
         to {opacity: 1;}
     }
     animation: fadeIn 0.6s;
-    // .filter__block--signup{     //why useless?
-    //     display: none;
-    // }
-    
+        
     div[class^='filter__block--sign']{
         position:fixed;
         z-index: 7;
@@ -119,6 +116,24 @@
             padding: 15px;
             margin:10px 15px 0 15px;
             color: #666666;
+            transition: box-shadow 0.5s ;
+            &:focus{
+                outline:none;
+            }
+            &:invalid{
+                // background-image: url("../png/remove.png");
+                // background-size: 20px;
+                // background-repeat:no-repeat;
+                // background-position: 97%;
+                box-shadow: 0px 0px 2px 1px #e71837;
+            }
+            &:valid{
+                background-image: url("../png/correct.png");
+                background-size: 20px;
+                background-repeat:no-repeat;
+                background-position: 97%;
+                opacity:1;
+            }
         }
         .filter__block--btn{
             margin: 10px 15px;
@@ -136,8 +151,9 @@
         }
         div[class^='filter__block--errorMessage']{
             margin:0px 15px 10px 15px;
+            height:20px;
             text-align: center;
-            color: red;
+            color: #e71837;
         }
         div[class^='filter__block--other']{
             margin: 0px 15px 15px 15px;
