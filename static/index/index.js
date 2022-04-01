@@ -6,6 +6,7 @@ let key_word = "";         //先前使用者輸入的關鍵字
 // let surl ="/api/attractions?keyword="+key_word+"&page="+key_page;
 let Attractions = {};
 let isLoading = false;            //管控是否可以連線
+let loader = document.getElementById("loader");
 let footer = document.getElementsByTagName("footer")[0];
 let searchButton = document.querySelector(".search__button");
 
@@ -27,7 +28,6 @@ window.addEventListener("scroll",()=>{
 
 //用unobserve似乎無法完整關掉observer (用disconnect?)
 function callback(entries){
-    // console.log(entries);
     if (!entries[0].isIntersecting){return ;}   
     else if (isLoading == true){return ; } 
     else{
@@ -72,7 +72,10 @@ function render(){
         type.appendChild(right);
         place.appendChild(site);
         place.appendChild(type);
-        introduc.appendChild(fragment);}
+        loader.style.display = "none";
+        introduc.appendChild(fragment);
+        
+    }
 }
 
 // function fetch(){
@@ -82,7 +85,8 @@ function render(){
 
 
 function loadDatas(){
-    if(isLoading == true){return;}
+    if(isLoading == true){return ; }
+    loader.style.display = "block";
     isLoading = true;                        
     let url = "/api/attractions?page="+page;
     fetch(url).then(res => {

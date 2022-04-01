@@ -194,7 +194,7 @@ function makeReservation(){
         headers:{
             'Content-type': 'application/json'
         }
-    }).then(response => { return response.json();
+    }).then(response => {return response.json();
     }).then(res =>{
         if(res.error === true){
             console.log("Some data is wrong!")

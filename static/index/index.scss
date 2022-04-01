@@ -135,6 +135,25 @@ $text-size:16px;
         }
     }
 }    
+#loader{
+    display: block;
+    width:80px;
+    height: 80px;
+    margin:0 auto;
+    
+    .loader{
+        margin: auto ;
+        border-radius: 50%;
+        border: 8px solid white;
+        border-top:8px solid #66AABB;
+        animation: spin 1s infinite linear;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); width:48px; height:48px; }
+        50% { transform: rotate(180deg); width:72px; height:72px; }
+        100% { transform: rotate(360deg); width:48px; height:48px;}
+    }   
+}
 footer {
     margin-top: 10px;
     background:#757575;
