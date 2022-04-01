@@ -172,6 +172,24 @@
   text-align: center;
 }
 
+.filter .filter__block--info-e {
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  width: 310px;
+  height: 47px;
+  padding: 15px;
+  margin: 10px 15px 0 15px;
+  color: #666666;
+  -webkit-transition: -webkit-box-shadow 0.5s;
+  transition: -webkit-box-shadow 0.5s;
+  transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s, -webkit-box-shadow 0.5s;
+}
+
+.filter .filter__block--info-e:focus {
+  outline: none;
+}
+
 .filter .filter__block--info {
   border: 1px solid #cccccc;
   border-radius: 5px;
@@ -188,19 +206,6 @@
 
 .filter .filter__block--info:focus {
   outline: none;
-}
-
-.filter .filter__block--info:invalid {
-  -webkit-box-shadow: 0px 0px 2px 1px #e71837;
-          box-shadow: 0px 0px 2px 1px #e71837;
-}
-
-.filter .filter__block--info:valid {
-  background-image: url("../png/correct.png");
-  background-size: 20px;
-  background-repeat: no-repeat;
-  background-position: 97%;
-  opacity: 1;
 }
 
 .filter .filter__block--btn {
@@ -235,5 +240,18 @@
   margin: 0px 15px 15px 15px;
   text-align: center;
   cursor: pointer;
+}
+
+.invalid {
+  -webkit-box-shadow: 0px 0px 2px 1px #e76718;
+          box-shadow: 0px 0px 2px 1px #e76718;
+}
+
+.valid {
+  background-image: url("../png/check-circle-regular-24.png");
+  background-size: 28px;
+  background-repeat: no-repeat;
+  background-position: 97%;
+  opacity: 1;
 }
 /*# sourceMappingURL=common.css.map */

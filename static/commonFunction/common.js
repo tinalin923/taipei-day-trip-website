@@ -103,27 +103,64 @@ closebtns.forEach((closebtn) => {
 
 inToUp.addEventListener("click",function(){
     inemail.value = "";
+    inemail.classList.remove("valid","invalid")
     inpassword.value = "";
+    inpassword.classList.remove("valid","invalid")
     inerror.textContent = "";
     signIn.style.display = "none";
     signUp.style.display = "flex" ;
+
 });
 
 upToIn.addEventListener("click",function(){
     upname.value = "";
+    upname.classList.remove("valid","invalid")
     upemail.value = "";
+    upemail.classList.remove("valid","invalid")
     uppassword.value = "";
+    uppassword.classList.remove("valid","invalid")
     uperror.textContent = "";
     signIn.style.display = "flex";
     signUp.style.display = "none" ;
 });
 
 
+//frontend validation
 let pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/ ;
 const regex = new RegExp(pattern);
 
+
+let inputs = document.querySelectorAll(".filter__block--info");
+let emailInputs = document.querySelectorAll("input[type=email]");
+
+inputs.forEach(input => { input.addEventListener("input", () =>{
+        if (input.value.length <= 2 ){
+            input.classList.add("invalid");
+            input.classList.remove("valid");
+        }  
+        if (input.value.length > 2){
+            input.classList.remove("invalid");
+            input.classList.add("valid");
+        }        
+    })
+});
+
+emailInputs.forEach(eInput =>{ eInput.addEventListener("input", () =>{
+        if (!regex.test(inemail.value) || !regex.test(upemail.value)){
+            eInput.classList.add("invalid");
+            eInput.classList.remove("valid");
+        }  
+        if (regex.test(inemail.value) || regex.test(upemail.value)){
+            eInput.classList.remove("invalid");
+            eInput.classList.add("valid");
+        }
+    })
+});
+
+
+
 signinbtn.addEventListener('click',function(){
-    if (inemail.value.length == 0 || inpassword.value.length == 0 ){
+    if (inemail.value.length === 0 || inpassword.value.length === 0 ){
         inerror.textContent = "請輸入信箱密碼";
     }
     else if (!regex.test(inemail.value)){

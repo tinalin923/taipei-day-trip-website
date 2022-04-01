@@ -108,7 +108,7 @@
             cursor: pointer;
             text-align: center; 
         }
-        .filter__block--info{
+        .filter__block--info-e{
             border: 1px solid #cccccc ;
             border-radius: 5px;
             width: 310px;
@@ -120,19 +120,18 @@
             &:focus{
                 outline:none;
             }
-            &:invalid{
-                // background-image: url("../png/remove.png");
-                // background-size: 20px;
-                // background-repeat:no-repeat;
-                // background-position: 97%;
-                box-shadow: 0px 0px 2px 1px #e71837;
-            }
-            &:valid{
-                background-image: url("../png/correct.png");
-                background-size: 20px;
-                background-repeat:no-repeat;
-                background-position: 97%;
-                opacity:1;
+        }
+        .filter__block--info{
+            border: 1px solid #cccccc ;
+            border-radius: 5px;
+            width: 310px;
+            height: 47px;
+            padding: 15px;
+            margin:10px 15px 0 15px;
+            color: #666666;
+            transition: box-shadow 0.5s ;
+            &:focus{
+                outline:none;
             }
         }
         .filter__block--btn{
@@ -166,3 +165,18 @@
        
 }
 
+
+.invalid{
+    // background-image: url("../png/remove.png");
+    // background-size: 20px;
+    // background-repeat:no-repeat;
+    // background-position: 97%;
+    box-shadow: 0px 0px 2px 1px #e76718;
+}
+.valid{
+    background-image: url("../png/check-circle-regular-24.png");
+    background-size: 28px;
+    background-repeat:no-repeat;
+    background-position: 97%;
+    opacity:1;
+}

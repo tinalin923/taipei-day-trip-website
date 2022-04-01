@@ -21,7 +21,6 @@ def getList():
                     }),400)
                     return response
             try:
-                
                 cnx = cnxpool.get_connection()            #也可以用一次取12+1筆來確定有沒有下一頁，就不用Count(*)了
                 connected = cnx.is_connected()
                 if connected == False:
@@ -32,13 +31,14 @@ def getList():
                 cursor.execute(query,params)
                 count = cursor.fetchone()[0]
             except Error as err:
+                cursor.close()
+                cnx.close()
                 print("Error:{}".format(err))
                 response = make_response(jsonify({
                     "error": True,
                     "message": err
                 }),500)
-                return response
-            # count = int(count)    
+                return response   
             if count == 0:
                 cursor.close()
                 cnx.close()
@@ -95,20 +95,14 @@ def getList():
                 cnx = cnxpool.get_connection()
                 connected = cnx.is_connected()
                 if connected == False:
-                    print(False)
-                    cnxpool.reconnect(attempts = 3, delay = 4)
+                    cnx.reconnect(attempts = 3, delay = 4)
                 cursor = cnx.cursor()
                 query = ("SELECT * FROM `taipei` LIMIT 12 OFFSET %s")
                 params = (12*page,)
                 cursor.execute(query,params)
                 datas = cursor.fetchall()     # datas為list
-
                 cursor.execute("SELECT COUNT(id) FROM `taipei`")
                 total = cursor.fetchone()[0]
-
-                # total = int(total)
-                cursor.close()
-                cnx.close()
             except Error as err:
                 print("Error:{}".format(err))
                 response = make_response(jsonify({
@@ -116,6 +110,9 @@ def getList():
                     "message": err
                 }),500)
                 return response
+            finally:
+                cursor.close()
+                cnx.close()
             if datas == []:
                 response = make_response(jsonify({"nextpage":None,"data":[]}),200)
                 return response
