@@ -4,7 +4,8 @@
 {%block head%}
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='booking/booking.css')}}">
 <script type="text/javascript" src="/static/booking/booking.js" defer></script>
-<title>預定行程</title>
+<script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
+<title>Taipei Day Trip-預定行程</title>
 {%endblock%}
 
 {%block content%}
@@ -43,19 +44,27 @@
         <hr>
         <div class="input">
             <h2>信用付款資訊</h2>
-            <form class="input_form" action="">
-                <label for="number">卡片號碼：</label><input type="password" placeholder="**** **** **** ****" name="number" id="card_number">
-                <label for="expir-date">過期時間：</label><input placeholder="MM / YY" name="expir-date" id="card_date">
-                <label for="cvv">驗證密碼：</label><input placeholder="CVV" name="cvv" id="card_cvv">
+            <form class="card_form" >
+                <label for="number">卡片號碼：</label><div name="number" id="card_number"></div>
+                <label for="expir-date">過期時間：</label><div name="expir-date" id="card_expirdate"></div>
+                <label for="ccv">驗證密碼：</label><div name="ccv" id="card_ccv"></div>
             </form>
+            <!-- <div id="card_container"></div> -->
+            <!-- <div class="tpfield" id="card-number"></div>
+            <div class="tpfield" id="card-expiration-date"></div>
+            <div class="tpfield" id="card-cvv"></div> -->
         </div>
         <hr>
         <div class="check">
         
             <h3>總價：新台幣 <span id="check_fee"></span> 元</h3>
-            <button class="check_button" type="submit" id="confirm" >確認訂購並付款</button>
+            <button class="check_button" type="button" id="submit" disabled>確認訂購並付款</button>
 
         </div>
     </div>
+   
+</div>
+<div id="loader">
+    <div class="loader"></div>
 </div>
 {%endblock%}

@@ -37,7 +37,7 @@ signinbtn.addEventListener("blur", (clean)=>{ inerror.textContent = "";});
 signupbtn.addEventListener("blur", (clean)=>{ uperror.textContent = "";});
 
 let hello_name = document.getElementById("hello_name");
-
+let orderEmail = document.getElementById("inform_email");
 function checkStatus(){
     fetch(userUrl, {
         method:'GET',
@@ -58,10 +58,10 @@ function checkStatus(){
             memberStatus.textContent = "登出系統";
             if(window.location.pathname === '/booking'){
                 hello_name.textContent = res.data.name;   //設定 /booking頁面的招呼名稱
+                orderEmail.value = res.data.email;
+                
                 renderBooking();
             }
-            
-            
         }
     });
 }
@@ -96,6 +96,11 @@ closebtns.forEach((closebtn) => {
     upname.value = "";
     upemail.value = "";
     uppassword.value = "";
+    inemail.classList.remove("valid","invalid");
+    inpassword.classList.remove("valid","invalid");
+    upname.classList.remove("valid","invalid");
+    upemail.classList.remove("valid","invalid");
+    uppassword.classList.remove("valid","invalid");
     filter.style.display = "none" ;
     });
 }
@@ -103,9 +108,9 @@ closebtns.forEach((closebtn) => {
 
 inToUp.addEventListener("click",function(){
     inemail.value = "";
-    inemail.classList.remove("valid","invalid")
+    inemail.classList.remove("valid","invalid");
     inpassword.value = "";
-    inpassword.classList.remove("valid","invalid")
+    inpassword.classList.remove("valid","invalid");
     inerror.textContent = "";
     signIn.style.display = "none";
     signUp.style.display = "flex" ;
@@ -114,11 +119,11 @@ inToUp.addEventListener("click",function(){
 
 upToIn.addEventListener("click",function(){
     upname.value = "";
-    upname.classList.remove("valid","invalid")
+    upname.classList.remove("valid","invalid");
     upemail.value = "";
-    upemail.classList.remove("valid","invalid")
+    upemail.classList.remove("valid","invalid");
     uppassword.value = "";
-    uppassword.classList.remove("valid","invalid")
+    uppassword.classList.remove("valid","invalid");
     uperror.textContent = "";
     signIn.style.display = "flex";
     signUp.style.display = "none" ;

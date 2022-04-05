@@ -21,6 +21,7 @@ hr{
 }
 
 .booking{
+    display:none;
     margin: 46px 10px 62px 10px;
     @media(min-width:600px){
         width:100%;
@@ -52,6 +53,7 @@ hr{
         }
     }
     #booking_data-1{
+        
         margin: 35px auto 40px auto;
         
         .schedule{
@@ -150,8 +152,15 @@ hr{
                     height:38px;
                     padding: 10px;
                     
-                }
-                
+                }                
+            }
+            .card_form{
+                display:grid;
+                grid-template-columns:81px 200px;
+                grid-row-gap:15px;
+                grid-column-gap:10px;
+                align-items:center;
+                // grid-auto-rows: 38px;
             }
             h3{
                 margin-top:20px;
@@ -184,11 +193,42 @@ hr{
                 border-radius:5px;
                 border:none;
                 padding:10px 20px;
+                &:hover{
+                    background-color:#3a717f;
+                }
+                &:disabled{
+                    color:rgba(255, 255, 255, 0.466);
+                }
+                &:disabled:hover{
+                    color:rgba(255, 255, 255, 0.466);
+                    background-color:#448899;
+                }         
             }
         }
     }
+    
 }
-
+#loader{
+    display: block;
+    width:80px;
+    height: 80px;
+    margin:50px auto;
+    
+    .loader{
+        width: 40px;
+        height: 40px;
+        margin: auto ;
+        border-radius: 50%;
+        border: 6px solid white;
+        border-top:6px solid #66AABB;
+        animation: spin 1s infinite linear;
+    }
+    @keyframes spin {
+        0% { transform: rotate(40deg); }
+        50% { transform: rotate(200deg); }
+        100% { transform: rotate(400deg); }
+    }   
+}
 footer {
     background:#757575;
     padding-top: 45px;

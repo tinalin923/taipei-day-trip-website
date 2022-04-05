@@ -30,7 +30,7 @@ class Booking(Resource):
                 connected = cnx.is_connected()
                 if connected == False:
                     cnx.reconnect(attempts = 3, delay = 4)
-                cursor = cnx.cursor(buffered = True)
+                cursor = cnx.cursor(buffered = False)
                 query = ("SELECT `taipei`.`id`, `name`, `address`, `images`, `date`, `time`, `price`"
                         "FROM `taipei` JOIN `booking` "
                         "ON `booking`.`attractionId` = `taipei`.`id` AND `booking`.`email`= %s"

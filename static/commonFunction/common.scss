@@ -22,10 +22,12 @@
         justify-content: space-between;   //左右貼齊
         align-items: center;
         @media(max-width:1200px){width:100%}
-        
+        .blank{
+            flex:auto;
+        }
         > a {
             padding:10px 0px 10px 10px;
-            flex:auto;
+            flex:none;
             color:#448899;
             font-weight:bold;
             font-size:30px; 
@@ -40,6 +42,9 @@
             .nav__item{
                 padding:20px 10px;
                 cursor: pointer;
+                &:hover{
+                    color: #9b9b9b;
+                }
             }
         }
     }
@@ -56,17 +61,17 @@
     z-index: 6;
     width: 100%;
     height: 100%;
-    background-color: rgba($color: #000000, $alpha: 0.25);
+    background-color: rgba($color: #000000, $alpha: 0.35);
     @keyframes fadeIn {
-        from {opacity: 0.5;}
+        from {opacity: 0.1;}
         to {opacity: 1;}
     }
-    animation: fadeIn 0.6s;
+    animation: fadeIn 0.8s;
         
     div[class^='filter__block--sign']{
         position:fixed;
         z-index: 7;
-        top:80px;
+        top:110px;
         width:340px;
         background-color: #ffffff;
         border-radius: 6px;
@@ -76,10 +81,10 @@
         vertical-align: center;
         flex-direction: column;
         @keyframes moveDown {
-            from {top: 60px;}
-            to {top:80px;}
+            from {top: 80px;}
+            to {top:110px;}
         }
-        animation: moveDown 0.6s;
+        animation: moveDown 0.5s;
         
     }
         
@@ -98,6 +103,8 @@
             margin:15px 15px 5px 15px;
         }
         .filter__block--closebtn{
+            width: 30px;
+            height: 30px;
             position: absolute;
             // position:fixed;
             z-index: 99;
@@ -105,8 +112,13 @@
             right:17px;
             background-color: #ffffff;
             border: none;
+            border-radius: 50%;
             cursor: pointer;
-            text-align: center; 
+            text-align: center;
+            transition:transform 0.5s;
+            &:hover{
+                transform: translateY(-2px);
+            }
         }
         .filter__block--info-e{
             border: 1px solid #cccccc ;

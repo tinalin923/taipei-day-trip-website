@@ -87,7 +87,6 @@ function lun(img_src){
 
 //use arrows to change picture
 function lundot(index){
-    console.log(index);
     if ( index == "previous"){
         if(dots[0].style.backgroundColor == "black"){
             Pic.src = datas.data.images[imageCount-1];
@@ -187,13 +186,12 @@ function makeReservation(){
         "time":time,
         "price":price
     };
-    console.log(data);
     fetch("/api/booking", {
         method:'POST',
-        body:JSON.stringify(data),
         headers:{
             'Content-type': 'application/json'
-        }
+        },
+        body:JSON.stringify(data)
     }).then(response => {return response.json();
     }).then(res =>{
         if(res.error === true){
