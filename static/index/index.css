@@ -130,7 +130,6 @@
 .hero-image .hero-text .search .search__button:hover {
   -webkit-box-shadow: 0px 0px 10px 1px #f8f8f8;
           box-shadow: 0px 0px 10px 1px #f8f8f8;
-  background-color: #448899;
 }
 
 .hero-image .hero-text .search .search__button:hover img {

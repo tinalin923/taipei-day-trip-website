@@ -39,8 +39,7 @@ class Booking(Resource):
             
                 cursor.execute(query,params)
                 data = cursor.fetchone()
-                cursor.close()
-                cnx.close()
+                
                 # data = list(data)   #不用讓tuple變成list,也可進行split操作
                 if data == None:
                     res = {
@@ -73,8 +72,12 @@ class Booking(Resource):
             except Error as e:
                 print("Error:{}".format(e))
                 res = {
-                    "data":None
+                    "error":True,
+                    "message":"資料庫存取失敗"
                 }
+            finally:
+                cursor.close()
+                cnx.close()
             
         response = make_response(jsonify(res),status)
         response.headers['Access-Control-Allow-Origin'] = '*'

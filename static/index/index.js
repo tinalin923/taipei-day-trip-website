@@ -39,7 +39,6 @@ function callback(entries){
         // else{observer.unobserve(entries[0].target);return ;}    
 }}
 
-
 function render(){
     let fragment = document.createDocumentFragment();
     for(let i = 0; i < Attractions.data.length; i++ ){
@@ -77,12 +76,6 @@ function render(){
         
     }
 }
-
-// function fetch(){
-
-
-// }
-
 
 function loadDatas(){
     if(isLoading == true){return ; }

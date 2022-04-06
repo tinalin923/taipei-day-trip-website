@@ -5,13 +5,13 @@
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='booking/booking.css')}}">
 <script type="text/javascript" src="/static/booking/booking.js" defer></script>
 <script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
-<title>Taipei Day Trip-預定行程</title>
+<title>Taipei Day Trip-預訂行程</title>
 {%endblock%}
 
 {%block content%}
 
 <div class="booking">
-    <div class="hello">您好，<span id="hello_name"></span>，待預定的行程如下：</div>
+    <div class="hello">您好，<span id="hello_name"></span>，待預訂的行程如下：</div>
     <div id="booking_data-0"></div>
     <div id="booking_data-1">
         <div class="schedule">
@@ -45,14 +45,10 @@
         <div class="input">
             <h2>信用付款資訊</h2>
             <form class="card_form" >
-                <label for="number">卡片號碼：</label><div name="number" id="card_number"></div>
-                <label for="expir-date">過期時間：</label><div name="expir-date" id="card_expirdate"></div>
-                <label for="ccv">驗證密碼：</label><div name="ccv" id="card_ccv"></div>
+                <label >卡片號碼：</label><div class="tpfield" id="card_number"></div>
+                <label >過期時間：</label><div class="tpfield" id="card_expirdate"></div>
+                <label >驗證密碼：</label><div class="tpfield" id="card_ccv"></div>
             </form>
-            <!-- <div id="card_container"></div> -->
-            <!-- <div class="tpfield" id="card-number"></div>
-            <div class="tpfield" id="card-expiration-date"></div>
-            <div class="tpfield" id="card-cvv"></div> -->
         </div>
         <hr>
         <div class="check">

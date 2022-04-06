@@ -161,6 +161,12 @@ hr{
                 grid-column-gap:10px;
                 align-items:center;
                 // grid-auto-rows: 38px;
+                .tpfield{
+                    border: 1px solid #e8e8e8;
+                    border-radius: 5px;
+                    height: 38px;
+                    padding: 10px;
+                }
             }
             h3{
                 margin-top:20px;

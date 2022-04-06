@@ -1,5 +1,5 @@
 //我在common.js特別設定在 "/booking頁面點登出系統" 以及"未登入"時會發生的事情(導回首頁)
-//招呼名稱在common.js的checkStatus
+//招呼名稱&一開始就填好的emial 在common.js的checkStatus
 //進入此頁面後會先執行common.js的checkStatus 然後才renderBooking
 let bookingData = {};
 let bookingUrl = '/api/booking';
@@ -42,7 +42,7 @@ function renderBookingData(){
     if (booking === null){
         booking_data_1.style.display = "none";
         bookloader.style.display = "none";
-        booking_data_0.textContent = "目前沒有任何待預定的行程";
+        booking_data_0.textContent = "目前沒有任何待預訂的行程";
         view.style.display = "block"
     }
     else{
@@ -90,8 +90,6 @@ function deleteBookingData(){
 
 //TapPay
 TPDirect.setupSDK(123974, 'app_Su0QGyWrBn4npBIkbwdCDBpbvYg1W9VYarqyLmKJOeDvytFEFL8ChREYbfGU', 'sandbox')
-// TPDirect.card.setup(".card_inform")
-
 const fields = {
     number:{
         element: document.getElementById("card_number"),
@@ -106,38 +104,41 @@ const fields = {
         placeholder: 'ccv'
     }
 }
-
+const styles = {
+    'input':{
+        'color': 'gray',
+    },
+    ':focus': {
+        'color': 'black'
+    },
+    '.valid': {
+        'color': 'green'
+    },
+    '.invalid': {
+        'color': 'red'
+    }
+}
 TPDirect.card.setup({
     fields: fields,
-    styles: {
-        'input':{
-            'color': 'gray',
-        },
-        ':focus': {
-            'color': 'black'
-        },
-        '.valid': {
-            'color': 'green'
-        },
-        '.invalid': {
-            'color': 'red'
-        },
-
-    }
+    styles: styles
 })
+
 let submitbtn = document.getElementById("submit");
 TPDirect.card.onUpdate(function (update) {
     // update.canGetPrime === true
     // --> you can call TPDirect.card.getPrime()
     if (update.canGetPrime) {
         // Enable submit Button to get prime.
-        // console.log("btn abled")
         submitbtn.removeAttribute('disabled');
     } else {
         // Disable submit Button to get prime.
         submitbtn.setAttribute('disabled', true)
     }
 })
+
+
+
+
 
 submitbtn.addEventListener("click",getPrime);
 function getPrime(){
@@ -151,7 +152,7 @@ function getPrime(){
             console.log("get prime error"+result.msg);
             return ;
         } 
-        console.log("get prime 成功, prime:"+result.card.prime);
+        console.log("get prime 成功");
         let prime = result.card.prime;
         let booking = bookingData.data;
         let attraction = booking.attraction;
@@ -180,10 +181,10 @@ function getPrime(){
             }
         };
         finishOrder(orderData);
+
     })
 }
-
-
+let orderNumber = "";
 function finishOrder(data){
     fetch("/api/orders",{
         method: 'POST',
@@ -191,7 +192,17 @@ function finishOrder(data){
         body:JSON.stringify(data)
     }).then (response =>{return response.json();
     }).then (res=>{
-        console.log(res);
+        if (res.data.payment.status === 0){
+            let paramsObj = {number:res.data.number};
+            let serachParams = new URLSearchParams(paramsObj).toString();
+            window.location.replace("/thankyou?"+serachParams);
+        } else if (res.data.payment.status === 1){
+            orderNumber = res.data.number;
+            window.location.reload();
+            
+        } else {
+            console.log(res);
+        }
     }).catch(error =>{
         console.log("Error during fetch:"+error.message);
     })

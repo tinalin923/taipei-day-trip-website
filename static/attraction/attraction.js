@@ -172,7 +172,7 @@ let ID = url.split('/')[2];
 function makeReservation(){
     let chosenDate = date.value;
     if(!chosenDate){
-        dateAlert.textContent = "請選擇預定日期";
+        dateAlert.textContent = "請選擇預訂日期";
         return ;
     }       
     let price = money.textContent;

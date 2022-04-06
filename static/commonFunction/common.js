@@ -59,7 +59,6 @@ function checkStatus(){
             if(window.location.pathname === '/booking'){
                 hello_name.textContent = res.data.name;   //設定 /booking頁面的招呼名稱
                 orderEmail.value = res.data.email;
-                
                 renderBooking();
             }
         }

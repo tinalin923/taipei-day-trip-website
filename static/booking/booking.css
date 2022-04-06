@@ -204,6 +204,13 @@ hr:nth-child(6) {
           align-items: center;
 }
 
+.booking #booking_data-1 .input .card_form .tpfield {
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  height: 38px;
+  padding: 10px;
+}
+
 .booking #booking_data-1 .input h3 {
   margin-top: 20px;
   margin-bottom: 40px;
