@@ -192,6 +192,16 @@ hr:nth-child(6) {
   padding: 10px;
 }
 
+.booking #booking_data-1 .input .input_form input:focus {
+  outline: none;
+}
+
+.booking #booking_data-1 .input h3 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
 .booking #booking_data-1 .input .card_form {
   display: -ms-grid;
   display: grid;
@@ -211,14 +221,9 @@ hr:nth-child(6) {
   padding: 10px;
 }
 
-.booking #booking_data-1 .input h3 {
-  margin-top: 20px;
-  margin-bottom: 40px;
-  font-weight: bold;
-}
-
 .booking #booking_data-1 .check {
   text-align: right;
+  display: block;
 }
 
 @media (min-width: 980px) {
@@ -245,7 +250,10 @@ hr:nth-child(6) {
   font-weight: 100;
   border-radius: 5px;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 5px 10px 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .booking #booking_data-1 .check .check_button:hover {
@@ -259,6 +267,62 @@ hr:nth-child(6) {
 .booking #booking_data-1 .check .check_button:disabled:hover {
   color: rgba(255, 255, 255, 0.466);
   background-color: #448899;
+}
+
+.booking #booking_data-1 .check .check_button #loader_submit {
+  width: 15px;
+  height: 15px;
+  margin-left: 3px;
+  margin-top: 7px;
+}
+
+.booking #booking_data-1 .check .check_button #loader_submit .loader_submit {
+  display: none;
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  border-radius: 50%;
+  border: 3px solid white;
+  border-top: 3px solid #66AABB;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(40deg);
+            transform: rotate(40deg);
+  }
+  50% {
+    -webkit-transform: rotate(200deg);
+            transform: rotate(200deg);
+  }
+  100% {
+    -webkit-transform: rotate(400deg);
+            transform: rotate(400deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(40deg);
+            transform: rotate(40deg);
+  }
+  50% {
+    -webkit-transform: rotate(200deg);
+            transform: rotate(200deg);
+  }
+  100% {
+    -webkit-transform: rotate(400deg);
+            transform: rotate(400deg);
+  }
+}
+
+.booking #booking_data-1 .check #inform_error {
+  height: 34px;
+  color: #e71837;
+  padding-top: 10px;
+  padding-right: 15px;
 }
 
 #loader {
@@ -277,21 +341,6 @@ hr:nth-child(6) {
   border-top: 6px solid #66AABB;
   -webkit-animation: spin 1s infinite linear;
           animation: spin 1s infinite linear;
-}
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(40deg);
-            transform: rotate(40deg);
-  }
-  50% {
-    -webkit-transform: rotate(200deg);
-            transform: rotate(200deg);
-  }
-  100% {
-    -webkit-transform: rotate(400deg);
-            transform: rotate(400deg);
-  }
 }
 
 @keyframes spin {

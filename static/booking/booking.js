@@ -137,19 +137,49 @@ TPDirect.card.onUpdate(function (update) {
 })
 
 
+// phone frontend validation
+let Phone = document.getElementById("inform_phone");
+let phonePattern = /^09[0-9]{8}$/;
+const phoneRegex = new RegExp(phonePattern);
 
+Phone.addEventListener("input",()=>{
+    if (phoneRegex.test(Phone.value)){
+        Phone.style.color = "#069404";
+    } else { 
+        Phone.style.color = "#e71837";
+    }
+})
 
+function checkContact(){
+    let contactError = document.getElementById("inform_error");
+    if (Phone.value.length === 0){
+        contactError.textContent = "請輸入完整聯絡資訊";
+        return false;
+    } else if (!phoneRegex.test(Phone.value)){
+        contactError.textContent = "請輸入正確手機號碼";
+        return false;
+    } else { 
+        contactError.textContent = "";
+        return true; }
+}
+let submitLoader = document.querySelector(".loader_submit");
 
 submitbtn.addEventListener("click",getPrime);
 function getPrime(){
+    let result = checkContact();
+    console.log(result);
+    if (result === false){return ;}
+    submitLoader.style.display = "block";
     const tappayStatus = TPDirect.card.getTappayFieldsStatus();
     if (tappayStatus.canGetPrime === false){
         console.log("cann't get prime");
+        submitLoader.style.display = "none";
         return ;
     } 
     TPDirect.card.getPrime((result)=>{
         if (result.status !== 0){
             console.log("get prime error"+result.msg);
+            submitLoader.style.display = "none";
             return ;
         } 
         console.log("get prime 成功");
@@ -197,13 +227,13 @@ function finishOrder(data){
             let serachParams = new URLSearchParams(paramsObj).toString();
             window.location.replace("/thankyou?"+serachParams);
         } else if (res.data.payment.status === 1){
-            orderNumber = res.data.number;
+            orderNumber = res.data.number;    //跳出付款失敗的提示
             window.location.reload();
-            
         } else {
             console.log(res);
         }
     }).catch(error =>{
+        window.location.reload();    //跳出登入驗證過期的提示
         console.log("Error during fetch:"+error.message);
     })
 }

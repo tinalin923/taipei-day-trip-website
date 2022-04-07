@@ -34,8 +34,8 @@ def newOrder():
             now_utc = now_utc.strftime("%Y%m%d%H%M%S")   #更改時間表示法，從物件變字串
             ordernumber = now_utc + uId 
             order_data = request.get_json()
-            email = order_data['order']['contact']['email']
-            name = order_data['order']['contact']['name']
+            email = user['email']
+            name = user['name']
             phone = order_data['order']['contact']['phone']
             attractionId = order_data['order']['trip']['attraction']['id']
             date = order_data['order']['trip']['date']

@@ -37,6 +37,7 @@ signinbtn.addEventListener("blur", (clean)=>{ inerror.textContent = "";});
 signupbtn.addEventListener("blur", (clean)=>{ uperror.textContent = "";});
 
 let hello_name = document.getElementById("hello_name");
+let orderName = document.getElementById("inform_name");
 let orderEmail = document.getElementById("inform_email");
 function checkStatus(){
     fetch(userUrl, {
@@ -49,6 +50,8 @@ function checkStatus(){
         if (res.data == null){
             if(window.location.pathname === '/booking'){
                 window.location.replace('/');
+            } else if (window.location.pathname === '/thankyou'){
+                window.location.replace('/');
             }
             else{
                 memberStatus.textContent = "登入/註冊";
@@ -58,6 +61,7 @@ function checkStatus(){
             memberStatus.textContent = "登出系統";
             if(window.location.pathname === '/booking'){
                 hello_name.textContent = res.data.name;   //設定 /booking頁面的招呼名稱
+                orderName.value = res.data.name;
                 orderEmail.value = res.data.email;
                 renderBooking();
             }
@@ -71,7 +75,6 @@ memberStatus.addEventListener("click", function(){
         signUp.style.display = "none" ;
     }
     if(memberStatus.textContent === "登出系統"){
-        console.log("登出系統!");
         fetch(userUrl, {
             method:'DELETE',
             headers: {
@@ -80,6 +83,7 @@ memberStatus.addEventListener("click", function(){
         }).then( response =>{ return response.json();
         }).then( res =>{ 
             if(window.location.pathname === "/booking"){window.location.href = "/"}
+            if(window.location.pathname === "/thankyou"){window.location.href = "/"}
             else{window.location.reload();}
         });
     }
@@ -130,8 +134,11 @@ upToIn.addEventListener("click",function(){
 
 
 //frontend validation
-let pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/ ;
-const regex = new RegExp(pattern);
+let Regex = {
+    emailPattern: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/
+}
+// let emailPattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
+const eamilRegex = new RegExp(Regex.emailPattern);
 
 
 let inputs = document.querySelectorAll(".filter__block--info");
@@ -150,11 +157,11 @@ inputs.forEach(input => { input.addEventListener("input", () =>{
 });
 
 emailInputs.forEach(eInput =>{ eInput.addEventListener("input", () =>{
-        if (!regex.test(inemail.value) || !regex.test(upemail.value)){
+        if (!eamilRegex.test(inemail.value) || !eamilRegex.test(upemail.value)){
             eInput.classList.add("invalid");
             eInput.classList.remove("valid");
         }  
-        if (regex.test(inemail.value) || regex.test(upemail.value)){
+        if (eamilRegex.test(inemail.value) || eamilRegex.test(upemail.value)){
             eInput.classList.remove("invalid");
             eInput.classList.add("valid");
         }
@@ -167,7 +174,7 @@ signinbtn.addEventListener('click',function(){
     if (inemail.value.length === 0 || inpassword.value.length === 0 ){
         inerror.textContent = "請輸入信箱密碼";
     }
-    else if (!regex.test(inemail.value)){
+    else if (!eamilRegex.test(inemail.value)){
         inerror.textContent = "請輸入正確信箱格式";
     }
     else{
@@ -198,7 +205,7 @@ signupbtn.addEventListener("click", function(){
     if (upname.value.length == 0 || upemail.value.length == 0 || uppassword.value.length == 0 ){
         uperror.textContent = "請輸入資料";
     }
-    else if (!regex.test(upemail.value)){
+    else if (!eamilRegex.test(upemail.value)){
         uperror.textContent = "請輸入正確信箱格式";
     }
     else{

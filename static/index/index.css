@@ -103,6 +103,10 @@
   color: #757575;
 }
 
+.hero-image .hero-text .search .search__input:focus {
+  outline: none;
+}
+
 @media (max-width: 600px) {
   .hero-image .hero-text .search .search__input {
     max-width: 230px;

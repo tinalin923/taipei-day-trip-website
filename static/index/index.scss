@@ -60,6 +60,10 @@ $text-size:16px;
                 border:none;
                 font-weight:bold;
                 color:#757575;
+                &:focus{
+                    outline: none;
+
+                }
                 @media(max-width:600px){max-width:230px;}
             }
             .search__button{

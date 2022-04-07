@@ -151,8 +151,15 @@ hr{
                     width:200px;
                     height:38px;
                     padding: 10px;
-                    
+                    &:focus{
+                        outline: none;
+                    }
                 }                
+            }
+            h3{
+                margin-top:20px;
+                margin-bottom:40px;
+                font-weight:bold;
             }
             .card_form{
                 display:grid;
@@ -160,7 +167,6 @@ hr{
                 grid-row-gap:15px;
                 grid-column-gap:10px;
                 align-items:center;
-                // grid-auto-rows: 38px;
                 .tpfield{
                     border: 1px solid #e8e8e8;
                     border-radius: 5px;
@@ -168,15 +174,12 @@ hr{
                     padding: 10px;
                 }
             }
-            h3{
-                margin-top:20px;
-                margin-bottom:40px;
-                font-weight:bold;
-            }
+            
         }
         
         .check{
             text-align:right;
+            display:block;
             @media(min-width:980px){
                 width: 980px;
                 margin: 0px auto;
@@ -198,7 +201,8 @@ hr{
                 font-weight:100;
                 border-radius:5px;
                 border:none;
-                padding:10px 20px;
+                padding:10px 5px 10px 22px;
+                display: flex;
                 &:hover{
                     background-color:#3a717f;
                 }
@@ -208,7 +212,35 @@ hr{
                 &:disabled:hover{
                     color:rgba(255, 255, 255, 0.466);
                     background-color:#448899;
-                }         
+                } 
+                #loader_submit{
+                    width: 15px;
+                    height: 15px;
+                    margin-left: 3px;
+                    margin-top: 7px;
+                    
+                    .loader_submit{
+                        display: none;
+                        width: 15px;
+                        height: 15px;
+                        margin: auto ;
+                        border-radius: 50%;
+                        border: 3px solid white;
+                        border-top:3px solid #66AABB;
+                        animation: spin 1s infinite linear;
+                    }
+                    @keyframes spin {
+                        0% { transform: rotate(40deg); }
+                        50% { transform: rotate(200deg); }
+                        100% { transform: rotate(400deg); }
+                    }   
+                }        
+            }
+            #inform_error{
+                height: 34px;
+                color: #e71837;
+                padding-top: 10px;
+                padding-right: 15px;
             }
         }
     }

@@ -30,16 +30,16 @@ class Booking(Resource):
                 connected = cnx.is_connected()
                 if connected == False:
                     cnx.reconnect(attempts = 3, delay = 4)
-                cursor = cnx.cursor(buffered = False)
+                cursor = cnx.cursor()
                 query = ("SELECT `taipei`.`id`, `name`, `address`, `images`, `date`, `time`, `price`"
                         "FROM `taipei` JOIN `booking` "
                         "ON `booking`.`attractionId` = `taipei`.`id` AND `booking`.`email`= %s"
                 )
                 params = (email,)
-            
                 cursor.execute(query,params)
                 data = cursor.fetchone()
-                
+                cursor.close()
+                cnx.close()
                 # data = list(data)   #不用讓tuple變成list,也可進行split操作
                 if data == None:
                     res = {
@@ -70,14 +70,14 @@ class Booking(Resource):
                         }
                     }
             except Error as e:
+                cursor.close()
+                cnx.close()
                 print("Error:{}".format(e))
                 res = {
                     "error":True,
                     "message":"資料庫存取失敗"
                 }
-            finally:
-                cursor.close()
-                cnx.close()
+                
             
         response = make_response(jsonify(res),status)
         response.headers['Access-Control-Allow-Origin'] = '*'
