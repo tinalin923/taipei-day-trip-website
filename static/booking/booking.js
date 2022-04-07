@@ -144,14 +144,14 @@ const phoneRegex = new RegExp(phonePattern);
 
 Phone.addEventListener("input",()=>{
     if (phoneRegex.test(Phone.value)){
-        Phone.style.color = "#069404";
+        Phone.style.color = "#008000";
     } else { 
-        Phone.style.color = "#e71837";
+        Phone.style.color = "#ff0000";
     }
 })
 
+let contactError = document.getElementById("inform_error");
 function checkContact(){
-    let contactError = document.getElementById("inform_error");
     if (Phone.value.length === 0){
         contactError.textContent = "請輸入完整聯絡資訊";
         return false;
@@ -174,13 +174,13 @@ function getPrime(){
     if (tappayStatus.canGetPrime === false){
         console.log("cann't get prime");
         submitLoader.style.display = "none";
-        return ;
+        contactError.textContent = "無法取得付款金鑰";
     } 
     TPDirect.card.getPrime((result)=>{
         if (result.status !== 0){
             console.log("get prime error"+result.msg);
             submitLoader.style.display = "none";
-            return ;
+            contactError.textContent = "無法取得付款金鑰";
         } 
         console.log("get prime 成功");
         let prime = result.card.prime;
@@ -227,13 +227,19 @@ function finishOrder(data){
             let serachParams = new URLSearchParams(paramsObj).toString();
             window.location.replace("/thankyou?"+serachParams);
         } else if (res.data.payment.status === 1){
-            orderNumber = res.data.number;    //跳出付款失敗的提示
-            window.location.reload();
+            orderNumber = res.data.number;    //跳出付款失敗的提示 (但有建立訂單)
+            submitLoader.style.display = "none";
+            contactError.textContent = "付款失敗，請重新付款";
+            setTimeout("window.location.reload()",3000);
+            
         } else {
             console.log(res);
         }
     }).catch(error =>{
-        window.location.reload();    //跳出登入驗證過期的提示
         console.log("Error during fetch:"+error.message);
+        submitLoader.style.display = "none";
+        contactError.textContent = "付款金鑰已失效/資料庫連線失敗";  //跳出登入驗證過期的提示?
+        setTimeout("window.location.reload()",3000);   
+        
     })
 }

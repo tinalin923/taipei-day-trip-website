@@ -127,7 +127,7 @@ def newOrder():
                         }
                     }
                 }
-                status = 500
+                status = 400
     except:
         res = {
                 "error":True,
