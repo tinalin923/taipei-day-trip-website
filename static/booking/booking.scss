@@ -195,47 +195,52 @@ hr{
                 }
             }
             .check_button{
-                background-color:#448899;
-                color:white;
-                font-size:19px;
-                font-weight:100;
-                border-radius:5px;
-                border:none;
-                padding:10px 5px 10px 22px;
                 display: flex;
-                &:hover{
-                    background-color:#3a717f;
-                }
-                &:disabled{
-                    color:rgba(255, 255, 255, 0.466);
-                }
-                &:disabled:hover{
-                    color:rgba(255, 255, 255, 0.466);
+                justify-content: flex-end;
+                .check_button_text{
                     background-color:#448899;
-                } 
-                #loader_submit{
-                    width: 15px;
-                    height: 15px;
-                    margin-left: 3px;
-                    margin-top: 7px;
-                    
-                    .loader_submit{
-                        display: none;
+                    color:white;
+                    font-size:19px;
+                    font-weight:100;
+                    border-radius:5px;
+                    border:none;
+                    padding:10px 5px 10px 22px;
+                    display: flex;
+                    &:hover{
+                        background-color:#3a717f;
+                    }
+                    &:disabled{
+                        color:rgba(255, 255, 255, 0.466);
+                    }
+                    &:disabled:hover{
+                        color:rgba(255, 255, 255, 0.466);
+                        background-color:#448899;
+                    } 
+                    #loader_submit{
                         width: 15px;
                         height: 15px;
-                        margin: auto ;
-                        border-radius: 50%;
-                        border: 3px solid white;
-                        border-top:3px solid #66AABB;
-                        animation: spin 1s infinite linear;
-                    }
-                    @keyframes spin {
-                        0% { transform: rotate(40deg); }
-                        50% { transform: rotate(200deg); }
-                        100% { transform: rotate(400deg); }
-                    }   
-                }        
+                        margin-left: 3px;
+                        margin-top: 7px;
+                        
+                        .loader_submit{
+                            display: none;
+                            width: 15px;
+                            height: 15px;
+                            margin: auto ;
+                            border-radius: 50%;
+                            border: 3px solid white;
+                            border-top:3px solid #66AABB;
+                            animation: spin 1s infinite linear;
+                        }
+                        @keyframes spin {
+                            0% { transform: rotate(40deg); }
+                            50% { transform: rotate(200deg); }
+                            100% { transform: rotate(400deg); }
+                        }   
+                    }        
+                }
             }
+            
             #inform_error{
                 height: 34px;
                 color: #e71837;

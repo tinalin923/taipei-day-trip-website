@@ -244,6 +244,15 @@ hr:nth-child(6) {
 }
 
 .booking #booking_data-1 .check .check_button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.booking #booking_data-1 .check .check_button .check_button_text {
   background-color: #448899;
   color: white;
   font-size: 19px;
@@ -256,27 +265,27 @@ hr:nth-child(6) {
   display: flex;
 }
 
-.booking #booking_data-1 .check .check_button:hover {
+.booking #booking_data-1 .check .check_button .check_button_text:hover {
   background-color: #3a717f;
 }
 
-.booking #booking_data-1 .check .check_button:disabled {
+.booking #booking_data-1 .check .check_button .check_button_text:disabled {
   color: rgba(255, 255, 255, 0.466);
 }
 
-.booking #booking_data-1 .check .check_button:disabled:hover {
+.booking #booking_data-1 .check .check_button .check_button_text:disabled:hover {
   color: rgba(255, 255, 255, 0.466);
   background-color: #448899;
 }
 
-.booking #booking_data-1 .check .check_button #loader_submit {
+.booking #booking_data-1 .check .check_button .check_button_text #loader_submit {
   width: 15px;
   height: 15px;
   margin-left: 3px;
   margin-top: 7px;
 }
 
-.booking #booking_data-1 .check .check_button #loader_submit .loader_submit {
+.booking #booking_data-1 .check .check_button .check_button_text #loader_submit .loader_submit {
   display: none;
   width: 15px;
   height: 15px;
