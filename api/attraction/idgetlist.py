@@ -28,13 +28,15 @@ def idGetList(attractionId):
         params = (attractionId,) 
         cursor.execute(query,params)
         data = cursor.fetchone()
-        cursor.close()
-        cnx.close()
+        
     except Error as err:
         response = make_response(jsonify({
             "error": True,
             "message": err
         }),500)
+    finally:
+        cursor.close()
+        cnx.close()
     if data == None:
         response = make_response(jsonify({
             "error": True,

@@ -1,12 +1,22 @@
 {% extends "index.html" %}
 
 
-{%block title%}
-
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='thankyou/thankyou.css')}}"/>
+<script type="text/javascript" src="/static/thankyou/thankyou.js" defer></script>
+<title>Taipei Day Trip-預定成功</title>
 {%endblock%}
 
+
 {%block content%}
-
-
-    
+<div class="thanks">
+    <div class="title">Thank you !</div>
+    <div class="content">
+        預訂成功！<br/>
+        您的訂單編號為：<span id="number"></span>。<br/>
+        如有任何問題或建議，歡迎寄信到<a href="#">TPDT@gmail.com</a><br/>
+        感謝您的訂購與支持。
+    </div>
+    <button type="buttton" id="keepgoing">繼續訂購其他行程</button>
+</div>
 {%endblock%}

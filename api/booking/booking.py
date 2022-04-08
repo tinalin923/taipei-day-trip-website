@@ -27,13 +27,15 @@ class Booking(Resource):
             email = user['email']
             try:
                 cnx = cnxpool.get_connection()
-                cursor = cnx.cursor(buffered = True)
+                connected = cnx.is_connected()
+                if connected == False:
+                    cnx.reconnect(attempts = 3, delay = 4)
+                cursor = cnx.cursor()
                 query = ("SELECT `taipei`.`id`, `name`, `address`, `images`, `date`, `time`, `price`"
                         "FROM `taipei` JOIN `booking` "
                         "ON `booking`.`attractionId` = `taipei`.`id` AND `booking`.`email`= %s"
                 )
                 params = (email,)
-            
                 cursor.execute(query,params)
                 data = cursor.fetchone()
                 cursor.close()
@@ -68,10 +70,14 @@ class Booking(Resource):
                         }
                     }
             except Error as e:
+                cursor.close()
+                cnx.close()
                 print("Error:{}".format(e))
                 res = {
-                    "data":None
+                    "error":True,
+                    "message":"資料庫存取失敗"
                 }
+                
             
         response = make_response(jsonify(res),status)
         response.headers['Access-Control-Allow-Origin'] = '*'
@@ -97,6 +103,9 @@ class Booking(Resource):
             price = booking_data['price']
             try:
                 cnx = cnxpool.get_connection()
+                connected = cnx.is_connected()
+                if connected == False:
+                    cnx.reconnect(attempts = 3, delay = 4)
                 cursor = cnx.cursor()
                 query = ("INSERT INTO `booking` (`email`,`attractionId`,`date`,`time`,`price`)"
                         "VALUES (%s, %s, %s, %s, %s)"
@@ -105,9 +114,7 @@ class Booking(Resource):
                 )
                 params = (email,attractionId,date,time,price)
                 cursor.execute(query,params)
-                cursor.close()
                 cnx.commit()
-                cnx.close()
                 res = {
                     "ok":True
                 }
@@ -120,6 +127,9 @@ class Booking(Resource):
                 status = 400
                 print("Error: {}".format(e))
                 # raise
+            finally:
+                cursor.close()
+                cnx.close()
 
         except:
             res = {
@@ -146,6 +156,9 @@ class Booking(Resource):
             email = user['email']
             try:
                 cnx = cnxpool.get_connection()
+                connected = cnx.is_connected()
+                if connected == False:
+                    cnx.reconnect(attempts = 3, delay = 4)
                 cursor = cnx.cursor()
                 query = ("DELETE FROM `booking` WHERE `email` = %s")
                 params = (email,)

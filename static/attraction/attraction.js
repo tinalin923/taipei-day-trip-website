@@ -87,7 +87,6 @@ function lun(img_src){
 
 //use arrows to change picture
 function lundot(index){
-    console.log(index);
     if ( index == "previous"){
         if(dots[0].style.backgroundColor == "black"){
             Pic.src = datas.data.images[imageCount-1];
@@ -173,7 +172,7 @@ let ID = url.split('/')[2];
 function makeReservation(){
     let chosenDate = date.value;
     if(!chosenDate){
-        dateAlert.textContent = "請選擇預定日期";
+        dateAlert.textContent = "請選擇預訂日期";
         return ;
     }       
     let price = money.textContent;
@@ -187,14 +186,13 @@ function makeReservation(){
         "time":time,
         "price":price
     };
-    console.log(data);
     fetch("/api/booking", {
         method:'POST',
-        body:JSON.stringify(data),
         headers:{
             'Content-type': 'application/json'
-        }
-    }).then(response => { return response.json();
+        },
+        body:JSON.stringify(data)
+    }).then(response => {return response.json();
     }).then(res =>{
         if(res.error === true){
             console.log("Some data is wrong!")

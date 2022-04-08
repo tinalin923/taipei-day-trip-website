@@ -21,6 +21,7 @@ hr{
 }
 
 .booking{
+    display:none;
     margin: 46px 10px 62px 10px;
     @media(min-width:600px){
         width:100%;
@@ -52,6 +53,7 @@ hr{
         }
     }
     #booking_data-1{
+        
         margin: 35px auto 40px auto;
         
         .schedule{
@@ -149,19 +151,35 @@ hr{
                     width:200px;
                     height:38px;
                     padding: 10px;
-                    
-                }
-                
+                    &:focus{
+                        outline: none;
+                    }
+                }                
             }
             h3{
                 margin-top:20px;
                 margin-bottom:40px;
                 font-weight:bold;
             }
+            .card_form{
+                display:grid;
+                grid-template-columns:81px 200px;
+                grid-row-gap:15px;
+                grid-column-gap:10px;
+                align-items:center;
+                .tpfield{
+                    border: 1px solid #e8e8e8;
+                    border-radius: 5px;
+                    height: 38px;
+                    padding: 10px;
+                }
+            }
+            
         }
         
         .check{
             text-align:right;
+            display:block;
             @media(min-width:980px){
                 width: 980px;
                 margin: 0px auto;
@@ -177,18 +195,83 @@ hr{
                 }
             }
             .check_button{
-                background-color:#448899;
-                color:white;
-                font-size:19px;
-                font-weight:100;
-                border-radius:5px;
-                border:none;
-                padding:10px 20px;
+                display: flex;
+                justify-content: flex-end;
+                .check_button_text{
+                    background-color:#448899;
+                    color:white;
+                    font-size:19px;
+                    font-weight:100;
+                    border-radius:5px;
+                    border:none;
+                    padding:10px 5px 10px 22px;
+                    display: flex;
+                    &:hover{
+                        background-color:#3a717f;
+                    }
+                    &:disabled{
+                        color:rgba(255, 255, 255, 0.466);
+                    }
+                    &:disabled:hover{
+                        color:rgba(255, 255, 255, 0.466);
+                        background-color:#448899;
+                    } 
+                    #loader_submit{
+                        width: 15px;
+                        height: 15px;
+                        margin-left: 3px;
+                        margin-top: 7px;
+                        
+                        .loader_submit{
+                            display: none;
+                            width: 15px;
+                            height: 15px;
+                            margin: auto ;
+                            border-radius: 50%;
+                            border: 3px solid white;
+                            border-top:3px solid #66AABB;
+                            animation: spin 1s infinite linear;
+                        }
+                        @keyframes spin {
+                            0% { transform: rotate(40deg); }
+                            50% { transform: rotate(200deg); }
+                            100% { transform: rotate(400deg); }
+                        }   
+                    }        
+                }
+            }
+            
+            #inform_error{
+                height: 34px;
+                color: #e71837;
+                padding-top: 10px;
+                padding-right: 15px;
             }
         }
     }
+    
 }
-
+#loader{
+    display: block;
+    width:80px;
+    height: 80px;
+    margin:50px auto;
+    
+    .loader{
+        width: 40px;
+        height: 40px;
+        margin: auto ;
+        border-radius: 50%;
+        border: 6px solid white;
+        border-top:6px solid #66AABB;
+        animation: spin 1s infinite linear;
+    }
+    @keyframes spin {
+        0% { transform: rotate(40deg); }
+        50% { transform: rotate(200deg); }
+        100% { transform: rotate(400deg); }
+    }   
+}
 footer {
     background:#757575;
     padding-top: 45px;
