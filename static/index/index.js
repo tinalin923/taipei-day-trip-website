@@ -96,11 +96,11 @@ function loadDatas(){
 
 function search(){
     if (isLoading == true){return;}
-    console.log("search!");
     keyword = document.querySelector(".search__input").value;   //用let 會重新設一個變數，傳不到外面的全域變數
     if ( !keyword ){return ;}               //key_word一定不會等於" "
     else if ( keyword  && key_page == 0){        //有輸入word 第一次搜尋 有無資料//搜尋無資料 空點
-        isLoading = true;     
+        isLoading = true;
+        loader.style.display = "block";     
         key_word = keyword;
         let url ="/api/attractions?keyword="+key_word+"&page="+ key_page;
         fetch(url).then(res => {return res.json();
@@ -111,6 +111,7 @@ function search(){
             key_page = nextPage;
             introduc.innerHTML = "";
             if (attractions.data == "" ){            // 查無資料 
+                loader.style.display = "none"; 
                 introduc.textContent="查無相關景點";}
             else{                                //有資料 
                 render();
@@ -118,11 +119,12 @@ function search(){
         })
     }
     else if (keyword == key_word && key_page !==0){     //word不變 空點  //word不變.footer被觀察到.key_page !==null: 有無資料
-        if (key_page == null ){console.log("無資料 請不要一直點");return ;}
+        if (key_page == null ){return ;}
         else if (key_page !== null && 
-            footer.getBoundingClientRect().top > window.innerHeight ){console.log("請不要一直點");return ;} //防止連續點擊會自動載入
-        else{ console.log("載入下一頁");
-            isLoading = true;     
+            footer.getBoundingClientRect().top > window.innerHeight ){return ;} //防止連續點擊會自動載入
+        else{ 
+            isLoading = true;   
+            loader.style.display = "block";  
             let url ="/api/attractions?keyword="+key_word+"&page="+ key_page;
             fetch(url).then(res => {return res.json();
                 }).then(attractions => {
@@ -136,6 +138,7 @@ function search(){
     }
     else if( keyword !== key_word) {            //做新的搜尋，頁數歸零
         isLoading = true;     
+        loader.style.display = "block";
         key_word = keyword;
         key_page = 0;     
         let url ="/api/attractions?keyword="+key_word+"&page="+key_page;
@@ -147,6 +150,7 @@ function search(){
                 key_page = nextPage;
                 introduc.innerHTML = "";
                 if (attractions.data == ""){            // 查無資料 key_page==null
+                    loader.style.display = "none"; 
                     introduc.textContent="查無相關景點";}
                 else{                                //有資料 有變key_page
                     render();}

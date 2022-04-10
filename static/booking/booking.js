@@ -167,7 +167,6 @@ let submitLoader = document.querySelector(".loader_submit");
 submitbtn.addEventListener("click",getPrime);
 function getPrime(){
     let result = checkContact();
-    console.log(result);
     if (result === false){return ;}
     submitLoader.style.display = "block";
     const tappayStatus = TPDirect.card.getTappayFieldsStatus();
@@ -180,7 +179,7 @@ function getPrime(){
         if (result.status !== 0){
             console.log("get prime error"+result.msg);
             submitLoader.style.display = "none";
-            contactError.textContent = "無法取得付款金鑰";
+            contactError.textContent = "取得付款金鑰失敗";
         } 
         console.log("get prime 成功");
         let prime = result.card.prime;
