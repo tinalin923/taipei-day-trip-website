@@ -133,9 +133,69 @@ def newOrder():
             }
         status = 500  
     response = make_response(jsonify(res),status)
-    print(res)
     return response
     
+
+@order_bp.route("/api/orders",methods=["GET"])
+def getOrders():
+    token = request.cookies.get('user')
+    if not token:
+        res = {
+            "error": True,
+            "message":"未登入系統，拒絕存取"
+        }
+        status = 403
+    else:
+        user = jwt.decode(token, secret, algorithms = ['HS512'])
+        user_email = user['email']
+        try:
+            cnx = cnxpool.get_connection()
+            connected = cnx.is_connected()
+            if connected == False:
+                cnxpool.reconnect(attempts = 3, delay = 4)
+            cursor = cnx.cursor()
+            query = ("SELECT `orderNumber`, `date`, `price`, `taipei`.`name` "
+                    "FROM `order` JOIN `taipei` " 
+                    "ON `email` = %s AND `taipei`.`id` = `order`.`attractionId`"
+                    "AND `status` = 0")
+            params = (user_email,) 
+            cursor.execute(query,params)
+            datas = cursor.fetchall()
+            cursor.close()
+            cnx.close()
+            status = 200
+            if datas == None:
+                res = {
+                    "data":None
+                }
+            else:
+                res = []
+                for data in datas:
+                    order = {
+                        "data":{
+                            "orderNumber":data[0],
+                            "date":data[1].isoformat(),
+                            "place":data[3],
+                            "price":data[2]
+                        }
+                    }
+                    
+                    res.append(order)
+                    print(res)
+                    print(type(res))
+
+        except Error as e:
+            cursor.close()
+            cnx.close()
+            print("Error: {}".format(e))
+            res = {
+                "error": True,
+                "message": "存取資料庫失敗"
+            }
+            status = 500 
+    response = make_response(jsonify(res),status)
+    return response
+
 
 @order_bp.route("/api/order/<orderNumber>",methods=["GET"])
 def getOrder(orderNumber):
@@ -162,7 +222,6 @@ def getOrder(orderNumber):
             params = (user_email,orderNumber) 
             cursor.execute(query,params)
             data = cursor.fetchone()
-            print(data)
             status = 200
             if data == None:
                 res = {
@@ -199,6 +258,6 @@ def getOrder(orderNumber):
                 "error": True,
                 "message": "存取資料庫失敗"
             }
-            status = 400  
+            status = 500  
     response = make_response(jsonify(res),status)
     return response

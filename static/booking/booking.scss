@@ -1,18 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;700&display=swap');
-//   
-// *{box-sizing: border-box;
-//   margin:0px; padding:0px;
-//   font-family: 'Noto Sans TC', sans-serif;
-//   font-size: 16px;
-//   font-weight: 400;
-//   color: #666666;
-//   }
+
 body{
     height:100%;
 }
 hr{
     border: 1px solid #e8e8e8;
-    &:nth-child(6){margin-top:40px;}    //要把其他div等子元素也算進去
+    &:nth-of-type(3){margin-top:40px;}    
     @media(min-width: 1200px){
         width:1200px;
         margin:0 auto;
@@ -140,13 +133,11 @@ hr{
                 display:grid;
                 grid-template-columns:81px 200px;
                 grid-row-gap:15px;
-                // justify-content:center;
                 align-items:center;
                 input{
                     border-style:solid;
                     border-width:1px;
                     border-color:#e8e8e8;
-                    // border: 1px solid color #e8e8e8;
                     border-radius: 5px;
                     width:200px;
                     height:38px;

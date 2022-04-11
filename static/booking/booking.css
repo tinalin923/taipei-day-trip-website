@@ -7,7 +7,7 @@ hr {
   border: 1px solid #e8e8e8;
 }
 
-hr:nth-child(6) {
+hr:nth-of-type(3) {
   margin-top: 40px;
 }
 

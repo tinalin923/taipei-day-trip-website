@@ -39,6 +39,8 @@ signupbtn.addEventListener("blur", (clean)=>{ uperror.textContent = "";});
 let hello_name = document.getElementById("hello_name");
 let orderName = document.getElementById("inform_name");
 let orderEmail = document.getElementById("inform_email");
+let memberName = document.getElementById("mName");
+let memberEmail = document.getElementById("mEmail");
 function checkStatus(){
     fetch(userUrl, {
         method:'GET',
@@ -52,40 +54,47 @@ function checkStatus(){
                 window.location.replace('/');
             } else if (window.location.pathname === '/thankyou'){
                 window.location.replace('/');
-            }
-            else{
+            } else if (window.location.pathname === '/member'){
+                window.location.replace('/');
+            } else{
                 memberStatus.textContent = "登入/註冊";
             }
         }
         else{
-            memberStatus.textContent = "登出系統";
-            if(window.location.pathname === '/booking'){
+            memberStatus.textContent = "會員專區";
+            if (window.location.pathname === '/booking'){
                 hello_name.textContent = res.data.name;   //設定 /booking頁面的招呼名稱
                 orderName.value = res.data.name;
                 orderEmail.value = res.data.email;
                 renderBooking();
             }
+            else if (window.location.pathname === '/member'){
+                memberName.textContent = res.data.name;
+                memberEmail.textContent = res.data.email;
+                renderMember();
+            }
         }
     });
 }
 memberStatus.addEventListener("click", function(){
-    if(memberStatus.textContent === "登入/註冊"){
+    if (memberStatus.textContent === "登入/註冊"){
         filter.style.display = "flex" ;
         signIn.style.display = "flex" ;
         signUp.style.display = "none" ;
     }
-    if(memberStatus.textContent === "登出系統"){
-        fetch(userUrl, {
-            method:'DELETE',
-            headers: {
-                'Content-type': 'application/json'
-            }
-        }).then( response =>{ return response.json();
-        }).then( res =>{ 
-            if(window.location.pathname === "/booking"){window.location.href = "/"}
-            if(window.location.pathname === "/thankyou"){window.location.href = "/"}
-            else{window.location.reload();}
-        });
+    if (memberStatus.textContent === "會員專區"){
+        window.location.href = "/member";
+        // fetch(userUrl, {
+        //     method:'DELETE',
+        //     headers: {
+        //         'Content-type': 'application/json'
+        //     }
+        // }).then( response =>{ return response.json();
+        // }).then( res =>{ 
+        //     if(window.location.pathname === "/booking"){window.location.href = "/"}
+        //     if(window.location.pathname === "/thankyou"){window.location.href = "/"}
+        //     else{window.location.reload();}
+        // });
     }
 });
 
@@ -144,7 +153,7 @@ const eamilRegex = new RegExp(Regex.emailPattern);
 let inputs = document.querySelectorAll(".filter__block--info");
 let emailInputs = document.querySelectorAll("input[type=email]");
 
-inputs.forEach(input => { input.addEventListener("input", () =>{
+inputs.forEach(input => { input.addEventListener("input", () => {
         if (input.value.length <= 2 ){
             input.classList.add("invalid");
             input.classList.remove("valid");
@@ -156,7 +165,7 @@ inputs.forEach(input => { input.addEventListener("input", () =>{
     })
 });
 
-emailInputs.forEach(eInput =>{ eInput.addEventListener("input", () =>{
+emailInputs.forEach(eInput => { eInput.addEventListener("input", () => {
         if (!eamilRegex.test(inemail.value) || !eamilRegex.test(upemail.value)){
             eInput.classList.add("invalid");
             eInput.classList.remove("valid");
@@ -170,7 +179,7 @@ emailInputs.forEach(eInput =>{ eInput.addEventListener("input", () =>{
 
 
 
-signinbtn.addEventListener('click',function(){
+signinbtn.addEventListener('click', () => {
     if (inemail.value.length === 0 || inpassword.value.length === 0 ){
         inerror.textContent = "請輸入信箱密碼";
     }

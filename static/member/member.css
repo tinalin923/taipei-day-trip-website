@@ -1,0 +1,188 @@
+body {
+  height: 100%;
+}
+
+hr {
+  border: 1px solid #e8e8e8;
+}
+
+hr:nth-of-type(1) {
+  margin-top: 40px;
+}
+
+@media (min-width: 1200px) {
+  hr {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+#member_all {
+  display: none;
+}
+
+.member {
+  margin: 50px auto 30px auto;
+}
+
+@media (min-width: 980px) {
+  .member {
+    width: 980px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.member .member_pic {
+  margin: 10px auto;
+  text-align: center;
+}
+
+@media (min-width: 980px) {
+  .member .member_pic {
+    margin: 10px 20px 10px auto;
+  }
+}
+
+.member .member_pic .man_head {
+  fill: #56aac0;
+}
+
+.member .member_pic .man_body {
+  fill: #56aac0;
+  stroke: #56aac0;
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+
+.member .member_pic button {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.member .member_details {
+  margin: 20px auto;
+  width: 320px;
+}
+
+@media (min-width: 980px) {
+  .member .member_details {
+    margin: 10px auto 10px 20px;
+  }
+}
+
+.member .member_details #error_password {
+  color: #e71837;
+}
+
+.member .member_details .member_details_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.member .member_details .member_details_row:first-child {
+  margin-bottom: 20px;
+}
+
+.member .member_details .member_details_row div:nth-child(even) {
+  margin: 5px;
+  width: 200px;
+}
+
+.member .member_details .member_details_row input {
+  margin: 5px;
+  width: 200px;
+  border-color: white;
+  border-style: none;
+  outline: none;
+}
+
+.member .member_details .member_details_row button {
+  border: none;
+  padding: 10px;
+  background-color: white;
+}
+
+.member .member_details .member_details_row button:nth-of-type(2) {
+  display: none;
+}
+
+.member .member_details .member_details_row button img {
+  width: 20px;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.member .member_details .member_details_row button img:hover {
+  opacity: 0.8;
+}
+
+#loader {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 50px auto;
+}
+
+#loader .loader {
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  border-radius: 50%;
+  border: 6px solid white;
+  border-top: 6px solid #66AABB;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(40deg);
+            transform: rotate(40deg);
+  }
+  50% {
+    -webkit-transform: rotate(200deg);
+            transform: rotate(200deg);
+  }
+  100% {
+    -webkit-transform: rotate(400deg);
+            transform: rotate(400deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(40deg);
+            transform: rotate(40deg);
+  }
+  50% {
+    -webkit-transform: rotate(200deg);
+            transform: rotate(200deg);
+  }
+  100% {
+    -webkit-transform: rotate(400deg);
+            transform: rotate(400deg);
+  }
+}
+
+footer {
+  background: #757575;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  -webkit-box-shadow: 0 50vh 0 50vh #757575;
+          box-shadow: 0 50vh 0 50vh #757575;
+}
+/*# sourceMappingURL=member.css.map */

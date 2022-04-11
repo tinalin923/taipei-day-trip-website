@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+
+{%block head%}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='member/member.css')}}"/>
+<script type="text/javascript" src="/static/member/member.js" defer></script>
+<title>Taipei Day Trip-會員專區</title>
+{%endblock%}
+
+{%block content%}
+<div id="member_all">
+    <div class="member">
+        <div class="member_pic">
+            <div>
+                <svg id="man" width="100" height="110">
+                    <circle class="man_head" cx="50" cy="35" r="20"></circle>
+                    <polygon class="man_body" points="20,92,35,65,65,65,80,92"></polygon>
+                </svg>
+            </div>
+            <button id="logout">會員登出</button>
+        </div>
+        <div class="member_details">
+            <div class="member_details_row">
+                <div>會員名稱：</div><div id="mName"></div>
+            </div>
+            <div class="member_details_row">
+                <div>帳號：</div><div id="mEmail"></div>
+            </div>
+            <div class="member_details_row">
+                <div>密碼：</div><input type="password" id="mPassword" readonly/>
+                <button id="changePassword"><img src="../static/png/edit-alt-regular-24.png"></button>
+                <button id="savePassword"><img src="../static/png/save-regular-24.png"></button>
+            </div>
+            <div id="error_password"></div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="order_list">
+        <table>
+            <tr>
+                <th></th>
+                
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="loader">
+    <div class="loader"></div>
+</div>
+
+{%endblock%}
