@@ -111,6 +111,7 @@ hr{
                     align-items:center;
                     div:nth-child(odd){
                         font-weight:bold;
+                        min-width:48px;
                     }
                 }
             }
@@ -171,6 +172,9 @@ hr{
                 grid-row-gap:15px;
                 grid-column-gap:10px;
                 align-items:center;
+                label{
+                    min-width: 80px;
+                }
                 .tpfield{                       // 要設定為.tpfield才可以去更改版面設定
                     border: 1px solid #e8e8e8;
                     border-radius: 5px;

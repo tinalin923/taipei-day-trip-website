@@ -155,6 +155,7 @@ hr:nth-of-type(3) {
 
 .booking #booking_data-1 .schedule .schedule_result .schedule_result_form div:nth-child(odd) {
   font-weight: bold;
+  min-width: 48px;
 }
 
 .booking #booking_data-1 .schedule .schedule_delete {
@@ -228,6 +229,10 @@ hr:nth-of-type(3) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.booking #booking_data-1 .input .card_form label {
+  min-width: 80px;
 }
 
 .booking #booking_data-1 .input .card_form .tpfield {

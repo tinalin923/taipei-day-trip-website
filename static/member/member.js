@@ -100,7 +100,7 @@ let logOut = document.getElementById("logout");
 logOut.addEventListener("click",() =>{
     fetch(userUrl, {
         method:'DELETE',
-        headers: {'Content-type': 'application/json'}
+        headers: {'Content-type': 'application/json'},
     }).then( response =>{ return response.json();
     }).then( res =>{ window.location.href = "/";
     });
