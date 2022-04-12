@@ -17,17 +17,17 @@ hr{
 
 .member{
     margin: 50px auto 30px auto;
-        @media(min-width:980px){
-            width:980px;
+        @media(min-width:600px){
+            width:600px;
             display: flex;
             align-items: center;
         }
         .member_pic{
-            margin: 10px auto;
+            margin: 20px auto;
             text-align: center;
 
             @media(min-width:980px){
-                margin:10px 20px 10px auto;
+                margin:20px 20px 20px auto;
             }
             .man_head{
                 fill:#56aac0;
@@ -51,14 +51,17 @@ hr{
         }
         .member_details{
             margin: 20px auto;
-            width: 320px;
+            width: 90%;
+            
             @media(min-width:980px){
-                margin:10px auto 10px 20px;
+                margin:20px auto 20px 20px;
+                width: 60%;
             }
             #error_password{
                 color:#e71837;
             }
             .member_details_row{
+                margin: 10px;
                 display: flex;
                 align-items: center;
                 &:first-child{
@@ -67,11 +70,11 @@ hr{
                 
                 div:nth-child(even){
                     margin: 5px;
-                    width: 200px;
+                    width: 180px;
                 }
                 input{
                     margin: 5px;
-                    width: 200px;
+                    width: 180px;
                     border-color: white;
                     border-style: none;
                     outline: none;
@@ -185,6 +188,9 @@ hr{
         .order_details_block_right{
             margin-left: 20px;
             padding-top: 10px;
+            @media(min-width:980px){
+                margin-left: 30px;
+            }
         }
     }
 }

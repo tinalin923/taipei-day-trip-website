@@ -25,9 +25,9 @@ hr:nth-of-type(1) {
   margin: 50px auto 30px auto;
 }
 
-@media (min-width: 980px) {
+@media (min-width: 600px) {
   .member {
-    width: 980px;
+    width: 600px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -38,13 +38,13 @@ hr:nth-of-type(1) {
 }
 
 .member .member_pic {
-  margin: 10px auto;
+  margin: 20px auto;
   text-align: center;
 }
 
 @media (min-width: 980px) {
   .member .member_pic {
-    margin: 10px 20px 10px auto;
+    margin: 20px 20px 20px auto;
   }
 }
 
@@ -73,12 +73,13 @@ hr:nth-of-type(1) {
 
 .member .member_details {
   margin: 20px auto;
-  width: 320px;
+  width: 90%;
 }
 
 @media (min-width: 980px) {
   .member .member_details {
-    margin: 10px auto 10px 20px;
+    margin: 20px auto 20px 20px;
+    width: 60%;
   }
 }
 
@@ -87,6 +88,7 @@ hr:nth-of-type(1) {
 }
 
 .member .member_details .member_details_row {
+  margin: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,12 +103,12 @@ hr:nth-of-type(1) {
 
 .member .member_details .member_details_row div:nth-child(even) {
   margin: 5px;
-  width: 200px;
+  width: 180px;
 }
 
 .member .member_details .member_details_row input {
   margin: 5px;
-  width: 200px;
+  width: 180px;
   border-color: white;
   border-style: none;
   outline: none;
@@ -261,6 +263,12 @@ hr:nth-of-type(1) {
 .order_details .order_details_block .order_details_block_right {
   margin-left: 20px;
   padding-top: 10px;
+}
+
+@media (min-width: 980px) {
+  .order_details .order_details_block .order_details_block_right {
+    margin-left: 30px;
+  }
 }
 
 #loader {
