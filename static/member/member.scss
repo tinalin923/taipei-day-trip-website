@@ -165,6 +165,10 @@ hr{
         display: flex;
         align-items: center;
         margin:10px 0px ;
+        div:nth-child(1){
+            min-width:80px;
+        }
+        
     }
     .order_details_block{
         margin-top: 15px;

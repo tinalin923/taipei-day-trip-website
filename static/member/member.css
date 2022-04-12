@@ -231,6 +231,10 @@ hr:nth-of-type(1) {
   margin: 10px 0px;
 }
 
+.order_details .order_details_item div:nth-child(1) {
+  min-width: 80px;
+}
+
 .order_details .order_details_block {
   margin-top: 15px;
 }
