@@ -24,11 +24,11 @@ hr{
         }
         .member_pic{
             margin: 10px auto;
+            text-align: center;
+
             @media(min-width:980px){
                 margin:10px 20px 10px auto;
             }
-            
-            text-align: center;
             .man_head{
                 fill:#56aac0;
             }
@@ -43,6 +43,10 @@ hr{
                 border-radius: 5px;
                 padding: 8px;
                 cursor: pointer;
+                &:hover{
+                    color: #121111;
+                    background-color: #e8e8e8;
+                }
             }
         }
         .member_details{
@@ -95,11 +99,94 @@ hr{
 }
 
 .order_list{
-
-
-
-
+    margin: 40px auto 40px auto;
+    width: 90%;
+    @media(min-width:980px){
+        width:780px;
+    }
+    .order_list_title{
+        margin: 30px 0px;
+        font-weight: bold;
+    }
+    .order_list_head{
+        margin: 0px 0px;
+        border-bottom: 1px solid #757575;
+        display: flex;
+        align-items: baseline;
+        div{
+            padding-bottom: 2px;
+            text-align: center;
+            &:nth-child(odd){
+                width:35%;
+            }
+            &:nth-child(even){
+                width: 15%;
+            }
+        }
+    }
+    #order_list_body{
+        margin: 20px 0px 30px 0px;
+        text-align: center;
+        .order_list_body_row{
+            margin: 20px 0px;
+            border-bottom: 1px solid #757575;
+            display: flex;
+            align-items: baseline;
+            div{
+                padding: 3px;
+                text-align: center;
+                word-break: break-all;
+                &:nth-child(odd){
+                    width:35%;
+                }
+                &:nth-child(even){
+                    width: 15%;
+                }
+            }
+            .order_list_body_row_number{
+                &:hover{
+                    font-weight: bold;
+                    color:#2a2727;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }
+.order_details{
+    display: none;
+    margin: 10px auto 40px auto;
+    text-align: center;
+    width: 90%;
+    @media(min-width:980px){
+        width:780px;
+    }
+    .order_details_item{
+        display: flex;
+        align-items: center;
+        margin:10px 0px ;
+    }
+    .order_details_block{
+        margin-top: 15px;
+        @media(min-width:980px){
+            display:flex;
+        }
+        img{
+            width:85%;
+            border-radius: 5px;
+            @media(min-width:980px){
+                width:50%;
+            }
+        }
+        .order_details_block_right{
+            margin-left: 20px;
+            padding-top: 10px;
+        }
+    }
+}
+
+
+
 
 #loader{
     display: block;

@@ -12,7 +12,6 @@ merchantid = os.getenv("MERCHANTID")
 import jwt
 from datetime import datetime
 
-
 order_bp = Blueprint("order_name",__name__)
 
 @order_bp.route("/api/orders",methods=["POST"])
@@ -32,6 +31,7 @@ def newOrder():
             now_utc = now_utc.strftime("%Y%m%d%H%M%S")   #更改時間表示法，從物件變字串
             ordernumber = now_utc + uId 
             order_data = request.get_json()
+
             email = user['email']
             name = user['name']
             phone = order_data['order']['contact']['phone']
@@ -52,6 +52,8 @@ def newOrder():
                 cursor.close()
                 cnx.close()
             except Error as e:
+                cursor.close()
+                cnx.close()
                 print("Error: {}".format(e))
                 res = {
                     "error": True,
@@ -161,10 +163,8 @@ def getOrders():
             params = (user_email,) 
             cursor.execute(query,params)
             datas = cursor.fetchall()
-            cursor.close()
-            cnx.close()
             status = 200
-            if datas == None:
+            if datas == []:
                 res = {
                     "data":None
                 }
@@ -179,20 +179,17 @@ def getOrders():
                             "price":data[2]
                         }
                     }
-                    
                     res.append(order)
-                    print(res)
-                    print(type(res))
-
         except Error as e:
-            cursor.close()
-            cnx.close()
             print("Error: {}".format(e))
             res = {
                 "error": True,
                 "message": "存取資料庫失敗"
             }
             status = 500 
+        finally:
+            cursor.close()
+            cnx.close()
     response = make_response(jsonify(res),status)
     return response
 
@@ -251,13 +248,14 @@ def getOrder(orderNumber):
                     }
                 }
         except Error as e:
-            cursor.close()
-            cnx.close()
             print("Error: {}".format(e))
             res = {
                 "error": True,
                 "message": "存取資料庫失敗"
             }
             status = 500  
+        finally:
+            cursor.close()
+            cnx.close()
     response = make_response(jsonify(res),status)
     return response

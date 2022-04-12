@@ -34,8 +34,6 @@ class Password(Resource):
                 params = (user_email,) 
                 cursor.execute(query,params)
                 data = cursor.fetchone()
-                cursor.close()
-                cnx.close()
                 if data == None:
                     res = {
                         "error": True,
@@ -48,14 +46,15 @@ class Password(Resource):
                     }
                     status = 200
             except Error as e:
-                cursor.close()
-                cnx.close()
                 print("Error: {}".format(e))
                 res = {
                     "error": True,
                     "message": "存取資料庫失敗"
                 }
                 status = 500 
+            finally: 
+                cursor.close()
+                cnx.close()
 
         response = make_response(jsonify(res),status)
         return response
@@ -83,21 +82,20 @@ class Password(Resource):
                 params = (new_password,user_email) 
                 cursor.execute(query,params)
                 cnx.commit()
-                cursor.close()
-                cnx.close()
                 res = {
                     "ok":True
                 }
                 status = 200
             except Error as e:
-                cursor.close()
-                cnx.close()
                 print("Error: {}".format(e))
                 res = {
                     "error": True,
                     "message": "更新資料庫失敗"
                 }
                 status = 500
+            finally:
+                cursor.close()
+                cnx.close()
 
         response = make_response(jsonify(res),status)
         return response

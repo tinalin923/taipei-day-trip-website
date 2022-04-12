@@ -45,6 +45,19 @@ hr{
             
         }
     }
+    #gobooking{
+        margin: 100px auto 20px 100px;
+        color: white;
+        background-color: #448899;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        cursor: pointer;
+        &:hover{
+            box-shadow:0px 0px 10px 1px #2d9b85d7;
+        }
+    }
     #booking_data-1{
         
         margin: 35px auto 40px auto;
@@ -242,6 +255,7 @@ hr{
     }
     
 }
+
 #loader{
     display: block;
     width:80px;

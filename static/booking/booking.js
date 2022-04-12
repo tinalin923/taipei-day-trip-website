@@ -36,7 +36,10 @@ let place = document.getElementById("schedule_result-place");
 let fee = document.getElementById("check_fee");
 let bookloader = document.getElementById("loader");
 let view = document.querySelector(".booking");
-
+let homebtn = document.getElementById("gobooking");
+homebtn.addEventListener("click",()=>{
+    window.location.href = "/";
+});
 function renderBookingData(){
     let booking = bookingData.data;
     if (booking === null){
@@ -46,6 +49,7 @@ function renderBookingData(){
         view.style.display = "block"
     }
     else{
+        homebtn.style.display = "none";
         let attraction = booking.attraction;
         image.src = attraction.image;
         title.textContent = attraction.name;

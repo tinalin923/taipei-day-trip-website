@@ -84,17 +84,6 @@ memberStatus.addEventListener("click", function(){
     }
     if (memberStatus.textContent === "會員專區"){
         window.location.href = "/member";
-        // fetch(userUrl, {
-        //     method:'DELETE',
-        //     headers: {
-        //         'Content-type': 'application/json'
-        //     }
-        // }).then( response =>{ return response.json();
-        // }).then( res =>{ 
-        //     if(window.location.pathname === "/booking"){window.location.href = "/"}
-        //     if(window.location.pathname === "/thankyou"){window.location.href = "/"}
-        //     else{window.location.reload();}
-        // });
     }
 });
 
