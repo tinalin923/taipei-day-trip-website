@@ -87,8 +87,8 @@ function lun(img_src){
 
 //use arrows to change picture
 function lundot(index){
-    if ( index == "previous"){
-        if(dots[0].style.backgroundColor == "black"){
+    if (index == "previous"){
+        if (dots[0].style.backgroundColor == "black"){
             Pic.src = datas.data.images[imageCount-1];
             dots[imageCount-1].style.backgroundColor = "black";
             dots[0].style.backgroundColor = "white";
@@ -101,8 +101,8 @@ function lundot(index){
             dotIndex = dotIndex-1 ;
         }        
     }
-    if ( index == "next"){
-        if(dots[imageCount-1].style.backgroundColor == "black"){
+    if (index == "next"){
+        if (dots[imageCount-1].style.backgroundColor == "black"){
             Pic.src = datas.data.images[0];
             dots[imageCount-1].style.backgroundColor = "white";
             dots[0].style.backgroundColor = "black";
@@ -155,7 +155,7 @@ function checkSignin(){
     if (memberStatus.textContent === "登入/註冊"){
         return false;
     }
-    if(memberStatus.textContent === "登出系統"){
+    if (memberStatus.textContent === "會員專區"){
         return true;
     }
 }
@@ -171,7 +171,7 @@ function pleaseSignin(){
 let ID = url.split('/')[2];
 function makeReservation(){
     let chosenDate = date.value;
-    if(!chosenDate){
+    if (!chosenDate){
         dateAlert.textContent = "請選擇預訂日期";
         return ;
     }       
@@ -194,10 +194,10 @@ function makeReservation(){
         body:JSON.stringify(data)
     }).then(response => {return response.json();
     }).then(res =>{
-        if(res.error === true){
+        if (res.error === true){
             console.log("Some data is wrong!")
         }
-        if (res.ok === true ){
+        if (res.ok === true){
             window.location.href = '/booking';
         }
     }).catch(error=>{

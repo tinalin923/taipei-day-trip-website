@@ -141,3 +141,5 @@ cython_debug/
 test.py
 api.py
 .vscode
+/*.css
+/*.css.map
