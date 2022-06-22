@@ -62,6 +62,7 @@
 - Infinite scroll of attractions
 
   <img src="./readmedata/scroll.gif" alt="scroll" width="450px" height="300x" />  
+  
   <br/>
  
 - Users can type keywords to find their destinations.
@@ -69,14 +70,14 @@
   <img src="./readmedata/keyword.gif" alt="keyword" width="450px" height="300x"/> 
   
   <br/>
-  <br/>
   
 - Click on the attraction, and users can find detailed information and related pictures.
 
   <img src="./readmedata/attraction.gif" alt="details" width="450px" height="300x"/> 
 
   <br/>
-  <br/>
+
+
 - Pop-up modal of sign in/ sign up with frontend and backend validation
   
   <img src="./readmedata/popup.gif" alt="popupmodal" width="450px" height="300x"/> 
@@ -94,13 +95,13 @@
   
   <img src="./readmedata/membersystem.gif" alt="membersystem" width="450px" height="300x"/> 
 
-
   <br/>
   
 - Responsive web design  
   
   <img src="./readmedata/rwd.gif" alt="rwd" width="450px" height="300x"/> 
- 
+  
+  <br/>
 
 
 ## Contact  
