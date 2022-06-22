@@ -34,6 +34,7 @@
 - CSS
 - Vanilla JavaScript
 - AJAX
+- Responsive Website Design
 - Third Party Library
   -  [TapPay](https://www.tappaysdk.com/zh/)
 
