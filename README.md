@@ -55,51 +55,63 @@
 - Database 
   - MySQL
   - Database Schema
-  <img src="https://user-images.githubusercontent.com/94776718/174860980-2f7b4e4c-f072-4b20-b700-0398b42163d9.png"                  alt="Database Schema" width="550px" height="300px"/> 
+  <img src="https://user-images.githubusercontent.com/94776718/174860980-2f7b4e4c-f072-4b20-b700-0398b42163d9.png" alt="Database Schema" width="550px" height="300px"/> 
+
 
 ## Usages
 
 - Infinite scroll of attractions
 
-  <img src="https://user-images.githubusercontent.com/94776718/174944022-372562f7-8758-4bf0-b7a1-5e86403d52cf.gif" alt="scroll" width="450px" height="300x" />  
-  <br/>
+
+  <img src="./readmedata/scroll.gif" alt="scroll" width="450px" height="300x"/>  
+  
+  <br/>  
+  <br/>  
  
 - Users can type keywords to find their destinations.
 
-  <img src="" alt="keyword" width="450px" height="300x"/> 
+  <img src="./readmedata/keyword.gif" alt="keyword" width="450px" height="300x"/> 
   
-  <br/>
+  <br/>  
+  <br/>  
   
 - Click on the attraction, and users can find detailed information and related pictures.
 
-  <img src="" alt="details" width="450px" height="300x"/> 
+  <img src="./readmedata/attraction.gif" alt="details" width="450px" height="300x"/> 
 
-  <br/>
-  
-- Pop-up modal of sign in/ sign up
-  
-  <img src="https://user-images.githubusercontent.com/94776718/174873846-ed06e331-4ad7-4054-93db-8e950d028133.gif" alt="popupmodal" width="450px" height="300x"/> 
+  <br/>  
+  <br/>  
 
-  <br/>
+
+- Pop-up modal of sign in/ sign up with frontend and backend validation
+  
+  <img src="./readmedata/popup.gif" alt="popupmodal" width="450px" height="300x"/> 
+
+  <br/>  
+  <br/>  
   
 - After signing in, users can book the trip and pay online by TapPay.  
   
-  <img src="https://user-images.githubusercontent.com/94776718/174873413-0ca86e6f-6182-4489-a756-47bd2180a0d2.gif" alt="order&pay" width="450px" height="300x"/> 
+  <img src="./readmedata/booking.gif" alt="booking" width="450px" height="300x"/> 
 
 
-  <br/>
+  <br/>  
+  <br/>  
   
 - In member system, users can alter their password and check their order history.
   
-  <img src="https://user-images.githubusercontent.com/94776718/174870463-59304d33-a2a8-4bc6-8a05-5a8fcbdad27e.gif" alt="membersystem" width="450px" height="300x"/> 
-
-
-  <br/>
+  <img src="./readmedata/membersystem.gif" alt="membersystem" width="450px" height="300x"/> 
+  
+  <br/>  
+  <br/>  
   
 - Responsive web design  
   
-  <img src="https://user-images.githubusercontent.com/94776718/174869205-abb7099d-9201-499f-bb4e-098f3098ad7a.gif" alt="rwd" width="450px" height="300x"/> 
- 
+  <img src="./readmedata/rwd.gif" alt="rwd" width="450px" height="300x"/> 
+  
+  <br/>  
+  <br/>  
+
 
 
 ## Contact  
