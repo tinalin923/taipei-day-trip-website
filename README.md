@@ -69,13 +69,14 @@
   <img src="./readmedata/keyword.gif" alt="keyword" width="450px" height="300x"/> 
   
   <br/>
+  <br/>
   
 - Click on the attraction, and users can find detailed information and related pictures.
 
   <img src="./readmedata/attraction.gif" alt="details" width="450px" height="300x"/> 
 
   <br/>
-  
+  <br/>
 - Pop-up modal of sign in/ sign up with frontend and backend validation
   
   <img src="./readmedata/popup.gif" alt="popupmodal" width="450px" height="300x"/> 
