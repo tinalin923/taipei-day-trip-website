@@ -63,45 +63,45 @@
 
   <img src="./readmedata/scroll.gif" alt="scroll" width="450px" height="300x" />  
   
-  <br/>
+  <br/><br/>
  
 - Users can type keywords to find their destinations.
 
   <img src="./readmedata/keyword.gif" alt="keyword" width="450px" height="300x"/> 
   
-  <br/>
+  <br/><br/>
   
 - Click on the attraction, and users can find detailed information and related pictures.
 
   <img src="./readmedata/attraction.gif" alt="details" width="450px" height="300x"/> 
 
-  <br/>
+  <br/><br/>
 
 
 - Pop-up modal of sign in/ sign up with frontend and backend validation
   
   <img src="./readmedata/popup.gif" alt="popupmodal" width="450px" height="300x"/> 
 
-  <br/>
+  <br/><br/>
   
 - After signing in, users can book the trip and pay online by TapPay.  
   
   <img src="./readmedata/booking.gif" alt="booking" width="450px" height="300x"/> 
 
 
-  <br/>
+  <br/><br/>
   
 - In member system, users can alter their password and check their order history.
   
-  <img src="./readmedata/membersystem.gif" alt="membersystem" width="450px" height="300x"/> 
-
-  <br/>
+  <img src="./readmedata/membersystem.gif" alt="membersystem" width="450px" height="300x"/ > 
+  
+  <br/><br/>
   
 - Responsive web design  
   
   <img src="./readmedata/rwd.gif" alt="rwd" width="450px" height="300x"/> 
   
-  <br/>
+  <br/><br/>
 
 
 ## Contact  
