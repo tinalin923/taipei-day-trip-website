@@ -57,9 +57,11 @@
   - Database Schema
   <img src="https://user-images.githubusercontent.com/94776718/174860980-2f7b4e4c-f072-4b20-b700-0398b42163d9.png" alt="Database Schema" width="550px" height="300px"/> 
 
+
 ## Usages
 
 - Infinite scroll of attractions
+
 
   <img src="./readmedata/scroll.gif" alt="scroll" width="450px" height="300x"/>  
   
@@ -109,6 +111,7 @@
   
   <br/>  
   <br/>  
+
 
 
 ## Contact  
