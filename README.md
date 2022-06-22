@@ -44,6 +44,7 @@
     - Blueprints
     - Jinja2
   - MySQL Connector
+    - MySQLConnectionPool
 - Authentication
   - JSON Web Token(JWT) module
 - Cloud Services
@@ -59,8 +60,7 @@
 
 - Infinite scroll of attractions
 
-  <img src="" alt="scroll" width="450px" height="300x"/>  
-  
+  <img src="https://user-images.githubusercontent.com/94776718/174944022-372562f7-8758-4bf0-b7a1-5e86403d52cf.gif" alt="scroll" width="450px" height="300x" />  
   <br/>
  
 - Users can type keywords to find their destinations.
