@@ -61,7 +61,7 @@
 
 - Infinite scroll of attractions
 
-  <img src="./readmedata/scroll.gif" alt="scroll" width="450px" height="300x" />  
+  <img src="./readmedata/scroll.gif" alt="scroll" width="450px" height="300x"/>  
   
   <br/>  
   <br/>  
@@ -98,7 +98,7 @@
   
 - In member system, users can alter their password and check their order history.
   
-  <img src="./readmedata/membersystem.gif" alt="membersystem" width="450px" height="300x"/ > 
+  <img src="./readmedata/membersystem.gif" alt="membersystem" width="450px" height="300x"/> 
   
   <br/>  
   <br/>  
