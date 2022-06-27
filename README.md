@@ -14,9 +14,6 @@
 
 :link: Website URL : http://34.195.43.91:3000 
 
-:art: [Figma Prototype](https://www.figma.com/file/CeFwqBSbNWZbWz2ih4YS6z)
-
-:notebook: [API doc](https://app.swaggerhub.com/apis-docs/padax/taipei-trip/1.0.0)
 
 - Test account : 123@mail.com   <br/>
 - Test password : 123
